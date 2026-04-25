@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+User-agent: Yeti
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 Sitemap: https://xn--3h-qp6i098c.com/sitemap.xml
+Sitemap: https://3h안동.com/sitemap.xml
