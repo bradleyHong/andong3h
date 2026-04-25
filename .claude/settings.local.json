@@ -36,7 +36,31 @@
       "Bash(sudo npm *)",
       "Bash(~/.npm-global/bin/vercel --version)",
       "Bash(~/.npm-global/bin/vercel deploy *)",
-      "Bash(python3 -c \"import encodings.idna; print\\(encodings.idna.ToUnicode\\('xn--3h-qp6i098c'\\)\\)\")"
+      "Bash(python3 -c \"import encodings.idna; print\\(encodings.idna.ToUnicode\\('xn--3h-qp6i098c'\\)\\)\")",
+      "Bash(~/.npm-global/bin/vercel ls *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\" \"https://andong3h.vercel.app/assets/noblesse-bed-2.png\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\" \"https://andong3h.vercel.app/assets/jiyabong.glb\")",
+      "Bash(curl -s -o logo.png \"https://cdn.imweb.me/thumbnail/20250707/89b87fddc457b.png\")",
+      "Bash(curl -s -o bed-imperial-king.jpeg \"https://cdn.imweb.me/thumbnail/20230918/c119ca7faa84e.jpeg\")",
+      "Bash(curl -s -o bed-imperial-wide.jpeg \"https://cdn.imweb.me/thumbnail/20230918/3f385a9f55b9d.jpeg\")",
+      "Bash(curl -s -o bed-superior.jpeg \"https://cdn.imweb.me/thumbnail/20230918/0d19e17607c9b.jpeg\")",
+      "Bash(curl -s -o bed-type-n.png \"https://cdn.imweb.me/thumbnail/20230914/181f0a58cdb2a.png\")",
+      "Bash(curl -s -o med-1.jpg \"https://cdn.imweb.me/thumbnail/20230917/c77753de89c3a.jpg\")",
+      "Bash(curl -s -o med-2.jpg \"https://cdn.imweb.me/thumbnail/20230917/2bf85b1e7e9ba.jpg\")",
+      "Bash(curl -s -o med-3.jpg \"https://cdn.imweb.me/thumbnail/20230917/f615b1ffe749a.jpg\")",
+      "Bash(curl -s -o med-4.jpg \"https://cdn.imweb.me/thumbnail/20230917/7042cb2cb5c4c.jpg\")",
+      "Bash(curl -s -o health-01.jpg \"https://cdn.imweb.me/thumbnail/20230917/e05bc3663e608.jpg\")",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(curl -s -o pasazu.png -H 'Referer: https://www.3hk.co.kr/' https://www.3hk.co.kr/upload/product/2025/03/26/IomebHjxu-9tzEQNyIX33JnYdrRjiw.png)",
+      "Bash(curl -s -o arthrixon.png -H 'Referer: https://www.3hk.co.kr/' https://www.3hk.co.kr/upload/product/2025/03/26/Gi__1UdHVWInc6tDL37PoGNNSomolI.png)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' https://andong3h.vercel.app/__TRACKED_VAR__)",
+      "Bash(curl -s -o '/Users/hongseogbeom/Downloads/3H home page/assets/pasazu.png' -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36' -H 'Referer: https://www.3hk.co.kr/sub/02_product/product_01_V.php?idx=18' https://www.3hk.co.kr/upload/product/2025/03/26/IomebHjxu-9tzEQNyIX33JnYdrRjiw.png)",
+      "Bash(curl -s -o '/Users/hongseogbeom/Downloads/3H home page/assets/arthrixon.png' -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36' -H 'Referer: https://www.3hk.co.kr/' https://www.3hk.co.kr/upload/product/2025/03/26/Gi__1UdHVWInc6tDL37PoGNNSomolI.png)",
+      "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20250707/89b87fddc457b.png|assets/logo.png|g' index.html)",
+      "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/c77753de89c3a.jpg|assets/med-1.jpg|g' index.html)",
+      "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/2bf85b1e7e9ba.jpg|assets/med-2.jpg|g' index.html)",
+      "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/f615b1ffe749a.jpg|assets/med-3.jpg|g' index.html)",
+      "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/7042cb2cb5c4c.jpg|assets/med-4.jpg|g' index.html)"
     ]
   }
 }
