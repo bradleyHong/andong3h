@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1200" height="630"></canvas>
+<script>
+var c = document.getElementById('c');
+var ctx = c.getContext('2d');
+var W = 1200, H = 630;
+
+// Background gradient
+var bg = ctx.createLinearGradient(0, 0, W, H);
+bg.addColorStop(0, '#0a0f1e');
+bg.addColorStop(0.5, '#0d2340');
+bg.addColorStop(1, '#001a40');
+ctx.fillStyle = bg;
+ctx.fillRect(0, 0, W, H);
+
+// Green accent bar (left side)
+var barGrad = ctx.createLinearGradient(0, 0, 0, H);
+barGrad.addColorStop(0, '#00a86b');
+barGrad.addColorStop(1, '#007a4d');
+ctx.fillStyle = barGrad;
+ctx.fillRect(0, 0, 8, H);
+
+// Decorative circles (background)
+ctx.globalAlpha = 0.06;
+ctx.fillStyle = '#00a86b';
+ctx.beginPath(); ctx.arc(1050, 80, 200, 0, Math.PI*2); ctx.fill();
+ctx.beginPath(); ctx.arc(1100, 550, 150, 0, Math.PI*2); ctx.fill();
+ctx.globalAlpha = 0.04;
+ctx.fillStyle = '#fff';
+ctx.beginPath(); ctx.arc(900, 300, 280, 0, Math.PI*2); ctx.fill();
+ctx.globalAlpha = 1;
+
+// Top badge
+ctx.fillStyle = 'rgba(0,168,107,0.18)';
+roundRect(ctx, 60, 60, 260, 40, 20);
+ctx.fill();
+ctx.strokeStyle = 'rgba(0,168,107,0.6)';
+ctx.lineWidth = 1.2;
+roundRect(ctx, 60, 60, 260, 40, 20);
+ctx.stroke();
+
+// Dot in badge
+ctx.fillStyle = '#00a86b';
+ctx.beginPath(); ctx.arc(84, 80, 6, 0, Math.PI*2); ctx.fill();
+
+ctx.fillStyle = '#ffffff';
+ctx.font = '600 15px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('경북 안동 공식 대리점', 100, 86);
+
+// Main title
+ctx.fillStyle = '#ffffff';
+ctx.font = '900 62px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('3H 지압침대', 60, 210);
+
+// Accent colored subtitle
+var accentGrad = ctx.createLinearGradient(60, 250, 700, 290);
+accentGrad.addColorStop(0, '#00e09a');
+accentGrad.addColorStop(1, '#00a86b');
+ctx.fillStyle = accentGrad;
+ctx.font = '900 62px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('안동 구시장센터', 60, 290);
+
+// Divider line
+ctx.fillStyle = '#00a86b';
+ctx.fillRect(60, 320, 80, 4);
+
+// Description
+ctx.fillStyle = 'rgba(255,255,255,0.75)';
+ctx.font = '400 22px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('병원·한의원·노인복지시설·기업 B2B 납품 전문', 60, 370);
+ctx.fillText('전자세금계산서 발행 · 전국 납품 가능', 60, 406);
+
+// Feature pills
+var pills = ['척추 건강', '수면 개선', '통증 완화', 'B2B/B2G'];
+var px = 60;
+pills.forEach(function(text, i) {
+  var tw = ctx.measureText(text).width + 32;
+  ctx.fillStyle = i === 3 ? 'rgba(0,168,107,0.3)' : 'rgba(255,255,255,0.1)';
+  roundRect(ctx, px, 440, tw, 38, 19);
+  ctx.fill();
+  ctx.fillStyle = i === 3 ? '#00e09a' : 'rgba(255,255,255,0.85)';
+  ctx.font = '600 15px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+  ctx.fillText(text, px + 16, 464);
+  px += tw + 10;
+});
+
+// Phone number area
+ctx.fillStyle = 'rgba(255,255,255,0.08)';
+roundRect(ctx, 60, 510, 400, 70, 14);
+ctx.fill();
+ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+ctx.lineWidth = 1;
+roundRect(ctx, 60, 510, 400, 70, 14);
+ctx.stroke();
+
+// Phone icon (simple)
+ctx.strokeStyle = '#00a86b';
+ctx.lineWidth = 2;
+ctx.beginPath();
+ctx.roundRect(90, 527, 22, 36, 4);
+ctx.stroke();
+ctx.fillStyle = '#00a86b';
+ctx.beginPath(); ctx.arc(101, 557, 2, 0, Math.PI*2); ctx.fill();
+
+ctx.fillStyle = '#ffffff';
+ctx.font = '700 26px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('054-858-8561', 126, 540);
+ctx.fillStyle = 'rgba(255,255,255,0.5)';
+ctx.font = '400 14px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('평일 08:00 ~ 16:00', 126, 562);
+
+// Right side: product image placeholder with green glow
+var glowGrad = ctx.createRadialGradient(900, 315, 0, 900, 315, 220);
+glowGrad.addColorStop(0, 'rgba(0,168,107,0.15)');
+glowGrad.addColorStop(1, 'transparent');
+ctx.fillStyle = glowGrad;
+ctx.fillRect(650, 50, 500, 530);
+
+// Load product image
+var img = new Image();
+img.crossOrigin = 'anonymous';
+img.onload = function() {
+  ctx.save();
+  ctx.globalAlpha = 0.92;
+  // Draw image with contain fit in right area
+  var iw = img.width, ih = img.height;
+  var area = { x: 660, y: 60, w: 500, h: 510 };
+  var scale = Math.min(area.w / iw, area.h / ih);
+  var dw = iw * scale, dh = ih * scale;
+  var dx = area.x + (area.w - dw) / 2;
+  var dy = area.y + (area.h - dh) / 2;
+  ctx.drawImage(img, dx, dy, dw, dh);
+  ctx.restore();
+  downloadCanvas();
+};
+img.onerror = function() {
+  // If image fails, just download without it
+  downloadCanvas();
+};
+img.src = 'assets/noblesse-bed-2.png';
+
+// Bottom branding
+ctx.fillStyle = 'rgba(255,255,255,0.25)';
+ctx.fillRect(60, 598, W - 120, 1);
+ctx.fillStyle = 'rgba(255,255,255,0.4)';
+ctx.font = '400 13px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+ctx.fillText('(주)쓰리에이치 경북 안동 공식 대리점 · andong3h.com', 60, 620);
+ctx.textAlign = 'right';
+ctx.fillText('3H지압침대 안동 구시장센터', W - 60, 620);
+ctx.textAlign = 'left';
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function downloadCanvas() {
+  var link = document.createElement('a');
+  link.download = 'og-image.png';
+  link.href = c.toDataURL('image/png');
+  link.click();
+}
+</script>
+</body>
+</html>

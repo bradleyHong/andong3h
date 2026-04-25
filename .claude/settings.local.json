@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:andong3h.imweb.me)",
+      "WebFetch(domain:www.3hk.co.kr)",
+      "WebFetch(domain:www.youtube.com)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(open \"/Users/hongseogbeom/Downloads/3H home page/index.html\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/Meshy_AI_지압봉_0425114710_texture.glb\" \"/Users/hongseogbeom/Downloads/3H home page/assets/jiyabong.glb\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/1노블레스 쇼파.png\" \"/Users/hongseogbeom/Downloads/3H home page/assets/noblesse-sofa-1.png\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/2노블레스 쇼파.png\" \"/Users/hongseogbeom/Downloads/3H home page/assets/noblesse-sofa-2.png\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/3노블레스 쇼파.png\" \"/Users/hongseogbeom/Downloads/3H home page/assets/noblesse-sofa-3.png\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/4노블레스 쇼파.png\" \"/Users/hongseogbeom/Downloads/3H home page/assets/noblesse-sofa-4.png\")",
+      "WebSearch",
+      "WebFetch(domain:pasazu.mycafe24.com)",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/favicon \\(1\\)/favicon.ico\" \"/Users/hongseogbeom/Downloads/3H home page/favicon.ico\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/favicon \\(1\\)/favicon.svg\" \"/Users/hongseogbeom/Downloads/3H home page/favicon.svg\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/favicon \\(1\\)/favicon-96x96.png\" \"/Users/hongseogbeom/Downloads/3H home page/favicon-96x96.png\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/favicon \\(1\\)/apple-touch-icon.png\" \"/Users/hongseogbeom/Downloads/3H home page/apple-touch-icon.png\")",
+      "Bash(cp \"/Users/hongseogbeom/Downloads/노블레스/favicon \\(1\\)/web-app-manifest-192x192.png\" \"/Users/hongseogbeom/Downloads/3H home page/web-app-manifest-192x192.png\")",
+      "Bash(convert --version)",
+      "Bash(python3 -c \"from PIL import Image, ImageDraw, ImageFont; print\\('Pillow OK'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(/usr/bin/python3 --version)",
+      "Bash(/usr/bin/python3 -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(true ls *)",
+      "Bash(/usr/local/bin/python3.14 -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(/usr/local/bin/python3.14 -m pip install pillow --quiet)",
+      "Bash(/usr/local/bin/python3.14 gen_og.py)",
+      "Bash(gh auth *)"
+    ]
+  }
+}
