@@ -28,7 +28,13 @@
       "Bash(/usr/local/bin/python3.14 -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
       "Bash(/usr/local/bin/python3.14 -m pip install pillow --quiet)",
       "Bash(/usr/local/bin/python3.14 gen_og.py)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "Bash(vercel --version)",
+      "Bash(npm install *)",
+      "Bash(sudo npm *)",
+      "Bash(~/.npm-global/bin/vercel --version)"
     ]
   }
 }
