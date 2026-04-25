@@ -23,6 +23,9 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#00a86b">
 <link rel="canonical" href="https://xn--3h-qp6i098c.com/">
+<link rel="alternate" hreflang="ko" href="https://xn--3h-qp6i098c.com/">
+<link rel="alternate" hreflang="en" href="https://xn--3h-qp6i098c.com/">
+<link rel="alternate" hreflang="x-default" href="https://xn--3h-qp6i098c.com/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="alternate" type="application/rss+xml" title="3H지압침대 안동 구시장센터 RSS" href="/feed.xml">
 <meta name="google-site-verification" content="VM-jTuUhModGVU_QYdP8z1V2EdFwQ4vZMulhiincwyI" />
@@ -110,9 +113,9 @@
         "@type": "OfferCatalog",
         "name": "3H지압침대 제품",
         "itemListElement": [
-          {"@type":"Offer","itemOffered":{"@type":"Product","name":"3H 노블레스 침대"}},
-          {"@type":"Offer","itemOffered":{"@type":"Product","name":"3H 지압소파"}},
-          {"@type":"Offer","itemOffered":{"@type":"Product","name":"빠사쥬 (Pasazu)"}}
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"3H 노블레스 침대","description":"3H 프리미엄 지압침대 노블레스 (3H-1530 NB). 척추건강·수면개선·통증완화.","image":"https://xn--3h-qp6i098c.com/assets/noblesse-bed-2.png","brand":{"@type":"Brand","name":"3H"},"offers":{"@type":"Offer","availability":"https://schema.org/InStock","priceCurrency":"KRW","seller":{"@type":"Organization","name":"3H지압침대 안동 구시장센터"}}}},
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"3H 지압소파","description":"3H 노블레스 소파 (3H-920 WS NB). 거실용 프리미엄 지압 소파.","image":"https://xn--3h-qp6i098c.com/assets/noblesse-sofa-1.png","brand":{"@type":"Brand","name":"3H"},"offers":{"@type":"Offer","availability":"https://schema.org/InStock","priceCurrency":"KRW","seller":{"@type":"Organization","name":"3H지압침대 안동 구시장센터"}}}},
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"빠사쥬 (Pasazu)","description":"CIDS 피부 침투 기술 적용 프리미엄 코스메틱. (주)쓰리에이치 × SNBI 협력 제품.","image":"https://xn--3h-qp6i098c.com/assets/pasazu.png","brand":{"@type":"Brand","name":"빠사쥬"},"offers":{"@type":"Offer","availability":"https://schema.org/InStock","priceCurrency":"KRW","seller":{"@type":"Organization","name":"3H지압침대 안동 구시장센터"}}}}
         ]
       }
     },
@@ -537,14 +540,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
 }
+/* NAV TOP CONTROLS — mobile only */
+.nav-top-controls{display:none}
+/* nav-top-row: on desktop, acts as transparent passthrough */
+.nav-top-row{display:contents}
 @media(max-width:768px){
   /* 2단 네비: 로고 위 / 메뉴 아래 가로 스크롤 */
   .nav-inner{flex-direction:column;height:auto;padding:10px 0 0;align-items:stretch;gap:0}
-  .nav-logo{padding:0 16px 10px}
+  .nav-logo{padding:0 16px 10px;flex:1}
+  .nav-top-row{display:flex;align-items:center;padding:0 16px 10px}
+  .nav-top-controls{display:flex;align-items:center;gap:8px;margin-left:auto}
   .nav-links{display:flex!important;width:100%;overflow-x:auto;overflow-y:hidden;padding:6px 12px 8px;gap:2px;border-top:1px solid rgba(255,255,255,.18);scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a{white-space:nowrap;flex-shrink:0;font-size:.76rem;padding:6px 10px}
-  .nav-cta{padding:6px 14px!important;font-size:.76rem!important}
+  .nav-cta{padding:6px 14px!important;font-size:.76rem!important;margin-left:auto;flex-shrink:0;position:sticky;right:0;background:#fff!important}
+  /* hide desktop toggles on mobile */
+  .nav-links .lang-toggle,.nav-links .theme-toggle{display:none}
   .hero-cards{grid-template-columns:1fr}
   .phil-inner{grid-template-columns:1fr}
   .phil-col+.phil-col{border-left:none;border-top:1px solid rgba(255,255,255,.2)}
@@ -578,17 +589,28 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <!-- NAVBAR -->
 <nav id="navbar" role="navigation" aria-label="주 메뉴">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
-      <img src="assets/logo.png" alt="3H지압침대 로고" height="54">
-      <div class="nav-logo-text"><strong>안동 구시장센터</strong>공식 대리점</div>
-    </a>
+    <div class="nav-top-row">
+      <a href="#hero" class="nav-logo">
+        <img src="assets/logo.png" alt="3H지압침대 로고" height="54">
+        <div class="nav-logo-text"><strong>안동 구시장센터</strong>공식 대리점</div>
+      </a>
+      <!-- Mobile-only: lang + theme toggles next to logo -->
+      <div class="nav-top-controls">
+        <button class="lang-toggle" id="lang-toggle-mobile" aria-label="언어 전환">한/EN</button>
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="테마 전환" title="다크/라이트 모드">
+          <svg id="theme-icon-moon-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="theme-icon-sun-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </div>
     <div class="nav-links">
-      <a href="#about">센터 소개</a>
+      <a href="#about" data-i18n="nav-about">센터 소개</a>
       <a href="#products" data-i18n="nav-products">제품</a>
       <a href="#cases" data-i18n="nav-cases">시공 사례</a>
       <a href="#features" data-i18n="nav-features">특장점</a>
       <a href="#b2b" data-i18n="nav-b2b">B2B·납품</a>
       <a href="#testimonials" data-i18n="nav-reviews">후기</a>
+      <!-- Desktop-only: lang + theme toggles -->
       <button class="lang-toggle" id="lang-toggle" aria-label="언어 전환">한/EN</button>
       <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환" title="다크/라이트 모드">
         <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -596,7 +618,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       </button>
       <a href="#contact" class="nav-cta" data-i18n="nav-cta">상담 신청</a>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false">
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false" style="display:none">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -647,18 +669,21 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   <div class="phil-inner">
     <div class="phil-col reveal">
       <div class="phil-letter">H</div>
-      <div class="phil-word">Humanism</div>
-      <p class="phil-desc">사람 중심의 철학으로 모든 제품을 설계합니다. 인간의 존엄성과 삶의 질을 최우선으로 생각합니다.</p>
+      <div class="phil-word" data-i18n="phil-h-title">Health</div>
+      <div style="font-size:.95rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px" data-i18n="phil-h-sub">건강</div>
+      <p class="phil-desc" data-i18n="phil-h-desc">지압·온열·원적외선의 복합 시스템으로 몸의 자연 치유력을 극대화합니다.</p>
     </div>
     <div class="phil-col reveal reveal-delay-1">
       <div class="phil-letter">H</div>
-      <div class="phil-word">Health</div>
-      <p class="phil-desc">건강한 몸과 마음을 위해 과학적으로 검증된 지압·온열·원적외선 기술을 적용합니다.</p>
+      <div class="phil-word" data-i18n="phil-e-title">Eco</div>
+      <div style="font-size:.95rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px" data-i18n="phil-e-sub">친환경</div>
+      <p class="phil-desc" data-i18n="phil-e-desc">인체에 유익한 천연 소재와 친환경 공법으로 안심하고 사용할 수 있습니다.</p>
     </div>
     <div class="phil-col reveal reveal-delay-2">
       <div class="phil-letter">H</div>
-      <div class="phil-word">Happiness</div>
-      <p class="phil-desc">건강한 잠자리에서 시작되는 행복한 일상. 3H가 함께 만들어가겠습니다.</p>
+      <div class="phil-word" data-i18n="phil-a-title">Acupressure</div>
+      <div style="font-size:.95rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px" data-i18n="phil-a-sub">지압</div>
+      <p class="phil-desc" data-i18n="phil-a-desc">동양 전통 경혈 이론을 현대 공학으로 재해석한 정밀 지압 시스템입니다.</p>
     </div>
   </div>
 </section>
@@ -696,14 +721,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="products" aria-label="제품 안내">
   <div style="max-width:1100px;margin:0 auto">
     <div class="section-center reveal">
-      <div class="section-label">Products</div>
-      <h2 class="section-h2">3H <em>전 제품</em> 라인업</h2>
-      <p style="color:var(--gray);font-size:.93rem">지압침대부터 의료기기, 건강·미용 제품까지 — 카드를 클릭하면 상세 정보를 확인할 수 있습니다.</p>
+      <div class="section-label" data-i18n="prod-label">Products</div>
+      <h2 class="section-h2" data-i18n="prod-h">3H 제품 라인업</h2>
+      <p style="color:var(--gray);font-size:.93rem" data-i18n="prod-sub">직접 체험하고 결정하세요. 안동 구시장센터에서 모든 제품을 경험할 수 있습니다.</p>
     </div>
     <div class="tabs" role="tablist">
-      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="beds">지압침대</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="medical">의료기기</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="health">건강·미용</button>
+      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="beds" data-i18n="tab-beds">지압침대</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="medical" data-i18n="tab-medical">의료기기</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="health" data-i18n="tab-health">건강·미용</button>
     </div>
     <div class="tab-pane active" id="tab-beds">
       <div class="products-grid" id="beds-grid"></div>
@@ -736,9 +761,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="cases" aria-label="시공 사례">
   <div style="max-width:1100px;margin:0 auto">
     <div class="section-center reveal">
-      <div class="section-label">Installation Cases</div>
-      <h2 class="section-h2">실제 <em>시공 사례</em></h2>
-      <p style="color:var(--gray);font-size:.93rem">실제 고객님의 생생한 경험담입니다. 카드를 클릭하면 자세한 내용을 확인하실 수 있습니다.</p>
+      <div class="section-label" data-i18n="cases-label">Installation Cases</div>
+      <h2 class="section-h2" data-i18n="cases-h">실제 시공 사례</h2>
+      <p style="color:var(--gray);font-size:.93rem" data-i18n="cases-sub">실제 고객님의 생생한 경험담입니다. 카드를 클릭하면 자세한 내용을 확인하실 수 있습니다.</p>
     </div>
     <div class="cases-grid" id="cases-grid"></div>
   </div>
@@ -747,9 +772,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <!-- SNU STRIP -->
 <div style="background:var(--primary-light);padding:80px 24px">
   <div style="max-width:1000px;margin:0 auto;text-align:center">
-    <div class="section-label" style="margin-bottom:14px">Research Partnership</div>
-    <h2 class="reveal" style="font-size:1.7rem;font-weight:900;color:var(--dark);margin-bottom:10px">서울대학교와의 <em style="font-style:normal;color:var(--primary)">산학협력</em></h2>
-    <p class="reveal" style="color:var(--gray);font-size:.93rem;margin-bottom:32px">(주)쓰리에이치는 서울대학교와 산학협력을 진행하고 있습니다.</p>
+    <div class="section-label" style="margin-bottom:14px" data-i18n="snu-label">Research Partnership</div>
+    <h2 class="reveal" style="font-size:1.7rem;font-weight:900;color:var(--dark);margin-bottom:10px" data-i18n="snu-h">서울대학교와의 산학협력</h2>
+    <p class="reveal" style="color:var(--gray);font-size:.93rem;margin-bottom:32px" data-i18n="snu-p">(주)쓰리에이치는 서울대학교와 산학협력을 진행하고 있습니다.</p>
 
     <!-- Grid: video + SBS -->
     <div class="snu-grid reveal">
@@ -757,13 +782,13 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
         <div class="snu-video-wrap">
           <iframe src="https://www.youtube.com/embed/9L1V_4NMSMg?mute=1&rel=0&modestbranding=1" title="서울대학교 3H 협력연구 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
-        <p style="font-size:.78rem;color:var(--gray);margin-top:10px;text-align:left">서울대학교 협력 연구 공식 영상</p>
+        <p style="font-size:.78rem;color:var(--gray);margin-top:10px;text-align:left" data-i18n="snu-cap1">서울대학교 협력 연구 공식 영상</p>
       </div>
       <div>
         <div class="snu-video-wrap">
           <iframe src="https://www.youtube.com/embed/IMkXLrGYMMQ?rel=0&modestbranding=1" title="SBS Biz 3H 지압침대 보도" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
-        <p style="font-size:.78rem;color:var(--gray);margin-top:10px;text-align:left">SBS Biz 뉴스 — 3H 지압침대 보도 (2022)</p>
+        <p style="font-size:.78rem;color:var(--gray);margin-top:10px;text-align:left" data-i18n="snu-cap2">SBS Biz 3H 지압침대 보도</p>
       </div>
     </div>
 
@@ -772,7 +797,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       <div class="snu-video-wrap">
         <iframe src="https://www.youtube.com/embed/mBA33nyxIL4?start=8&mute=1&rel=0&modestbranding=1" title="3H 지압봉 제품 스토리 — 3D 구조" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
-      <p style="font-size:.78rem;color:var(--gray);margin-top:10px">3H 지압봉 3D 구조 — 아래에서 위로 정밀하게 자극하는 메커니즘</p>
+      <p style="font-size:.78rem;color:var(--gray);margin-top:10px" data-i18n="snu-cap3">3H 지압봉 3D 구조 영상</p>
     </div>
   </div>
 </div>
@@ -830,18 +855,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="features" aria-label="특장점">
   <div style="max-width:1100px;margin:0 auto">
     <div class="section-center reveal">
-      <div class="section-label">Why 3H</div>
-      <h2 class="section-h2">3H 지압침대만의 <em>8가지 특장점</em></h2>
+      <div class="section-label" data-i18n="feat-label">Why 3H</div>
+      <h2 class="section-h2" data-i18n="feat-h">3H 지압침대만의 8가지 특장점</h2>
     </div>
     <div class="features-grid">
-      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg></div><div class="feat-body"><h3 class="feat-title">정밀 지압 시스템</h3><p class="feat-desc">경혈·경락을 정확히 자극하는 특허 지압 돌기 설계로 전신 혈액순환을 촉진합니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></div><div class="feat-body"><h3 class="feat-title">원적외선 온열 기능</h3><p class="feat-desc">신체 심부까지 침투하는 원적외선으로 근육 이완과 혈액순환을 동시에 개선합니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h7"/><path d="M15 18l3 3 5-5"/></svg></div><div class="feat-body"><h3 class="feat-title">척추 교정 지지</h3><p class="feat-desc">척추의 자연스러운 S자 곡선을 유지하도록 설계된 인체공학적 구조입니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="feat-body"><h3 class="feat-title">수면의 질 개선</h3><p class="feat-desc">지압·온열·원적외선의 복합 작용으로 깊은 수면을 유도하고 수면의 질을 높입니다.</p></div></div>
-      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="feat-body"><h3 class="feat-title">서울대학교 협력</h3><p class="feat-desc">(주)쓰리에이치와 서울대학교 간 산학협력을 통해 제품 연구를 진행하고 있습니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0h10M9 14H5a2 2 0 0 1-2-2V5m2 9v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg></div><div class="feat-body"><h3 class="feat-title">의료기기 인증</h3><p class="feat-desc">식품의약품안전처 의료기기 인증을 획득한 안전하고 신뢰할 수 있는 제품입니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="feat-body"><h3 class="feat-title">장기 AS 보장</h3><p class="feat-desc">구매 후 장기 AS를 보장하며, 전문 기술팀이 신속하게 방문 서비스를 제공합니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="feat-body"><h3 class="feat-title">전국 공식 유통망</h3><p class="feat-desc">(주)쓰리에이치 공식 대리점으로 정품 보증과 체계적인 사후 관리를 제공합니다.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-1h">정밀 지압 시스템</h3><p class="feat-desc" data-i18n="feat-1p">경혈·경락을 정확히 자극하는 특허 지압 돌기 설계로 전신 혈액순환을 촉진합니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-2h">원적외선 온열 기능</h3><p class="feat-desc" data-i18n="feat-2p">신체 심부까지 침투하는 원적외선으로 근육 이완과 혈액순환을 동시에 개선합니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h7"/><path d="M15 18l3 3 5-5"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-3h">척추 교정 지지</h3><p class="feat-desc" data-i18n="feat-3p">척추의 자연스러운 S자 곡선을 유지하도록 설계된 인체공학적 구조입니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-4h">수면의 질 개선</h3><p class="feat-desc" data-i18n="feat-4p">지압·온열·원적외선의 복합 작용으로 깊은 수면을 유도하고 수면의 질을 높입니다.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-5h">서울대학교 협력</h3><p class="feat-desc" data-i18n="feat-5p">(주)쓰리에이치와 서울대학교 간 산학협력을 통해 제품 연구를 진행하고 있습니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0h10M9 14H5a2 2 0 0 1-2-2V5m2 9v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-6h">의료기기 인증</h3><p class="feat-desc" data-i18n="feat-6p">식품의약품안전처 의료기기 인증을 획득한 안전하고 신뢰할 수 있는 제품입니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-7h">장기 AS 보장</h3><p class="feat-desc" data-i18n="feat-7p">구매 후 장기 AS를 보장하며, 전문 기술팀이 신속하게 방문 서비스를 제공합니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-8h">전국 공식 유통망</h3><p class="feat-desc" data-i18n="feat-8p">(주)쓰리에이치 공식 대리점으로 정품 보증과 체계적인 사후 관리를 제공합니다.</p></div></div>
     </div>
   </div>
 </section>
@@ -850,14 +875,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="process" aria-label="이용 프로세스">
   <div style="max-width:1100px;margin:0 auto">
     <div class="section-center reveal">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-h2"><em>4단계</em> 간단 프로세스</h2>
+      <div class="section-label" data-i18n="proc-label">How It Works</div>
+      <h2 class="section-h2" data-i18n="proc-h">4단계 간단 프로세스</h2>
     </div>
     <div class="process-steps">
-      <div class="step reveal"><div class="step-num">1</div><h3 class="step-title">무료 상담</h3><p class="step-desc">전화·방문·온라인으로 건강 상태와 필요에 대해 자유롭게 상담합니다.</p></div>
-      <div class="step reveal reveal-delay-1"><div class="step-num">2</div><h3 class="step-title">체험 방문</h3><p class="step-desc">안동 구시장센터에서 직접 체험 후 자신에게 맞는 제품을 선택합니다.</p></div>
-      <div class="step reveal reveal-delay-2"><div class="step-num">3</div><h3 class="step-title">주문 &amp; 배송</h3><p class="step-desc">선택한 제품을 주문하고 전문 설치팀이 방문하여 정확하게 설치합니다.</p></div>
-      <div class="step reveal reveal-delay-3"><div class="step-num">4</div><h3 class="step-title">지속 관리</h3><p class="step-desc">구매 후에도 전담 AS와 정기 관리로 최상의 상태를 유지합니다.</p></div>
+      <div class="step reveal"><div class="step-num">1</div><h3 class="step-title" data-i18n="proc-1t">무료 상담</h3><p class="step-desc" data-i18n="proc-1p">전화·방문·온라인으로 건강 상태와 필요에 대해 자유롭게 상담합니다.</p></div>
+      <div class="step reveal reveal-delay-1"><div class="step-num">2</div><h3 class="step-title" data-i18n="proc-2t">체험 방문</h3><p class="step-desc" data-i18n="proc-2p">안동 구시장센터에서 직접 체험 후 자신에게 맞는 제품을 선택합니다.</p></div>
+      <div class="step reveal reveal-delay-2"><div class="step-num">3</div><h3 class="step-title" data-i18n="proc-3t">주문 &amp; 배송</h3><p class="step-desc" data-i18n="proc-3p">선택한 제품을 주문하고 전문 설치팀이 방문하여 정확하게 설치합니다.</p></div>
+      <div class="step reveal reveal-delay-3"><div class="step-num">4</div><h3 class="step-title" data-i18n="proc-4t">지속 관리</h3><p class="step-desc" data-i18n="proc-4p">구매 후에도 전담 AS와 정기 관리로 최상의 상태를 유지합니다.</p></div>
     </div>
   </div>
 </section>
@@ -866,8 +891,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="testimonials" aria-label="고객 후기">
   <div style="max-width:1100px;margin:0 auto 0;padding-bottom:0">
     <div class="section-center reveal">
-      <div class="section-label" style="color:rgba(255,255,255,.55)">Customer Reviews</div>
-      <h2 class="section-h2" style="color:#fff">고객님의 <em>진짜 후기</em></h2>
+      <div class="section-label" style="color:rgba(255,255,255,.55)" data-i18n="test-label">Customer Reviews</div>
+      <h2 class="section-h2" style="color:#fff">고객님의 <em data-i18n="test-h">진짜 후기</em></h2>
     </div>
   </div>
   <!-- Carousel: 실제 구매 후기 3건 × 무한루프 -->
@@ -953,9 +978,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="pasazu" style="padding:90px 24px;background:linear-gradient(135deg,#f0faf5 0%,#e8f8ef 100%)">
   <div style="max-width:1000px;margin:0 auto">
     <div class="section-center reveal" style="margin-bottom:40px">
-      <div class="section-label">Pasazu Membership</div>
-      <h2 class="section-h2" style="color:var(--dark)">빠사쥬 <em>회원 모집</em> 안내</h2>
-      <p style="color:var(--gray);font-size:.93rem">(주)쓰리에이치 × SNBI 협력 제품 — 빠사쥬 회원이 되어보세요</p>
+      <div class="section-label" data-i18n="pasazu-label">Pasazu Membership</div>
+      <h2 class="section-h2" style="color:var(--dark)" data-i18n="pasazu-h">빠사쥬 회원 모집 안내</h2>
+      <p style="color:var(--gray);font-size:.93rem" data-i18n="pasazu-sub">(주)쓰리에이치 × SNBI 협력 제품 — 빠사쥬 회원이 되어보세요</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center" class="reveal">
       <div>
@@ -967,27 +992,27 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
             <div style="width:40px;height:40px;min-width:40px;border-radius:10px;background:rgba(0,168,107,.12);display:flex;align-items:center;justify-content:center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a86b" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
-            <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px">건강·미용 토탈 케어 제품</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6">5년간 소비자 사용으로 검증된 CIDS 피부 침투 기술 적용 프리미엄 코스메틱</div></div>
+            <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px" data-i18n="pasazu-f1h">건강·미용 토탈 케어 제품</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6" data-i18n="pasazu-f1p">5년간 소비자 사용으로 검증된 CIDS 피부 침투 기술 적용 프리미엄 코스메틱</div></div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start">
             <div style="width:40px;height:40px;min-width:40px;border-radius:10px;background:rgba(0,168,107,.12);display:flex;align-items:center;justify-content:center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a86b" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px">회원 가입 안내</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6">빠사쥬 회원에 관심 있으신 분은 안동 구시장센터로 문의 주세요. 자세한 내용을 안내해 드립니다.</div></div>
+            <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px" data-i18n="pasazu-f2h">회원 가입 안내</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6" data-i18n="pasazu-f2p">빠사쥬 회원에 관심 있으신 분은 안동 구시장센터로 문의 주세요.</div></div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start">
             <div style="width:40px;height:40px;min-width:40px;border-radius:10px;background:rgba(0,168,107,.12);display:flex;align-items:center;justify-content:center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a86b" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
-            <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px">판매공제조합 정식 등록</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6">공정거래위원회 등록 판매공제조합을 통해 안전하게 운영되는 공식 회원 시스템입니다.</div></div>
+            <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px" data-i18n="pasazu-f3h">판매공제조합 정식 등록</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6" data-i18n="pasazu-f3p">공정거래위원회 등록 판매공제조합을 통해 안전하게 운영되는 공식 회원 시스템입니다.</div></div>
           </div>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a href="tel:054-858-8561" style="display:inline-flex;align-items:center;gap:8px;background:#00a86b;color:#fff;padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            회원 문의 054-858-8561
+            <span data-i18n="pasazu-btn1">회원 문의 054-858-8561</span>
           </a>
-          <a href="https://pasazu.mycafe24.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#00a86b;border:2px solid #00a86b;padding:11px 22px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none">
+          <a href="https://pasazu.mycafe24.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#00a86b;border:2px solid #00a86b;padding:11px 22px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none" data-i18n="pasazu-btn2">
             빠사쥬 공식 사이트
           </a>
         </div>
@@ -1010,31 +1035,31 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="b2b" aria-label="B2B B2G 대량납품">
   <div class="b2b-inner">
     <div class="section-center reveal" style="margin-bottom:0">
-      <div class="section-label" style="color:rgba(255,255,255,.5)">B2B · B2G</div>
-      <h2 class="section-h2" style="color:#fff">병원·한의원·기관 <em>대량 납품 안내</em></h2>
-      <p style="color:rgba(255,255,255,.6);font-size:.93rem;margin-top:8px">경북권 병원·한의원은 물론, 노인복지시설·기업복지까지 — 전국 어디든 납품 가능합니다.</p>
+      <div class="section-label" style="color:rgba(255,255,255,.5)" data-i18n="b2b-label">B2B · B2G</div>
+      <h2 class="section-h2" style="color:#fff" data-i18n="b2b-h">병원·기관·기업 납품 전문</h2>
+      <p style="color:rgba(255,255,255,.6);font-size:.93rem;margin-top:8px" data-i18n="b2b-sub">경북 안동 구시장센터는 의료기관·복지시설·기업을 대상으로 대량 납품 서비스를 제공합니다.</p>
     </div>
 
     <div class="b2b-grid">
       <div class="b2b-card reveal">
         <div class="b2b-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>병원 · 한의원 납품</h3>
-        <p>경북권 병원·한의원 도입 전문. 치료 후 지압·온열 이완으로 환자 만족도를 높입니다. 의료기기 인증 제품으로 병원 환경에 최적입니다.</p>
+        <h3 data-i18n="b2b-c1h">공식 대리점 안심 구매</h3>
+        <p data-i18n="b2b-c1p">(주)쓰리에이치 공식 대리점으로 정품 보증, 체계적인 AS와 사후 관리를 제공합니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-1">
         <div class="b2b-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>노인복지시설 · 노인정</h3>
-        <p>전국 노인복지관·경로당·요양원에 단체 납품 가능합니다. 어르신들의 척추 건강과 혈액순환 개선에 탁월한 효과가 검증되어 있습니다.</p>
+        <h3 data-i18n="b2b-c2h">전자세금계산서</h3>
+        <p data-i18n="b2b-c2p">사업자 구매 시 전자세금계산서를 발행해드립니다. 법인·개인사업자 모두 가능합니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-2">
         <div class="b2b-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-        <h3>기업 복지 구매</h3>
-        <p>임직원 건강관리 목적의 기업 구매 문의를 받고 있습니다. 공식 대리점을 통해 구매 절차와 서류 안내를 도와드립니다.</p>
+        <h3 data-i18n="b2b-c3h">전국 납품 가능</h3>
+        <p data-i18n="b2b-c3p">경북 안동뿐 아니라 전국 어디든 배송·설치 서비스를 제공합니다.</p>
       </div>
       <div class="b2b-card reveal">
         <div class="b2b-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-        <h3>전자세금계산서 발행</h3>
-        <p>법인·사업자 구매 시 전자세금계산서 즉시 발행합니다. 회계·세무 처리를 위한 모든 서류를 신속하게 제공해 드립니다.</p>
+        <h3 data-i18n="b2b-c4h">기업 복지 구매</h3>
+        <p data-i18n="b2b-c4p">임직원 복지 혜택, 포인트 사용 등 기업 복지 구매도 상담해드립니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-1">
         <div class="b2b-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
@@ -1049,22 +1074,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
     </div>
 
     <div class="b2b-badge-row reveal">
-      <span class="b2b-badge">경북 병원·한의원 납품</span>
-      <span class="b2b-badge">노인복지시설 단체 구매</span>
-      <span class="b2b-badge">기업 복지 포인트 연계</span>
-      <span class="b2b-badge">전자세금계산서 발행</span>
-      <span class="b2b-badge">전국 배송·설치</span>
-      <span class="b2b-badge">장기 AS 보장</span>
+      <span class="b2b-badge" data-i18n="b2b-tag1">🏥 병원·의원</span>
+      <span class="b2b-badge" data-i18n="b2b-tag2">🌿 한의원</span>
+      <span class="b2b-badge" data-i18n="b2b-tag3">🏠 노인복지시설·요양원</span>
+      <span class="b2b-badge" data-i18n="b2b-tag4">🏢 기업·공공기관</span>
+      <span class="b2b-badge" data-i18n="b2b-tag5">📋 전자세금계산서</span>
+      <span class="b2b-badge" data-i18n="b2b-tag6">🚚 전국 배송</span>
     </div>
 
     <div class="b2b-ctas reveal">
       <a href="tel:054-858-8561" class="b2b-btn b2b-btn-solid">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        납품 문의 054-858-8561
+        <span data-i18n="b2b-btn">납품 문의 054-858-8561</span>
       </a>
       <a href="mailto:sungsil32@naver.com" class="b2b-btn b2b-btn-outline">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        이메일 견적 문의
+        <span data-i18n="b2b-email">이메일 견적 문의</span>
       </a>
     </div>
   </div>
@@ -1074,15 +1099,16 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <section id="contact" aria-label="상담 신청 및 연락처">
   <div class="contact-inner">
     <div class="contact-info reveal">
-      <h2>상담 신청 &amp; 연락처</h2>
-      <p>궁금한 점이 있으시면 언제든지 연락 주세요. 친절히 안내해 드리겠습니다.</p>
+      <div class="section-label" data-i18n="contact-label">Visit &amp; Consult</div>
+      <h2 data-i18n="contact-h">상담 &amp; 오시는 길</h2>
+      <p data-i18n="contact-sub">전화·방문·온라인 상담 모두 환영합니다. 언제든지 편하게 연락주세요.</p>
       <div class="contact-items">
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="ci-content"><strong>주소</strong><span>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="ci-content"><strong>전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary);font-weight:700">054-858-8561</a></span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="ci-content"><strong>SMS 문자</strong><span><a href="sms:010-3446-7797" style="color:var(--primary);font-weight:700">010-3446-7797</a></span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="ci-content"><strong>이메일</strong><span><a href="mailto:sungsil32@naver.com" style="color:var(--primary);font-weight:700">sungsil32@naver.com</a></span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ci-content"><strong>운영시간</strong><span>평일 08:00 ~ 16:00 (주말·공휴일 휴무)</span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div><div class="ci-content"><strong>본사</strong><span>(주)쓰리에이치 (대구) 1600-4996</span></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="ci-content"><strong>주소</strong><span data-i18n="footer-addr">경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="ci-content"><strong data-i18n="ci-phone">대표 전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary);font-weight:700">054-858-8561</a></span></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="ci-content"><strong data-i18n="ci-mobile">문자 문의</strong><span><a href="sms:010-3446-7797" style="color:var(--primary);font-weight:700">010-3446-7797</a></span></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="ci-content"><strong data-i18n="ci-email">이메일</strong><span><a href="mailto:sungsil32@naver.com" style="color:var(--primary);font-weight:700">sungsil32@naver.com</a></span></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ci-content"><strong data-i18n="ci-hours">운영시간</strong><span data-i18n="ci-hours-val">평일 08:00 ~ 16:00 (주말·공휴일 휴무)</span></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div><div class="ci-content"><strong data-i18n="ci-hq">본사</strong><span data-i18n="ci-hq-val">(주)쓰리에이치 (대구) 1600-4996</span></div></div>
       </div>
       <!-- Naver Map -->
       <a href="https://map.naver.com/p/search/%EA%B2%BD%EB%B6%81%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084" target="_blank" rel="noopener noreferrer" style="text-decoration:none" aria-label="네이버 지도에서 보기">
@@ -1092,7 +1118,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
             <p>네이버 지도로 보기</p>
             <small>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</small>
           </div>
-          <div class="map-open-btn">네이버 지도에서 길찾기 열기</div>
+          <div class="map-open-btn" data-i18n="map-btn">네이버 지도에서 길찾기 열기</div>
         </div>
       </a>
 
@@ -1102,12 +1128,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       </div>
     </div>
     <div class="contact-form reveal reveal-delay-1">
-      <h3>무료 상담 신청</h3>
+      <h3 data-i18n="contact-form-h">무료 상담 신청</h3>
       <form id="consultation-form" onsubmit="handleFormSubmit(event)">
-        <div class="form-group"><label for="f-name" data-i18n="form-name">이름 *</label><input type="text" id="f-name" name="name" required placeholder="홍길동"></div>
+        <div class="form-group"><label for="f-name" data-i18n="form-name">성함 *</label><input type="text" id="f-name" name="name" required placeholder="홍길동"></div>
         <div class="form-group"><label for="f-phone" data-i18n="form-phone">연락처 *</label><input type="tel" id="f-phone" name="phone" required placeholder="010-0000-0000"></div>
         <div class="form-group">
-          <label>관심 제품 <span style="font-size:.72rem;font-weight:400;color:var(--gray)">(클릭하여 선택)</span></label>
+          <label data-i18n="form-product-label">관심 제품</label>
           <input type="hidden" id="f-product" name="product">
           <div class="prod-picker">
             <div class="prod-picker-grid" id="prod-picker-grid"></div>
@@ -1123,7 +1149,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
         </div>
         <div class="form-group"><label for="f-concern" data-i18n="form-concern">건강 고민</label><textarea id="f-concern" name="concern" data-i18n="form-concern-ph" placeholder="허리 통증, 수면 장애, 어깨 결림 등 편하게 적어주세요."></textarea></div>
         <button type="submit" class="form-submit" id="submit-btn" data-i18n="form-submit">무료 상담 신청하기</button>
-        <p class="form-note">수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공하지 않습니다.</p>
+        <p class="form-note" data-i18n="form-privacy">수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공하지 않습니다.</p>
       </form>
     </div>
   </div>
@@ -1728,19 +1754,30 @@ observeReveal();
 
 // ── THEME TOGGLE ──────────────────────────────────────────────
 (function(){
-  var root = document.documentElement;
-  var btn  = document.getElementById('theme-toggle');
-  var moon = document.getElementById('theme-icon-moon');
-  var sun  = document.getElementById('theme-icon-sun');
+  var root       = document.documentElement;
+  var btn        = document.getElementById('theme-toggle');
+  var btnMobile  = document.getElementById('theme-toggle-mobile');
+  var moon       = document.getElementById('theme-icon-moon');
+  var sun        = document.getElementById('theme-icon-sun');
+  var moonMobile = document.getElementById('theme-icon-moon-mobile');
+  var sunMobile  = document.getElementById('theme-icon-sun-mobile');
   var saved = localStorage.getItem('3h-theme') || 'light';
   function applyTheme(t){
     root.setAttribute('data-theme', t);
-    if(t==='dark'){ moon.style.display='none'; sun.style.display=''; }
-    else { moon.style.display=''; sun.style.display='none'; }
+    if(t==='dark'){
+      moon.style.display='none';       sun.style.display='';
+      moonMobile.style.display='none'; sunMobile.style.display='';
+    } else {
+      moon.style.display='';       sun.style.display='none';
+      moonMobile.style.display=''; sunMobile.style.display='none';
+    }
     localStorage.setItem('3h-theme', t);
   }
   applyTheme(saved);
   btn.addEventListener('click', function(){
+    applyTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+  });
+  btnMobile.addEventListener('click', function(){
     applyTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
   });
 })();
@@ -1748,81 +1785,327 @@ observeReveal();
 // ── LANGUAGE TOGGLE ───────────────────────────────────────────
 var i18n = {
   ko: {
-    'nav-products':   '제품',
-    'nav-features':   '특장점',
-    'nav-cases':      '시공 사례',
-    'nav-b2b':        'B2B·납품',
-    'nav-reviews':    '후기',
-    'nav-cta':        '상담 신청',
-    'hero-badge':     '경북 안동 · 공식 대리점',
-    'hero-h1a':       '건강한 잠자리,',
-    'hero-h1b':       '행복한 삶의 시작',
-    'hero-sub':       '3H지압침대 안동 구시장센터 — 척추 건강과 수면 개선을 위한 최고의 솔루션을 제공합니다.',
-    'hero-btn1':      '무료 상담 신청',
-    'hero-btn2':      '제품 보기 →',
-    'hero-c1h':       '지압침대',
-    'hero-c1p':       '노블레스·임페리얼 등 15종 이상의 프리미엄 지압침대',
-    'hero-c2h':       '의료기기',
-    'hero-c2p':       '뜸질기·레이저 조사기 등 의료용 온열기기 전문',
-    'hero-c3h':       '건강·미용',
-    'hero-c3p':       '이온수기·흑삼·세라젤 등 건강·미용 제품',
-    'notice':         '🏥 병원·한의원·노인복지시설 납품 전문 — 전자세금계산서 발행 · 전국 배송',
-    'section-products': '제품 소개',
-    'section-features': '특장점',
-    'section-b2b':    'B2B · 납품 안내',
-    'section-reviews': '고객 후기',
-    'section-contact': '상담 & 오시는 길',
-    'contact-btn':    '무료 상담 신청하기',
-    'form-name':      '이름 *',
-    'form-phone':     '연락처 *',
-    'form-concern':   '건강 고민',
-    'form-concern-ph':'허리 통증, 수면 장애, 어깨 결림 등 편하게 적어주세요.',
-    'form-submit':    '무료 상담 신청하기',
-    'lang-btn':       '한/EN',
+    // --- META ---
+    'page-title': '3H지압침대 안동 구시장센터 | 공식 대리점 · 병원·한의원·복지시설 납품',
+    'meta-desc': '3H지압침대 안동 구시장센터 — 경북 안동 공식 대리점. 병원·한의원·노인복지시설·기업 B2B 대량 납품 전문. 전국 납품 가능, 전자세금계산서 발행. ☎ 054-858-8561',
+    // --- NOTICE ---
+    'notice': '🏥 병원·한의원·노인복지시설 납품 전문 — 전자세금계산서 발행 · 전국 배송',
+    // --- NAV ---
+    'nav-about': '센터 소개',
+    'nav-products': '제품',
+    'nav-cases': '시공 사례',
+    'nav-features': '특장점',
+    'nav-b2b': 'B2B·납품',
+    'nav-reviews': '후기',
+    'nav-cta': '상담 신청',
+    // --- HERO ---
+    'hero-badge': '경북 안동 공식 인증 대리점',
+    'hero-h1a': '건강한 잠자리,',
+    'hero-h1b': '행복한 삶의 시작',
+    'hero-sub': '3H지압침대 안동 구시장센터 — 척추 건강과 수면 개선을 위한 최고의 솔루션을 제공합니다.',
+    'hero-btn1': '무료 상담 신청',
+    'hero-btn2': '제품 보기 →',
+    'hero-c1h': '지압침대',
+    'hero-c1p': '노블레스·임페리얼 등 15종 이상의 프리미엄 지압침대',
+    'hero-c2h': '의료기기',
+    'hero-c2p': '뜸질기·레이저 조사기 등 의료용 온열기기 전문',
+    'hero-c3h': '건강·미용',
+    'hero-c3p': '이온수기·흑삼·세라젤 등 건강·미용 제품',
+    // --- PHILOSOPHY ---
+    'phil-label': 'Our Philosophy',
+    'phil-h': '3H가 추구하는 가치',
+    'phil-h-title': 'Health',
+    'phil-h-sub': '건강',
+    'phil-h-desc': '지압·온열·원적외선의 복합 시스템으로 몸의 자연 치유력을 극대화합니다.',
+    'phil-e-title': 'Eco',
+    'phil-e-sub': '친환경',
+    'phil-e-desc': '인체에 유익한 천연 소재와 친환경 공법으로 안심하고 사용할 수 있습니다.',
+    'phil-a-title': 'Acupressure',
+    'phil-a-sub': '지압',
+    'phil-a-desc': '동양 전통 경혈 이론을 현대 공학으로 재해석한 정밀 지압 시스템입니다.',
+    // --- PRODUCTS ---
+    'prod-label': 'Our Products',
+    'prod-h': '3H 제품 라인업',
+    'prod-sub': '직접 체험하고 결정하세요. 안동 구시장센터에서 모든 제품을 경험할 수 있습니다.',
+    'tab-beds': '지압침대',
+    'tab-medical': '의료기기',
+    'tab-health': '건강·미용',
+    // --- CASES ---
+    'cases-label': 'Installation Cases',
+    'cases-h': '실제 시공 사례',
+    'cases-sub': '실제 고객님의 생생한 경험담입니다. 카드를 클릭하면 자세한 내용을 확인하실 수 있습니다.',
+    'cases-situation': '상황',
+    'cases-result': '결과',
+    'cases-close': '닫기',
+    // --- FEATURES ---
+    'feat-label': 'Why 3H',
+    'feat-h': '3H 지압침대만의 8가지 특장점',
+    'feat-1h': '정밀 지압 시스템',
+    'feat-1p': '경혈·경락을 정확히 자극하는 특허 지압 돌기 설계로 전신 혈액순환을 촉진합니다.',
+    'feat-2h': '원적외선 온열 기능',
+    'feat-2p': '신체 심부까지 침투하는 원적외선으로 근육 이완과 혈액순환을 동시에 개선합니다.',
+    'feat-3h': '척추 교정 지지',
+    'feat-3p': '척추의 자연스러운 S자 곡선을 유지하도록 설계된 인체공학적 구조입니다.',
+    'feat-4h': '수면의 질 개선',
+    'feat-4p': '지압·온열·원적외선의 복합 작용으로 깊은 수면을 유도하고 수면의 질을 높입니다.',
+    'feat-5h': '서울대학교 협력',
+    'feat-5p': '(주)쓰리에이치와 서울대학교 간 산학협력을 통해 제품 연구를 진행하고 있습니다.',
+    'feat-6h': '의료기기 인증',
+    'feat-6p': '식품의약품안전처 의료기기 인증을 획득한 안전하고 신뢰할 수 있는 제품입니다.',
+    'feat-7h': '장기 AS 보장',
+    'feat-7p': '구매 후 장기 AS를 보장하며, 전문 기술팀이 신속하게 방문 서비스를 제공합니다.',
+    'feat-8h': '전국 공식 유통망',
+    'feat-8p': '(주)쓰리에이치 공식 대리점으로 정품 보증과 체계적인 사후 관리를 제공합니다.',
+    // --- PROCESS ---
+    'proc-label': 'How It Works',
+    'proc-h': '4단계 간단 프로세스',
+    'proc-1t': '무료 상담',
+    'proc-1p': '전화·방문·온라인으로 건강 상태와 필요에 대해 자유롭게 상담합니다.',
+    'proc-2t': '체험 방문',
+    'proc-2p': '안동 구시장센터에서 직접 체험 후 자신에게 맞는 제품을 선택합니다.',
+    'proc-3t': '주문 & 배송',
+    'proc-3p': '선택한 제품을 주문하고 전문 설치팀이 방문하여 정확하게 설치합니다.',
+    'proc-4t': '지속 관리',
+    'proc-4p': '구매 후에도 전담 AS와 정기 관리로 최상의 상태를 유지합니다.',
+    // --- TESTIMONIALS ---
+    'test-label': 'Customer Reviews',
+    'test-h': '진짜 후기',
+    // --- B2B ---
+    'b2b-label': 'B2B / B2G Supply',
+    'b2b-h': '병원·기관·기업 납품 전문',
+    'b2b-sub': '경북 안동 구시장센터는 의료기관·복지시설·기업을 대상으로 대량 납품 서비스를 제공합니다.',
+    'b2b-c1h': '공식 대리점 안심 구매',
+    'b2b-c1p': '(주)쓰리에이치 공식 대리점으로 정품 보증, 체계적인 AS와 사후 관리를 제공합니다.',
+    'b2b-c2h': '전자세금계산서',
+    'b2b-c2p': '사업자 구매 시 전자세금계산서를 발행해드립니다. 법인·개인사업자 모두 가능합니다.',
+    'b2b-c3h': '전국 납품 가능',
+    'b2b-c3p': '경북 안동뿐 아니라 전국 어디든 배송·설치 서비스를 제공합니다.',
+    'b2b-c4h': '기업 복지 구매',
+    'b2b-c4p': '임직원 복지 혜택, 포인트 사용 등 기업 복지 구매도 상담해드립니다.',
+    'b2b-tag1': '🏥 병원·의원',
+    'b2b-tag2': '🌿 한의원',
+    'b2b-tag3': '🏠 노인복지시설·요양원',
+    'b2b-tag4': '🏢 기업·공공기관',
+    'b2b-tag5': '📋 전자세금계산서',
+    'b2b-tag6': '🚚 전국 배송',
+    'b2b-btn': '납품 문의 054-858-8561',
+    'b2b-email': '이메일 견적 문의',
+    // --- SNU ---
+    'snu-label': 'Research Partnership',
+    'snu-h': '서울대학교와의 산학협력',
+    'snu-p': '(주)쓰리에이치는 서울대학교와 산학협력을 진행하고 있습니다.',
+    'snu-cap1': '서울대학교 협력 연구 공식 영상',
+    'snu-cap2': 'SBS Biz 3H 지압침대 보도',
+    'snu-cap3': '3H 지압봉 3D 구조 영상',
+    // --- PASAZU ---
+    'pasazu-label': 'Pasazu Membership',
+    'pasazu-h': '빠사쥬 회원 모집 안내',
+    'pasazu-sub': '(주)쓰리에이치 × SNBI 협력 제품 — 빠사쥬 회원이 되어보세요',
+    'pasazu-f1h': '건강·미용 토탈 케어 제품',
+    'pasazu-f1p': '5년간 소비자 사용으로 검증된 CIDS 피부 침투 기술 적용 프리미엄 코스메틱',
+    'pasazu-f2h': '회원 가입 안내',
+    'pasazu-f2p': '빠사쥬 회원에 관심 있으신 분은 안동 구시장센터로 문의 주세요.',
+    'pasazu-f3h': '판매공제조합 정식 등록',
+    'pasazu-f3p': '공정거래위원회 등록 판매공제조합을 통해 안전하게 운영되는 공식 회원 시스템입니다.',
+    'pasazu-btn1': '회원 문의 054-858-8561',
+    'pasazu-btn2': '빠사쥬 공식 사이트',
+    // --- CONTACT ---
+    'contact-label': 'Visit & Consult',
+    'contact-h': '상담 & 오시는 길',
+    'contact-sub': '전화·방문·온라인 상담 모두 환영합니다. 언제든지 편하게 연락주세요.',
+    'contact-form-h': '무료 상담 신청',
+    'form-name': '성함 *',
+    'form-phone': '연락처 *',
+    'form-product-label': '관심 제품',
+    'form-concern': '건강 고민',
+    'form-concern-ph': '허리 통증, 수면 장애, 어깨 결림 등 편하게 적어주세요.',
+    'form-submit': '무료 상담 신청하기',
+    'form-privacy': '수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공하지 않습니다.',
+    'contact-info-h': '오시는 길 & 연락처',
+    'ci-phone': '대표 전화',
+    'ci-mobile': '문자 문의',
+    'ci-email': '이메일',
+    'ci-hours': '운영시간',
+    'ci-hours-val': '평일 08:00 ~ 16:00 (주말·공휴일 휴무)',
+    'ci-hq': '본사',
+    'ci-hq-val': '(주)쓰리에이치 (대구) 1600-4996',
+    'map-btn': '네이버 지도에서 길찾기 열기',
+    // --- FOOTER ---
+    'footer-desc': '경북 안동 공식 대리점 — 척추건강·수면개선·통증완화 전문',
+    'footer-biz': '사업자등록번호: 194-21-01177',
+    'footer-addr': '경북 안동시 퇴계로 84, 7층 (장피부과 건물)',
+    'footer-hours': '운영시간: 평일 08:00 ~ 16:00 (주말·공휴일 휴무)',
+    'footer-copy': '© 2025 3H지압침대 안동 구시장센터. All rights reserved.',
+    'footer-privacy': '개인정보처리방침',
+    'lang-btn': '한/EN',
   },
   en: {
-    'nav-products':   'Products',
-    'nav-features':   'Features',
-    'nav-cases':      'Cases',
-    'nav-b2b':        'B2B',
-    'nav-reviews':    'Reviews',
-    'nav-cta':        'Consultation',
-    'hero-badge':     'Andong, Gyeongbuk · Official Dealer',
-    'hero-h1a':       'A Comfortable Body,',
-    'hero-h1b':       'Means a Comfortable Life',
-    'hero-sub':       '3H Acupressure Bed — Official dealer in Andong, Korea. Spine health, better sleep & pain relief.',
-    'hero-btn1':      'Book Free Trial',
-    'hero-btn2':      'View Products →',
-    'hero-c1h':       'Try Before You Buy',
-    'hero-c1p':       'Visit our Andong showroom and experience it yourself',
-    'hero-c2h':       'Nationwide Delivery',
-    'hero-c2p':       'Hospitals, clinics, welfare facilities & corporate bulk orders',
-    'hero-c3h':       'Official Warranty',
-    'hero-c3p':       'Dedicated after-sales service & long-term maintenance',
-    'notice':         '🏥 Bulk supply to hospitals, clinics & senior welfare centers — Tax invoice issued · Nationwide delivery',
-    'section-products': 'Our Products',
-    'section-features': 'Key Features',
-    'section-b2b':    'B2B / Bulk Supply',
-    'section-reviews': 'Customer Reviews',
-    'section-contact': 'Consultation & Directions',
-    'contact-btn':    'Request Free Consultation',
-    'form-name':      'Full Name *',
-    'form-phone':     'Phone Number *',
-    'form-concern':   'Health Concern',
-    'form-concern-ph':'Spine, sleep, pain, etc.',
-    'form-submit':    'Submit Request',
-    'lang-btn':       'EN/한',
+    // --- META ---
+    'page-title': '3H Acupressure Bed | Andong Official Dealer · Hospital & Facility Supply',
+    'meta-desc': '3H Acupressure Bed Andong Center — Official dealer in Gyeongbuk, Korea. Specialized in bulk supply for hospitals, clinics, senior welfare facilities & corporate B2B. Nationwide delivery, tax invoice. ☎ 054-858-8561',
+    // --- NOTICE ---
+    'notice': '🏥 Bulk supply specialist for hospitals, clinics & senior welfare facilities — Tax invoice · Nationwide delivery',
+    // --- NAV ---
+    'nav-about': 'About',
+    'nav-products': 'Products',
+    'nav-cases': 'Cases',
+    'nav-features': 'Features',
+    'nav-b2b': 'B2B Supply',
+    'nav-reviews': 'Reviews',
+    'nav-cta': 'Consultation',
+    // --- HERO ---
+    'hero-badge': 'Official Authorized Dealer · Gyeongbuk Andong',
+    'hero-h1a': 'A Comfortable Body,',
+    'hero-h1b': 'A Happier Life',
+    'hero-sub': '3H Acupressure Bed Andong Center — The best solution for spine health and better sleep quality.',
+    'hero-btn1': 'Free Consultation',
+    'hero-btn2': 'View Products →',
+    'hero-c1h': 'Acupressure Beds',
+    'hero-c1p': '15+ premium models including Noblesse & Imperial series',
+    'hero-c2h': 'Medical Devices',
+    'hero-c2p': 'Moxibustion & laser therapy devices for medical use',
+    'hero-c3h': 'Health & Beauty',
+    'hero-c3p': 'Ionized water, black ginseng, seragel and more',
+    // --- PHILOSOPHY ---
+    'phil-label': 'Our Philosophy',
+    'phil-h': 'The Values 3H Pursues',
+    'phil-h-title': 'Health',
+    'phil-h-sub': 'Health',
+    'phil-h-desc': 'Maximize the body\'s natural healing power through a combined system of acupressure, heat therapy, and far-infrared rays.',
+    'phil-e-title': 'Eco',
+    'phil-e-sub': 'Eco-Friendly',
+    'phil-e-desc': 'Safe to use with natural materials and eco-friendly manufacturing methods that are beneficial to the human body.',
+    'phil-a-title': 'Acupressure',
+    'phil-a-sub': 'Acupressure',
+    'phil-a-desc': 'A precision acupressure system that reinterprets traditional Eastern meridian theory with modern engineering.',
+    // --- PRODUCTS ---
+    'prod-label': 'Our Products',
+    'prod-h': '3H Product Lineup',
+    'prod-sub': 'Try before you decide. Experience all products at the Andong Gusigang Center.',
+    'tab-beds': 'Acupressure Beds',
+    'tab-medical': 'Medical Devices',
+    'tab-health': 'Health & Beauty',
+    // --- CASES ---
+    'cases-label': 'Installation Cases',
+    'cases-h': 'Real Installation Cases',
+    'cases-sub': 'Real stories from our customers. Click a card to see details.',
+    'cases-situation': 'Situation',
+    'cases-result': 'Result',
+    'cases-close': 'Close',
+    // --- FEATURES ---
+    'feat-label': 'Why 3H',
+    'feat-h': '8 Key Features of 3H Acupressure Beds',
+    'feat-1h': 'Precision Acupressure System',
+    'feat-1p': 'Patented acupressure node design that accurately stimulates meridian points to promote whole-body circulation.',
+    'feat-2h': 'Far-Infrared Heat Therapy',
+    'feat-2p': 'Far-infrared rays that penetrate deep into the body simultaneously improve muscle relaxation and blood circulation.',
+    'feat-3h': 'Spinal Support',
+    'feat-3p': 'Ergonomic structure designed to maintain the natural S-curve of the spine.',
+    'feat-4h': 'Improved Sleep Quality',
+    'feat-4p': 'The combined effect of acupressure, heat, and far-infrared rays induces deep sleep and improves sleep quality.',
+    'feat-5h': 'Seoul National University Partnership',
+    'feat-5p': '3H Co., Ltd. conducts product research through industry-academia cooperation with Seoul National University.',
+    'feat-6h': 'Medical Device Certification',
+    'feat-6p': 'Certified by the Ministry of Food and Drug Safety as a medical device — safe and reliable.',
+    'feat-7h': 'Long-term After-Sales Service',
+    'feat-7p': 'Long-term after-sales service guaranteed, with a dedicated technical team providing prompt on-site service.',
+    'feat-8h': 'Official Nationwide Network',
+    'feat-8p': 'As an official dealer of 3H Co., Ltd., we provide genuine product guarantee and systematic after-sales management.',
+    // --- PROCESS ---
+    'proc-label': 'How It Works',
+    'proc-h': 'Simple 4-Step Process',
+    'proc-1t': 'Free Consultation',
+    'proc-1p': 'Consult freely about your health condition and needs by phone, visit, or online.',
+    'proc-2t': 'Trial Visit',
+    'proc-2p': 'Visit the Andong Gusigang Center to try the products and choose the one that suits you.',
+    'proc-3t': 'Order & Delivery',
+    'proc-3p': 'Place your order and our professional installation team will visit and set it up correctly.',
+    'proc-4t': 'Ongoing Care',
+    'proc-4p': 'Even after purchase, dedicated after-sales service and regular maintenance keep it in top condition.',
+    // --- TESTIMONIALS ---
+    'test-label': 'Customer Reviews',
+    'test-h': 'Real Customer Reviews',
+    // --- B2B ---
+    'b2b-label': 'B2B / B2G Supply',
+    'b2b-h': 'Specialized in Hospital, Facility & Corporate Supply',
+    'b2b-sub': 'Andong Gusigang Center provides bulk supply services for medical institutions, welfare facilities, and corporations.',
+    'b2b-c1h': 'Official Dealer Assurance',
+    'b2b-c1p': 'As an official dealer of 3H Co., Ltd., we provide genuine product guarantee, systematic after-sales service and follow-up management.',
+    'b2b-c2h': 'Tax Invoice Issuance',
+    'b2b-c2p': 'We issue electronic tax invoices for business purchases. Available for both corporations and sole proprietors.',
+    'b2b-c3h': 'Nationwide Delivery',
+    'b2b-c3p': 'We provide delivery and installation services not only in Gyeongbuk Andong but anywhere nationwide.',
+    'b2b-c4h': 'Corporate Welfare Purchase',
+    'b2b-c4p': 'We also handle corporate welfare purchases including employee benefit programs and welfare point usage.',
+    'b2b-tag1': '🏥 Hospitals & Clinics',
+    'b2b-tag2': '🌿 Oriental Medicine Clinics',
+    'b2b-tag3': '🏠 Senior Welfare & Care Facilities',
+    'b2b-tag4': '🏢 Corporations & Public Institutions',
+    'b2b-tag5': '📋 Tax Invoice Issued',
+    'b2b-tag6': '🚚 Nationwide Delivery',
+    'b2b-btn': 'Bulk Order Inquiry ☎ 054-858-8561',
+    'b2b-email': 'Email Quote Request',
+    // --- SNU ---
+    'snu-label': 'Research Partnership',
+    'snu-h': 'Industry-Academia Partnership with Seoul National University',
+    'snu-p': '3H Co., Ltd. is conducting research in partnership with Seoul National University.',
+    'snu-cap1': 'Official SNU Research Partnership Video',
+    'snu-cap2': 'SBS Biz News Coverage of 3H Acupressure Bed',
+    'snu-cap3': '3H Acupressure Node 3D Structure Video',
+    // --- PASAZU ---
+    'pasazu-label': 'Pasazu Membership',
+    'pasazu-h': 'Pasazu Membership Recruitment',
+    'pasazu-sub': '3H Co., Ltd. × SNBI Collaboration Product — Become a Pasazu Member',
+    'pasazu-f1h': 'Total Health & Beauty Care Product',
+    'pasazu-f1p': 'Premium cosmetics with CIDS skin penetration technology, verified by 5 years of consumer use.',
+    'pasazu-f2h': 'Membership Information',
+    'pasazu-f2p': 'If you are interested in becoming a Pasazu member, please contact the Andong Gusigang Center.',
+    'pasazu-f3h': 'Officially Registered Sales Mutual Aid Association',
+    'pasazu-f3p': 'An official membership system operated safely through a sales mutual aid association registered with the Fair Trade Commission.',
+    'pasazu-btn1': 'Membership Inquiry ☎ 054-858-8561',
+    'pasazu-btn2': 'Pasazu Official Site',
+    // --- CONTACT ---
+    'contact-label': 'Visit & Consult',
+    'contact-h': 'Consultation & Directions',
+    'contact-sub': 'Phone, walk-in, and online consultations are all welcome. Feel free to contact us anytime.',
+    'contact-form-h': 'Free Consultation Request',
+    'form-name': 'Full Name *',
+    'form-phone': 'Phone Number *',
+    'form-product-label': 'Product of Interest',
+    'form-concern': 'Health Concern',
+    'form-concern-ph': 'Back pain, sleep disorders, shoulder stiffness, etc.',
+    'form-submit': 'Submit Consultation Request',
+    'form-privacy': 'Collected information is used only for consultation purposes and is not provided to third parties.',
+    'contact-info-h': 'Directions & Contact',
+    'ci-phone': 'Phone',
+    'ci-mobile': 'SMS Inquiry',
+    'ci-email': 'Email',
+    'ci-hours': 'Hours',
+    'ci-hours-val': 'Weekdays 08:00 ~ 16:00 (Closed weekends & holidays)',
+    'ci-hq': 'Headquarters',
+    'ci-hq-val': '3H Co., Ltd. (Daegu) 1600-4996',
+    'map-btn': 'Open in Naver Maps for Directions',
+    // --- FOOTER ---
+    'footer-desc': 'Official Dealer in Gyeongbuk Andong — Spine Health · Better Sleep · Pain Relief',
+    'footer-biz': 'Business Reg. No.: 194-21-01177',
+    'footer-addr': '84 Toegye-ro, 7F (Jang Dermatology Bldg.), Andong, Gyeongbuk, Korea',
+    'footer-hours': 'Hours: Weekdays 08:00~16:00 (Closed weekends & holidays)',
+    'footer-copy': '© 2025 3H Acupressure Bed Andong Gusigang Center. All rights reserved.',
+    'footer-privacy': 'Privacy Policy',
+    'lang-btn': 'EN/한',
   }
 };
 
 (function(){
-  var langBtn = document.getElementById('lang-toggle');
-  var currentLang = localStorage.getItem('3h-lang') || 'ko';
+  var langBtn        = document.getElementById('lang-toggle');
+  var langBtnMobile  = document.getElementById('lang-toggle-mobile');
+  var currentLang    = localStorage.getItem('3h-lang') || 'ko';
 
   function applyLang(lang){
     currentLang = lang;
     localStorage.setItem('3h-lang', lang);
     var t = i18n[lang];
+
     // Update all data-i18n elements
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.getAttribute('data-i18n');
@@ -1833,13 +2116,26 @@ var i18n = {
         el.textContent = t[key];
       }
     });
-    // Update lang-btn text
-    langBtn.textContent = t['lang-btn'];
-    // Update html lang attr
+
+    // Page title
+    document.title = t['page-title'];
+
+    // Meta description
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', t['meta-desc']);
+
+    // HTML lang
     document.documentElement.lang = lang==='en' ? 'en' : 'ko';
+
+    // Lang button text (both desktop and mobile)
+    langBtn.textContent        = t['lang-btn'];
+    langBtnMobile.textContent  = t['lang-btn'];
   }
 
   langBtn.addEventListener('click', function(){
+    applyLang(currentLang==='ko' ? 'en' : 'ko');
+  });
+  langBtnMobile.addEventListener('click', function(){
     applyLang(currentLang==='ko' ? 'en' : 'ko');
   });
 
