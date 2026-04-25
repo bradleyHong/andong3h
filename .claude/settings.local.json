@@ -34,7 +34,9 @@
       "Bash(vercel --version)",
       "Bash(npm install *)",
       "Bash(sudo npm *)",
-      "Bash(~/.npm-global/bin/vercel --version)"
+      "Bash(~/.npm-global/bin/vercel --version)",
+      "Bash(~/.npm-global/bin/vercel deploy *)",
+      "Bash(python3 -c \"import encodings.idna; print\\(encodings.idna.ToUnicode\\('xn--3h-qp6i098c'\\)\\)\")"
     ]
   }
 }

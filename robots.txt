@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://andong3h.vercel.app/sitemap.xml
+Sitemap: https://xn--3h-qp6i098c.com/sitemap.xml
