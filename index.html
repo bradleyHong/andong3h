@@ -308,8 +308,16 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .dot-nav-item:hover .dot-nav-label,.dot-nav-item.active .dot-nav-label{opacity:1;transform:translateX(0)}
 @media(max-width:768px){#dot-nav{display:none}}
 /* HQ IFRAME MODAL */
-#hq-iframe-modal{display:none;align-items:center;justify-content:center;padding:20px}
+#hq-iframe-modal{display:none;align-items:center;justify-content:center;padding:0}
 #hq-iframe-modal.open{display:flex}
+@media(max-width:480px){
+  .hq-btn-consult{display:none}
+  #hq-iframe-modal>div{border-radius:0;height:100dvh;max-height:100dvh}
+}
+@media(min-width:481px){
+  #hq-iframe-modal{padding:20px}
+  #hq-iframe-modal>div{border-radius:16px;height:90vh;max-height:90vh}
+}
 .med-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
 .med-card{background:#fff;border:1.5px solid #e8eef6;border-radius:var(--radius);padding:28px;text-align:center;transition:transform var(--transition),box-shadow var(--transition)}
 .med-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
@@ -1268,14 +1276,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 </div>
 
 <!-- HQ DETAIL IFRAME MODAL -->
-<div class="modal-overlay" id="hq-iframe-modal" role="dialog" aria-modal="true" aria-label="제품 상세" style="z-index:3001">
-  <div style="position:relative;width:100%;max-width:900px;height:90vh;background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#0d2137;flex-shrink:0">
-      <div style="color:#fff;font-size:.9rem;font-weight:700" id="hq-modal-title">제품 상세</div>
-      <div style="display:flex;gap:8px">
-        <a href="tel:054-858-8561" style="display:inline-flex;align-items:center;gap:6px;background:#00a86b;color:#fff;padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;text-decoration:none">📞 전화 상담</a>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});closeHqModal()" style="background:#fff;color:#0d2137;border:none;padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;cursor:pointer">온라인 상담</button>
-        <button onclick="closeHqModal()" style="background:rgba(255,255,255,.15);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer">✕</button>
+<div class="modal-overlay" id="hq-iframe-modal" role="dialog" aria-modal="true" aria-label="제품 상세" style="z-index:3001;padding:0">
+  <div style="position:relative;width:100%;max-width:900px;height:100dvh;max-height:100dvh;background:#fff;border-radius:0;overflow:hidden;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#0d2137;flex-shrink:0;min-height:52px">
+      <div style="flex:1;min-width:0">
+        <div id="hq-modal-title" style="color:#fff;font-size:.82rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">제품 상세</div>
+        <div style="color:rgba(255,255,255,.5);font-size:.68rem;margin-top:1px">3H 공식 상세정보</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-shrink:0">
+        <a href="tel:054-858-8561" style="display:inline-flex;align-items:center;gap:4px;background:#00a86b;color:#fff;padding:7px 12px;border-radius:50px;font-size:.78rem;font-weight:700;text-decoration:none;white-space:nowrap">📞 <span class="hq-btn-full">전화 상담</span></a>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});closeHqModal()" style="background:#fff;color:#0d2137;border:none;padding:7px 12px;border-radius:50px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap" class="hq-btn-consult">온라인 상담</button>
+        <button onclick="closeHqModal()" style="background:rgba(255,255,255,.18);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center">✕</button>
       </div>
     </div>
     <iframe id="hq-iframe" src="" style="flex:1;border:none;width:100%" loading="lazy" title="제품 상세 정보"></iframe>
