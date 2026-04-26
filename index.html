@@ -250,6 +250,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .prod-badge{display:inline-block;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:50px;margin-bottom:10px}
 .prod-badge.best{background:#fff3cd;color:#856404}
 .prod-badge.new{background:#d1fae5;color:#065f46}
+.prod-badge.hospital{background:#dbeafe;color:#1e40af}
+.prod-rental{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:50px;background:rgba(0,168,107,.1);color:#00a86b;border:1px solid rgba(0,168,107,.25);margin-left:5px;vertical-align:middle}
+.prod-badges-row{display:flex;align-items:center;flex-wrap:wrap;gap:4px;min-height:22px;margin-bottom:10px}
 .prod-icon{font-size:2.4rem;margin-bottom:10px}
 .prod-name{font-size:.97rem;font-weight:800;color:var(--dark);margin-bottom:4px}
 .prod-model{font-size:.77rem;color:var(--primary);font-weight:600;margin-bottom:6px}
@@ -1064,6 +1067,19 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       </div>
     </div>
 
+    <!-- 병원·시설 추천 제품 -->
+    <div class="reveal" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:24px 28px;margin-bottom:28px;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <div style="width:90px;height:90px;min-width:90px;border-radius:12px;overflow:hidden;background:#1a3a5c">
+        <img src="assets/bed-hp-new.png" alt="지압침대 HP" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div style="font-size:.73rem;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-bottom:6px">🏥 병원·시설 납품 추천</div>
+        <div style="font-size:1.05rem;font-weight:900;color:#fff;margin-bottom:4px">지압침대 HP</div>
+        <div style="font-size:.83rem;color:rgba(255,255,255,.7);margin-bottom:10px">병원·요양원·복지시설 대량 납품에 최적화된 전용 모델. 내구성·관리 용이성을 갖춘 기관 전용 라인업입니다.</div>
+        <button onclick="BEDS.forEach(function(b){if(b.badge==='hospital')openProductModal(b);});void 0" style="background:#00a86b;color:#fff;border:none;padding:8px 20px;border-radius:50px;font-size:.83rem;font-weight:700;cursor:pointer">자세히 보기 →</button>
+      </div>
+    </div>
+
     <div class="b2b-badge-row reveal">
       <span class="b2b-badge" data-i18n="b2b-tag1">🏥 병원·의원</span>
       <span class="b2b-badge" data-i18n="b2b-tag2">🌿 한의원</span>
@@ -1242,21 +1258,29 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <script>
 // ── DATA ──
 var BEDS=[
-  {badge:'best',icon:'&#128716;',name:'노블레스 침대',model:'3H-1530 NB',size:'2770×2270×900mm',img:'assets/noblesse-bed-2.png'},
-  {badge:'',icon:'&#128715;',name:'노블레스 소파',model:'3H-920 WS NB',size:'1100×2310×900mm',img:'assets/noblesse-sofa-1.png'},
-  {badge:'',icon:'&#128081;',name:'임페리얼 킹',model:'3H-1530K',size:'1930×2330×1290mm',img:'assets/bed-imperial-king.jpeg'},
-  {badge:'',icon:'&#127963;&#65039;',name:'임페리얼 와이드 더블',model:'3H-1300WD',size:'1790×2210×1290mm',img:'assets/bed-imperial-wide.jpeg'},
-  {badge:'',icon:'&#11088;',name:'슈페리어',model:'3H-1100',size:'1350×2180×925mm',img:'assets/bed-superior.jpeg'},
-  {badge:'',icon:'&#128311;',name:'타입 N',model:'3H-920N',size:'1180×2230×930mm',img:'assets/bed-type-n.png'},
-  {badge:'',icon:'&#127807;',name:'임페리얼 우드',model:'3H-920WD',size:'1120×2200×990mm',img:'assets/bed-imperial-wood.jpg'},
-  {badge:'',icon:'&#129683;',name:'우드 C타입',model:'3H-820WD C',size:'1150×2160×875mm',img:'assets/bed-wood-c.jpg'},
-  {badge:'',icon:'&#128142;',name:'크라운',model:'3H-920C',size:'1100×2160×750mm',img:'assets/bed-crown.jpg'},
-  {badge:'',icon:'&#128715;',name:'와이드 소파',model:'3H-920WS',size:'1120×2470×1170mm',img:'assets/bed-wide-sofa.jpg'},
-  {badge:'',icon:'&#9881;&#65039;',name:'HP',model:'3H-820HP',size:'840×2010×550mm',img:'assets/bed-hp.png'},
-  {badge:'new',icon:'&#10024;',name:'노블레스 N (홈쇼핑)',model:'3H-1530NB N',size:'2770×2270×900mm',img:'assets/bed-noblesse-n.jpg'},
-  {badge:'new',icon:'&#128195;',name:'1530N',model:'3H-1530N',size:'상담 문의',img:'assets/bed-1530n.jpg'},
-  {badge:'new',icon:'&#128195;',name:'1300N',model:'3H-1300N',size:'상담 문의',img:'assets/bed-1300n.jpg'},
-  {badge:'new',icon:'&#128195;',name:'1100N',model:'3H-1100N',size:'상담 문의',img:'assets/bed-1100n.jpg'}
+  {badge:'new',name:'지압쇼파 COVERED',model:'COVERED',size:'1인용 · 실리콘원단',img:'assets/bed-covered.png',rental:false},
+  {badge:'new',name:'지압쇼파 820 SOFA',model:'3H-820 SOFA',size:'1인용 · 실리콘원단',img:'assets/bed-sofa-820.png',rental:false},
+  {badge:'best',name:'지압침대 노블레스',model:'3H Noblesse',size:'2인용 · 원목',img:'assets/bed-noblesse-main.png',rental:true},
+  {badge:'best',name:'지압쇼파 노블레스',model:'3H Noblesse Sofa',size:'1인용 · 원목',img:'assets/bed-sofa-noblesse.png',rental:false},
+  {badge:'new',name:'스파인얼라인 SA-680R',model:'SA-680R',size:'1인용',img:'assets/bed-spine-680.png',rental:false},
+  {badge:'new',name:'스파인얼라인 SA-820R',model:'SA-820R',size:'1인용',img:'assets/bed-spine-820.png',rental:false},
+  {badge:'best',name:'지압침대 인베스트 1530',model:'3H Invest 1530',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1530.png',rental:true},
+  {badge:'',name:'지압침대 인베스트 1300',model:'3H Invest 1300',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1300.png',rental:true},
+  {badge:'',name:'지압침대 인베스트 1100',model:'3H Invest 1100',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1100.png',rental:false},
+  {badge:'',name:'지압침대 인베스트 920',model:'3H Invest 920',size:'1인용 · 실리콘원단',img:'assets/bed-invest-920.png',rental:true},
+  {badge:'',name:'지압침대 임페리얼 킹',model:'3H Imperial King',size:'2인용 · 원목 실리콘원단',img:'assets/bed-imperial-king-new.png',rental:false},
+  {badge:'',name:'지압침대 임페리얼 더블',model:'3H Imperial Double',size:'2인용 · 원목 실리콘원단',img:'assets/bed-imperial-double.png',rental:false},
+  {badge:'',name:'지압침대 임페리얼 우드',model:'3H Imperial Wood',size:'1인용 · 원목 실리콘원단',img:'assets/bed-imperial-wood-new.png',rental:true},
+  {badge:'',name:'지압침대 슈페리어 1100-S',model:'3H-1100-S',size:'2인용 · 원목',img:'assets/bed-superior-1100.png',rental:true},
+  {badge:'',name:'지압침대 슈페리어 925WD-S',model:'3H-925WD-S',size:'1인용 · 원목',img:'assets/bed-superior-925.png',rental:false},
+  {badge:'',name:'지압침대 슈페리어 850WD-S',model:'3H-850WD-S',size:'1인용 · 원목',img:'assets/bed-superior-850.png',rental:true},
+  {badge:'',name:'지압침대 우드',model:'3H Wood',size:'1인용 · 원목',img:'assets/bed-wood-new.png',rental:false},
+  {badge:'',name:'지압침대',model:'3H Standard',size:'1인용 · 실리콘원단',img:'assets/bed-basic.png',rental:true},
+  {badge:'hospital',name:'지압침대 HP',model:'3H-HP',size:'병원·시설 전용',img:'assets/bed-hp-new.png',rental:false},
+  {badge:'',name:'지압 와이드 쇼파',model:'3H Wide Sofa',size:'1인용 · 원목 실리콘원단',img:'assets/bed-wide-sofa-new.png',rental:true},
+  {badge:'',name:'지압침대 크라운',model:'3H Crown',size:'1인용 · 원목',img:'assets/bed-crown-new.png',rental:true},
+  {badge:'',name:'지압쇼파',model:'3H Sofa',size:'1인용 · 원목 실리콘원단',img:'assets/bed-sofa-new.png',rental:false},
+  {badge:'',name:'카우치',model:'3H Couch',size:'1인용 · 원목 실리콘원단',img:'assets/bed-couch.png',rental:false}
 ];
 
 var CASES=[
@@ -1409,9 +1433,13 @@ function observeReveal(){
     d.setAttribute('role','button');
     d.setAttribute('tabindex','0');
     d.setAttribute('aria-label',b.name+' 상세보기');
+    var badgeLabels={best:'BEST',new:'NEW','hospital':'🏥 병원전용'};
     d.innerHTML='<div class="prod-arrow">&#8594;</div>'
       +(b.img?'<div class="prod-thumb"><img src="'+b.img+'" alt="'+b.name+'" loading="lazy" onerror="this.style.display=\'none\'"></div>':'')
-      +(b.badge?'<div class="prod-badge '+b.badge+'">'+b.badge.toUpperCase()+'</div>':'<div style="height:20px"></div>')
+      +'<div class="prod-badges-row">'
+        +(b.badge?'<span class="prod-badge '+b.badge+'">'+(badgeLabels[b.badge]||b.badge.toUpperCase())+'</span>':'')
+        +(b.rental?'<span class="prod-rental">렌탈 가능</span>':'')
+      +'</div>'
       +'<div class="prod-name">'+b.name+'</div>'
       +'<div class="prod-model">'+b.model+'</div>'
       +'<div class="prod-size">'+b.size+'</div>';
@@ -1461,16 +1489,19 @@ function openProductModal(p){
     iconEl.innerHTML=''; iconEl.style.fontSize=''; iconEl.style.margin='';
   }
   var bw=document.getElementById('modal-badge-wrap');
-  bw.innerHTML=p.badge?'<span class="modal-badge '+p.badge+'">'+p.badge.toUpperCase()+'</span>':'';
+  var badgeLabels={best:'BEST',new:'NEW','hospital':'🏥 병원·시설 전용'};
+  bw.innerHTML=(p.badge?'<span class="modal-badge '+p.badge+'">'+(badgeLabels[p.badge]||p.badge.toUpperCase())+'</span>':'')
+    +(p.rental?'<span style="display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:50px;background:rgba(0,168,107,.1);color:#00a86b;border:1px solid rgba(0,168,107,.3);margin-left:6px">렌탈 가능</span>':'');
   document.getElementById('modal-title').textContent=p.name;
-  document.getElementById('modal-model').textContent='모델번호: '+p.model;
+  document.getElementById('modal-model').textContent='모델: '+p.model;
   document.getElementById('modal-tbody').innerHTML=
     '<tr><td>모델명</td><td>'+p.model+'</td></tr>'
-    +'<tr><td>사이즈 (W×D×H)</td><td>'+p.size+'</td></tr>'
-    +'<tr><td>소재</td><td>고급 원목 / 친환경 마감재</td></tr>'
+    +'<tr><td>구성</td><td>'+p.size+'</td></tr>'
+    +(p.rental?'<tr><td>렌탈</td><td>렌탈 가능 (조건 문의)</td></tr>':'')
     +'<tr><td>지압 방식</td><td>옥·세라믹 복합 지압 시스템</td></tr>'
     +'<tr><td>온열 기능</td><td>원적외선 온열 (3단계 조절)</td></tr>'
-    +'<tr><td>AS 보장</td><td>구매 후 장기 보증</td></tr>';
+    +'<tr><td>AS 보장</td><td>구매·렌탈 후 장기 보증</td></tr>'
+    +'<tr><td>가격</td><td><strong>문의 시 안내 (054-858-8561)</strong></td></tr>';
   document.getElementById('modal-tags').innerHTML=FTAGS.map(function(t){return'<span class="modal-tag">'+t+'</span>';}).join('');
   document.getElementById('product-modal').classList.add('open');
   document.body.style.overflow='hidden';
