@@ -61,7 +61,8 @@
       "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/2bf85b1e7e9ba.jpg|assets/med-2.jpg|g' index.html)",
       "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/f615b1ffe749a.jpg|assets/med-3.jpg|g' index.html)",
       "Bash(sed -i '' 's|https://cdn.imweb.me/thumbnail/20230917/7042cb2cb5c4c.jpg|assets/med-4.jpg|g' index.html)",
-      "Bash(/usr/bin/curl --version)"
+      "Bash(/usr/bin/curl --version)",
+      "Bash(npx vercel *)"
     ]
   }
 }

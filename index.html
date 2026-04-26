@@ -258,6 +258,18 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .prod-model{font-size:.77rem;color:var(--primary);font-weight:600;margin-bottom:6px}
 .prod-size{font-size:.74rem;color:var(--gray)}
 .prod-price{font-size:.95rem;font-weight:800;color:var(--primary);margin-top:8px}
+/* DOT NAV */
+#dot-nav{position:fixed;left:20px;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:14px}
+.dot-nav-item{display:flex;align-items:center;gap:10px;cursor:pointer;opacity:.5;transition:opacity .3s}
+.dot-nav-item:hover,.dot-nav-item.active{opacity:1}
+.dot-nav-dot{width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid rgba(255,255,255,.6);transition:all .3s;flex-shrink:0}
+.dot-nav-item.active .dot-nav-dot{background:#00a86b;border-color:#00a86b;width:10px;height:10px}
+.dot-nav-label{font-size:.72rem;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6);opacity:0;transform:translateX(-8px);transition:all .3s;white-space:nowrap;pointer-events:none}
+.dot-nav-item:hover .dot-nav-label,.dot-nav-item.active .dot-nav-label{opacity:1;transform:translateX(0)}
+@media(max-width:768px){#dot-nav{display:none}}
+/* HQ IFRAME MODAL */
+#hq-iframe-modal{display:none;align-items:center;justify-content:center;padding:20px}
+#hq-iframe-modal.open{display:flex}
 .med-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
 .med-card{background:#fff;border:1.5px solid #e8eef6;border-radius:var(--radius);padding:28px;text-align:center;transition:transform var(--transition),box-shadow var(--transition)}
 .med-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
@@ -712,6 +724,16 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   </div>
 </section>
 
+<!-- SECTION DOT NAV -->
+<nav id="dot-nav" aria-label="섹션 이동">
+  <div class="dot-nav-item" data-section="products"><span class="dot-nav-dot"></span><span class="dot-nav-label">제품</span></div>
+  <div class="dot-nav-item" data-section="cases"><span class="dot-nav-dot"></span><span class="dot-nav-label">시공사례</span></div>
+  <div class="dot-nav-item" data-section="features"><span class="dot-nav-dot"></span><span class="dot-nav-label">특장점</span></div>
+  <div class="dot-nav-item" data-section="b2b"><span class="dot-nav-dot"></span><span class="dot-nav-label">B2B납품</span></div>
+  <div class="dot-nav-item" data-section="testimonials"><span class="dot-nav-dot"></span><span class="dot-nav-label">고객후기</span></div>
+  <div class="dot-nav-item" data-section="contact"><span class="dot-nav-dot"></span><span class="dot-nav-label">상담신청</span></div>
+</nav>
+
 <!-- PRODUCTS -->
 <section id="products" aria-label="제품 안내">
   <div style="max-width:1100px;margin:0 auto">
@@ -729,25 +751,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       <div class="products-grid" id="beds-grid"></div>
     </div>
     <div class="tab-pane" id="tab-medical">
-      <div class="med-grid">
-        <div class="med-card reveal"><div class="med-thumb"><img src="assets/med-1.jpg" alt="3H 다기능 복부 뜸질기-S" loading="lazy" onerror="this.style.display='none'"></div><h3 class="med-name">3H 다기능 복부 뜸질기-S</h3><p class="med-desc">복부 온열 치료와 뜸 효과를 동시에. 과학적으로 검증된 원적외선 온열 시스템으로 내장기관을 따뜻하게 합니다.</p></div>
-        <div class="med-card reveal reveal-delay-1"><div class="med-thumb"><img src="assets/med-2.jpg" alt="3H 주열기 & 레이저 조사기" loading="lazy" onerror="this.style.display='none'"></div><h3 class="med-name">3H 주열기 &amp; 레이저 조사기</h3><p class="med-desc">근골격계 온열·레이저 복합 치료기. 심부 조직까지 침투하는 레이저와 온열의 시너지 효과를 제공합니다.</p></div>
-        <div class="med-card reveal reveal-delay-2"><div class="med-thumb"><img src="assets/med-3.jpg" alt="3H 배허리뜸질기" loading="lazy" onerror="this.style.display='none'"></div><h3 class="med-name">3H 배허리뜸질기</h3><p class="med-desc">허리와 복부에 집중적인 뜸질 효과. 혈액순환 촉진과 근육 이완에 탁월합니다.</p></div>
-        <div class="med-card reveal reveal-delay-3"><div class="med-thumb"><img src="assets/med-4.jpg" alt="3H 다기능 복부 뜸질기" loading="lazy" onerror="this.style.display='none'"></div><h3 class="med-name">3H 다기능 복부 뜸질기</h3><p class="med-desc">다양한 온열 모드로 복부 전반을 케어. 사용 편의성을 극대화한 다기능 복부 온열기입니다.</p></div>
-      </div>
+      <div class="med-grid" id="med-grid"></div>
     </div>
     <div class="tab-pane" id="tab-health">
-      <div class="health-grid">
-        <div class="health-card reveal"><div class="health-thumb"><img src="assets/health-01.jpg" alt="3H 스마트 이온수기" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">01</div><div class="health-name">3H 스마트 이온수기</div></div>
-        <div class="health-card reveal reveal-delay-1"><div class="health-thumb"><img src="assets/health-02.jpg" alt="3H 천흑삼킹" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">02</div><div class="health-name">3H 천흑삼킹</div></div>
-        <div class="health-card reveal reveal-delay-2"><div class="health-thumb"><img src="assets/health-03.jpg" alt="포미130플러스" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">03</div><div class="health-name">포미130플러스</div></div>
-        <div class="health-card reveal reveal-delay-3"><div class="health-thumb"><img src="assets/health-04.jpg" alt="3H 세라젤 크림" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">04</div><div class="health-name">3H 세라젤 크림</div></div>
-        <div class="health-card reveal"><div class="health-thumb"><img src="assets/health-05.jpg" alt="3H 52샴푸" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">05</div><div class="health-name">3H 52샴푸</div></div>
-        <div class="health-card reveal reveal-delay-1"><div class="health-thumb"><img src="assets/health-06.jpg" alt="3H 스마트 치약" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">06</div><div class="health-name">3H 스마트 치약</div></div>
-        <div class="health-card reveal reveal-delay-2"><div class="health-thumb"><img src="assets/health-07.jpg" alt="3H 구운소금" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">07</div><div class="health-name">3H 구운소금</div></div>
-        <div class="health-card reveal" style="border-color:#00a86b;background:linear-gradient(135deg,rgba(0,168,107,.08),#fff)"><div class="health-thumb"><img src="assets/pasazu.png" alt="빠사쥬" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num" style="color:#00a86b">08</div><div class="health-name">빠사쥬 (Pasazu)</div></div>
-        <div class="health-card reveal reveal-delay-1"><div class="health-thumb"><img src="assets/arthrixon.png" alt="아스릭손" loading="lazy" onerror="this.style.display='none'"></div><div class="health-num">09</div><div class="health-name">아스릭손 (Arthrixon)</div></div>
-      </div>
+      <div class="health-grid" id="health-grid"></div>
     </div>
   </div>
 </section>
@@ -1220,6 +1227,21 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   </div>
 </div>
 
+<!-- HQ DETAIL IFRAME MODAL -->
+<div class="modal-overlay" id="hq-iframe-modal" role="dialog" aria-modal="true" aria-label="제품 상세" style="z-index:3001">
+  <div style="position:relative;width:100%;max-width:900px;height:90vh;background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#0d2137;flex-shrink:0">
+      <div style="color:#fff;font-size:.9rem;font-weight:700" id="hq-modal-title">제품 상세</div>
+      <div style="display:flex;gap:8px">
+        <a href="tel:054-858-8561" style="display:inline-flex;align-items:center;gap:6px;background:#00a86b;color:#fff;padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;text-decoration:none">📞 전화 상담</a>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});closeHqModal()" style="background:#fff;color:#0d2137;border:none;padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;cursor:pointer">온라인 상담</button>
+        <button onclick="closeHqModal()" style="background:rgba(255,255,255,.15);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer">✕</button>
+      </div>
+    </div>
+    <iframe id="hq-iframe" src="" style="flex:1;border:none;width:100%" loading="lazy" title="제품 상세 정보"></iframe>
+  </div>
+</div>
+
 <!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-box">
@@ -1261,30 +1283,57 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 
 <script>
 // ── DATA ──
+var MEDICAL=[
+  {name:'ion9 이온수기',img:'assets/med-ion9.png',desc:'이온수 생성으로 체내 활성산소를 제거. 건강한 물로 면역력을 높여줍니다.'},
+  {name:'주열기',img:'assets/med-juyeol.png',desc:'근골격계 온열·레이저 복합 치료기. 심부 조직까지 침투하는 온열 효과.'},
+  {name:'아이케어',img:'assets/med-eyecare.png',desc:'눈의 피로와 건조함을 완화하는 눈 전용 온열 케어 기기.'},
+  {name:'뜸뜨미',img:'assets/med-ddeum.png',desc:'전통 뜸 효과를 현대적으로 구현. 혈액순환 촉진과 면역력 강화.'},
+  {name:'3H 다기능 복부 뜸질기',img:'assets/med-belly.png',desc:'복부 온열 치료와 뜸 효과를 동시에. 원적외선 온열 시스템으로 내장기관을 케어.'},
+  {name:'3H Slim매트',img:'assets/med-slim.png',desc:'전신 원적외선 온열 매트. 척추와 근육의 피로를 효과적으로 회복.'},
+  {name:'3H New Slim매트',img:'assets/med-newslim.png',desc:'업그레이드된 슬림 온열매트. 더욱 향상된 원적외선 투과력과 균일한 발열.'},
+  {name:'3H 스마트 돔',img:'assets/med-dome.png',desc:'돔형 원적외선 사우나 효과. 전신을 감싸는 포근한 온열로 노폐물 배출을 도웁니다.'},
+  {name:'3H 멀티펄스',img:'assets/med-multipulse.png',desc:'저주파·중주파 복합 자극으로 근육통 완화 및 혈액순환 개선.'},
+  {name:'3H 숨쉬는 허리벨트',img:'assets/med-waistbelt.png',desc:'허리를 감싸는 원적외선 온열 벨트. 허리 통증 완화와 근육 이완.'},
+  {name:'3H 경추베개',img:'assets/med-neckpillow.png',desc:'경추의 자연스러운 곡선을 유지하는 인체공학적 베개. 목 통증과 거북목 개선.'},
+  {name:'3H 넥밴드',img:'assets/med-neckband.png',desc:'목과 어깨에 온열과 저주파 자극을 동시에. 현대인의 만성 목·어깨 피로 케어.'}
+];
+
+var HEALTH=[
+  {name:'아스릭손',img:'assets/health-arthrixon-new.png',desc:'관절 건강을 위한 프리미엄 건강기능식품.'},
+  {name:'빠사쥬 (Pasazu)',img:'assets/health-pasazu-new.png',desc:'CIDS 피부 침투 기술 적용 프리미엄 코스메틱. 5년 검증 회원 전용 제품.'},
+  {name:'천백단',img:'assets/health-cheonbaekdan.png',desc:'천연 한방 성분으로 만든 프리미엄 건강식품.'},
+  {name:'포미130플러스',img:'assets/health-pomi130.png',desc:'석류 추출물 기반 여성 건강 기능성 음료.'},
+  {name:'3H 스마트 치약',img:'assets/health-toothpaste-new.png',desc:'구강 건강을 위한 기능성 스마트 치약.'},
+  {name:'3H 52샴푸',img:'assets/health-shampoo-new.png',desc:'두피 건강 개선을 위한 52가지 자연 성분 샴푸.'},
+  {name:'3H 구운소금',img:'assets/health-salt-new.png',desc:'고온 처리로 불순물을 제거한 미네랄 풍부 구운소금.'},
+  {name:'MK303 텐셀이불',img:'assets/health-blanket.png',desc:'텐셀 소재로 만든 피부 친화적 프리미엄 이불.'},
+  {name:'3H 세라젤 크림',img:'assets/health-seragel-new.png',desc:'세라마이드 성분으로 피부 장벽을 강화하는 프리미엄 보습 크림.'}
+];
+
 var BEDS=[
-  {badge:'new',name:'지압쇼파 COVERED',model:'COVERED',size:'1인용 · 실리콘원단',img:'assets/bed-covered.png',rental:false,price:9680000},
-  {badge:'new',name:'지압쇼파 820 SOFA',model:'3H-820 SOFA',size:'1인용 · 실리콘원단',img:'assets/bed-sofa-820.png',rental:false,price:9680000},
-  {badge:'best',name:'지압침대 노블레스',model:'3H Noblesse',size:'2인용 · 원목',img:'assets/bed-noblesse-main.png',rental:true,price:19550000},
-  {badge:'best',name:'지압쇼파 노블레스',model:'3H Noblesse Sofa',size:'1인용 · 원목',img:'assets/bed-sofa-noblesse.png',rental:false,price:14200000},
-  {badge:'new',name:'스파인얼라인 SA-680R',model:'SA-680R',size:'1인용',img:'assets/bed-spine-680.png',rental:false,price:7374000},
-  {badge:'new',name:'스파인얼라인 SA-820R',model:'SA-820R',size:'1인용',img:'assets/bed-spine-820.png',rental:false,price:7974000},
-  {badge:'best',name:'지압침대 인베스트 1530',model:'3H Invest 1530',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1530.png',rental:true,price:18450000},
-  {badge:'',name:'지압침대 인베스트 1300',model:'3H Invest 1300',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1300.png',rental:true,price:13750000},
-  {badge:'',name:'지압침대 인베스트 1100',model:'3H Invest 1100',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1100.png',rental:false,price:12750000},
-  {badge:'',name:'지압침대 인베스트 920',model:'3H Invest 920',size:'1인용 · 실리콘원단',img:'assets/bed-invest-920.png',rental:true,price:10365000},
-  {badge:'',name:'지압침대 임페리얼 킹',model:'3H Imperial King',size:'2인용 · 원목 실리콘원단',img:'assets/bed-imperial-king-new.png',rental:false,price:18396000},
-  {badge:'',name:'지압침대 임페리얼 더블',model:'3H Imperial Double',size:'2인용 · 원목 실리콘원단',img:'assets/bed-imperial-double.png',rental:false,price:14742000},
-  {badge:'',name:'지압침대 임페리얼 우드',model:'3H Imperial Wood',size:'1인용 · 원목 실리콘원단',img:'assets/bed-imperial-wood-new.png',rental:true,price:9200000},
-  {badge:'',name:'지압침대 슈페리어 1100-S',model:'3H-1100-S',size:'2인용 · 원목',img:'assets/bed-superior-1100.png',rental:true,price:11250000},
-  {badge:'',name:'지압침대 슈페리어 925WD-S',model:'3H-925WD-S',size:'1인용 · 원목',img:'assets/bed-superior-925.png',rental:false,price:9350000},
-  {badge:'',name:'지압침대 슈페리어 850WD-S',model:'3H-850WD-S',size:'1인용 · 원목',img:'assets/bed-superior-850.png',rental:true,price:8600000},
-  {badge:'',name:'지압침대 우드',model:'3H Wood',size:'1인용 · 원목',img:'assets/bed-wood-new.png',rental:false,price:7988000},
-  {badge:'',name:'지압침대',model:'3H Standard',size:'1인용 · 실리콘원단',img:'assets/bed-basic.png',rental:true,price:7100000},
-  {badge:'hospital',name:'지압침대 HP',model:'3H-HP',size:'병원·시설 전용',img:'assets/bed-hp-new.png',rental:false,price:6450000},
-  {badge:'',name:'지압 와이드 쇼파',model:'3H Wide Sofa',size:'1인용 · 원목 실리콘원단',img:'assets/bed-wide-sofa-new.png',rental:true,price:9970000},
-  {badge:'',name:'지압침대 크라운',model:'3H Crown',size:'1인용 · 원목',img:'assets/bed-crown-new.png',rental:true,price:9743000},
-  {badge:'',name:'지압쇼파',model:'3H Sofa',size:'1인용 · 원목 실리콘원단',img:'assets/bed-sofa-new.png',rental:false,price:9230000},
-  {badge:'',name:'카우치',model:'3H Couch',size:'1인용 · 원목 실리콘원단',img:'assets/bed-couch.png',rental:false,price:9200000}
+  {badge:'new',name:'지압쇼파 COVERED',model:'COVERED',size:'1인용 · 실리콘원단',img:'assets/bed-covered.png',rental:false,price:9680000,idx:60},
+  {badge:'new',name:'지압쇼파 820 SOFA',model:'3H-820 SOFA',size:'1인용 · 실리콘원단',img:'assets/bed-sofa-820.png',rental:false,price:9680000,idx:8},
+  {badge:'best',name:'지압침대 노블레스',model:'3H Noblesse',size:'2인용 · 원목',img:'assets/bed-noblesse-main.png',rental:true,price:19550000,idx:9},
+  {badge:'best',name:'지압쇼파 노블레스',model:'3H Noblesse Sofa',size:'1인용 · 원목',img:'assets/bed-sofa-noblesse.png',rental:false,price:14200000,idx:10},
+  {badge:'new',name:'스파인얼라인 SA-680R',model:'SA-680R',size:'1인용',img:'assets/bed-spine-680.png',rental:false,price:7374000,idx:49},
+  {badge:'new',name:'스파인얼라인 SA-820R',model:'SA-820R',size:'1인용',img:'assets/bed-spine-820.png',rental:false,price:7974000,idx:50},
+  {badge:'best',name:'지압침대 인베스트 1530',model:'3H Invest 1530',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1530.png',rental:true,price:18450000,idx:12},
+  {badge:'',name:'지압침대 인베스트 1300',model:'3H Invest 1300',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1300.png',rental:true,price:13750000,idx:35},
+  {badge:'',name:'지압침대 인베스트 1100',model:'3H Invest 1100',size:'2인용 · 실리콘원단',img:'assets/bed-invest-1100.png',rental:false,price:12750000,idx:36},
+  {badge:'',name:'지압침대 인베스트 920',model:'3H Invest 920',size:'1인용 · 실리콘원단',img:'assets/bed-invest-920.png',rental:true,price:10365000,idx:39},
+  {badge:'',name:'지압침대 임페리얼 킹',model:'3H Imperial King',size:'2인용 · 원목 실리콘원단',img:'assets/bed-imperial-king-new.png',rental:false,price:18396000,idx:40},
+  {badge:'',name:'지압침대 임페리얼 더블',model:'3H Imperial Double',size:'2인용 · 원목 실리콘원단',img:'assets/bed-imperial-double.png',rental:false,price:14742000,idx:41},
+  {badge:'',name:'지압침대 임페리얼 우드',model:'3H Imperial Wood',size:'1인용 · 원목 실리콘원단',img:'assets/bed-imperial-wood-new.png',rental:true,price:9200000,idx:51},
+  {badge:'',name:'지압침대 슈페리어 1100-S',model:'3H-1100-S',size:'2인용 · 원목',img:'assets/bed-superior-1100.png',rental:true,price:11250000,idx:42},
+  {badge:'',name:'지압침대 슈페리어 925WD-S',model:'3H-925WD-S',size:'1인용 · 원목',img:'assets/bed-superior-925.png',rental:false,price:9350000,idx:43},
+  {badge:'',name:'지압침대 슈페리어 850WD-S',model:'3H-850WD-S',size:'1인용 · 원목',img:'assets/bed-superior-850.png',rental:true,price:8600000,idx:44},
+  {badge:'',name:'지압침대 우드',model:'3H Wood',size:'1인용 · 원목',img:'assets/bed-wood-new.png',rental:false,price:7988000,idx:52},
+  {badge:'',name:'지압침대',model:'3H Standard',size:'1인용 · 실리콘원단',img:'assets/bed-basic.png',rental:true,price:7100000,idx:54},
+  {badge:'hospital',name:'지압침대 HP',model:'3H-HP',size:'병원·시설 전용',img:'assets/bed-hp-new.png',rental:false,price:6450000,idx:53},
+  {badge:'',name:'지압 와이드 쇼파',model:'3H Wide Sofa',size:'1인용 · 원목 실리콘원단',img:'assets/bed-wide-sofa-new.png',rental:true,price:9970000,idx:55},
+  {badge:'',name:'지압침대 크라운',model:'3H Crown',size:'1인용 · 원목',img:'assets/bed-crown-new.png',rental:true,price:9743000,idx:56},
+  {badge:'',name:'지압쇼파',model:'3H Sofa',size:'1인용 · 원목 실리콘원단',img:'assets/bed-sofa-new.png',rental:false,price:9230000,idx:57},
+  {badge:'',name:'카우치',model:'3H Couch',size:'1인용 · 원목 실리콘원단',img:'assets/bed-couch.png',rental:false,price:9200000,idx:58}
 ];
 
 var CASES=[
@@ -1449,11 +1498,92 @@ function observeReveal(){
       +'<div class="prod-model">'+b.model+'</div>'
       +'<div class="prod-size">'+b.size+'</div>'
       +(b.price?'<div class="prod-price">'+fmt(b.price)+'</div>':'');
-    d.addEventListener('click',function(){openProductModal(b);});
-    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')openProductModal(b);});
+    d.addEventListener('click',function(){if(b.idx)openHqModal(b);else openProductModal(b);});
+    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){if(b.idx)openHqModal(b);else openProductModal(b);}});
     g.appendChild(d);
   });
   observeReveal();
+})();
+
+// ── RENDER MEDICAL ──
+(function(){
+  var g=document.getElementById('med-grid');
+  if(!g) return;
+  MEDICAL.forEach(function(m,i){
+    var d=document.createElement('div');
+    var delays=['','reveal-delay-1','reveal-delay-2','reveal-delay-3'];
+    d.className='med-card reveal '+delays[i%4];
+    d.innerHTML='<div class="med-thumb"><img src="'+m.img+'" alt="'+m.name+'" loading="lazy" onerror="this.style.display=\'none\'"></div>'
+      +'<h3 class="med-name">'+m.name+'</h3>'
+      +'<p class="med-desc">'+m.desc+'</p>';
+    g.appendChild(d);
+  });
+  observeReveal();
+})();
+
+// ── RENDER HEALTH ──
+(function(){
+  var g=document.getElementById('health-grid');
+  if(!g) return;
+  HEALTH.forEach(function(h,i){
+    var d=document.createElement('div');
+    var delays=['','reveal-delay-1','reveal-delay-2','reveal-delay-3'];
+    d.className='health-card reveal '+delays[i%4];
+    d.innerHTML='<div class="health-thumb"><img src="'+h.img+'" alt="'+h.name+'" loading="lazy" onerror="this.style.display=\'none\'"></div>'
+      +'<div class="health-num">'+(String(i+1).padStart(2,'0'))+'</div>'
+      +'<div class="health-name">'+h.name+'</div>';
+    g.appendChild(d);
+  });
+  observeReveal();
+})();
+
+// ── HQ IFRAME MODAL ──
+function openHqModal(b){
+  var url='https://www.3hk.co.kr/sub/02_product/product_01_V.php?idx='+b.idx;
+  document.getElementById('hq-modal-title').textContent=b.name;
+  document.getElementById('hq-iframe').src=url;
+  document.getElementById('hq-iframe-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeHqModal(){
+  document.getElementById('hq-iframe-modal').classList.remove('open');
+  document.getElementById('hq-iframe').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('hq-iframe-modal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeHqModal();});
+
+// ── DOT NAV ──
+(function(){
+  var nav=document.getElementById('dot-nav');
+  if(!nav) return;
+  var items=nav.querySelectorAll('.dot-nav-item');
+  items.forEach(function(item){
+    item.addEventListener('click',function(){
+      var s=document.getElementById(item.dataset.section);
+      if(s) s.scrollIntoView({behavior:'smooth'});
+    });
+  });
+  var sections=[];
+  items.forEach(function(item){
+    var s=document.getElementById(item.dataset.section);
+    if(s) sections.push({el:s,item:item});
+  });
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var scrollY=window.scrollY+window.innerHeight/2;
+        var active=null;
+        sections.forEach(function(obj){
+          if(obj.el.offsetTop<=scrollY) active=obj;
+        });
+        items.forEach(function(i){i.classList.remove('active');});
+        if(active) active.item.classList.add('active');
+        ticking=false;
+      });
+      ticking=true;
+    }
+  });
 })();
 
 // ── RENDER CASES ──
