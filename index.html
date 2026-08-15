@@ -219,6 +219,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hamburger{display:none}
 #mobile-menu{display:none!important}
 
+/* TOP VIDEO */
+#top-video{background:linear-gradient(160deg,#0a0f1e 0%,#0d2340 100%);padding:28px 24px}
+.top-video-inner{max-width:1100px;margin:0 auto;position:relative;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.35)}
+.top-video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
 /* HERO */
 #hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#0a0f1e 0%,#0d2340 55%,#001a40 100%)}
 #three-hero{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
@@ -258,11 +263,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ABOUT */
 #about{padding:100px 24px;background:var(--light)}
-.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-inner{max-width:820px;margin:0 auto}
 .about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 .about-img img{width:100%;height:380px;object-fit:cover}
-.about-video{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative;padding-top:56.25%}
-.about-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .section-label{font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
 .section-h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--dark);line-height:1.25;margin-bottom:20px}
 .section-h2 em{font-style:normal;color:var(--primary)}
@@ -620,7 +623,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   .hero-cards{grid-template-columns:1fr}
   .phil-inner{grid-template-columns:1fr}
   .phil-col+.phil-col{border-left:none;border-top:1px solid rgba(255,255,255,.2)}
-  .about-inner{grid-template-columns:1fr}
+  #top-video{padding:14px 12px}
   .contact-inner{grid-template-columns:1fr}
   .test-grid{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr 1fr;gap:24px}
@@ -694,6 +697,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   </div>
 </nav>
 
+<!-- TOP VIDEO -->
+<section id="top-video" aria-label="브랜드 영상">
+  <div class="top-video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/Y6DtCR0yyGU?autoplay=1&mute=1&loop=1&playlist=Y6DtCR0yyGU&controls=0&modestbranding=1&rel=0&playsinline=1"
+      title="3H 지압침대 2024 브랜드 CF"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
 <!-- HERO -->
 <section id="hero" aria-label="메인 히어로">
   <div id="three-hero" aria-hidden="true"></div>
@@ -752,16 +767,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <!-- ABOUT -->
 <section id="about" aria-label="센터 소개">
   <div class="about-inner">
-    <div class="about-video reveal">
-      <iframe
-        src="https://www.youtube.com/embed/Y6DtCR0yyGU?autoplay=1&mute=1&loop=1&playlist=Y6DtCR0yyGU&controls=0&modestbranding=1&rel=0&playsinline=1"
-        title="3H 지압침대 2024 브랜드 CF"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-    <div class="about-text reveal reveal-delay-1">
+    <div class="about-text reveal">
       <div class="section-label">About Us</div>
       <h2 class="section-h2">경북 안동 <em>공식 인증</em><br>3H지압침대 대리점</h2>
       <p>3H지압침대 안동 구시장센터는 &#40;주&#41;쓰리에이치(대구)의 공식 인증 대리점으로, 경북 안동 지역 고객님께 최고 품질의 지압침대와 의료기기를 제공합니다.</p>
