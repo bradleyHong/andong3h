@@ -611,17 +611,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 @media(max-width:768px){
   /* 2단 네비: 로고 위 / 메뉴 아래 가로 스크롤 */
   .nav-inner{flex-direction:column;height:auto;padding:10px 0 0;align-items:stretch;gap:0}
-  .nav-logo{padding:0 16px 10px;flex:1;min-width:0;gap:10px}
-  /* 로고 축소 + 상호명 한 줄 고정 */
-  .nav-logo img{height:40px;width:97px;flex:0 0 auto}
-  .nav-logo-text{font-size:.7rem;line-height:1.35;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .nav-logo-text strong{font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .nav-top-row{display:flex;align-items:center;padding:0 16px 10px}
-  /* 한/EN · 테마 토글: 상단 우측 버튼 */
-  .nav-top-controls{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
-  .nav-top-controls .lang-toggle{padding:5px 10px;font-size:.72rem}
-  .nav-top-controls .theme-toggle{width:32px;height:32px}
+  /* 상단 유틸 줄(한/EN·테마) → 로고 줄 순서로 세로 배치 */
+  .nav-top-row{display:flex;flex-direction:column;align-items:stretch;padding:0 16px 10px;gap:6px}
+  /* 한/EN · 테마 토글: 로고 위 별도 줄, 우측 정렬 */
+  .nav-top-controls{display:flex;align-items:center;justify-content:flex-end;gap:6px;order:-1}
+  .nav-top-controls .lang-toggle{padding:5px 12px;font-size:.74rem}
+  .nav-top-controls .theme-toggle{width:30px;height:30px}
   .nav-top-controls .theme-toggle svg{width:16px;height:16px}
+  /* 상호명 한 줄 고정 */
+  .nav-logo{padding:0;min-width:0;gap:11px}
+  .nav-logo img{height:46px;width:112px;flex:0 0 auto}
+  .nav-logo-text{font-size:.78rem;line-height:1.35;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nav-logo-text strong{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nav-links{display:flex!important;width:100%;overflow-x:auto;overflow-y:hidden;padding:6px 12px 8px;gap:2px;border-top:1px solid rgba(255,255,255,.18);scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a{white-space:nowrap;flex-shrink:0;font-size:.76rem;padding:6px 10px}
@@ -649,15 +650,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 }
 /* 소형 단말: 상호명 한 줄 유지를 위해 로고·토글 추가 축소 */
 @media(max-width:400px){
-  .nav-logo{padding:0 12px 10px;gap:8px}
-  .nav-logo img{height:34px;width:83px}
-  .nav-logo-text{font-size:.66rem}
-  .nav-logo-text strong{font-size:.84rem}
   .nav-top-row{padding:0 12px 10px}
-  .nav-top-controls{gap:5px}
-  .nav-top-controls .lang-toggle{padding:4px 8px;font-size:.68rem}
-  .nav-top-controls .theme-toggle{width:29px;height:29px}
-  .nav-top-controls .theme-toggle svg{width:15px;height:15px}
+  .nav-logo{gap:9px}
+  .nav-logo img{height:40px;width:97px}
+  .nav-logo-text{font-size:.72rem}
+  .nav-logo-text strong{font-size:.9rem}
 }
 </style>
 </head>
