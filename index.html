@@ -219,6 +219,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hamburger{display:none}
 #mobile-menu{display:none!important}
 
+/* TOP VIDEO */
+#top-video{background:linear-gradient(160deg,#0a0f1e 0%,#0d2340 100%);padding:28px 24px}
+.top-video-inner{max-width:1100px;margin:0 auto;position:relative;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.35)}
+.top-video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
 /* HERO */
 #hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#0a0f1e 0%,#0d2340 55%,#001a40 100%)}
 #three-hero{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
@@ -258,11 +263,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ABOUT */
 #about{padding:100px 24px;background:var(--light)}
-.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-inner{max-width:820px;margin:0 auto}
 .about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 .about-img img{width:100%;height:380px;object-fit:cover}
-.about-video{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative;padding-top:56.25%}
-.about-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .section-label{font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
 .section-h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--dark);line-height:1.25;margin-bottom:20px}
 .section-h2 em{font-style:normal;color:var(--primary)}
@@ -608,9 +611,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 @media(max-width:768px){
   /* 2단 네비: 로고 위 / 메뉴 아래 가로 스크롤 */
   .nav-inner{flex-direction:column;height:auto;padding:10px 0 0;align-items:stretch;gap:0}
-  .nav-logo{padding:0 16px 10px;flex:1}
-  .nav-top-row{display:flex;align-items:center;padding:0 16px 10px}
-  .nav-top-controls{display:flex;align-items:center;gap:8px;margin-left:auto}
+  /* 상단 유틸 줄(한/EN·테마) → 로고 줄 순서로 세로 배치 */
+  .nav-top-row{display:flex;flex-direction:column;align-items:stretch;padding:0 16px 10px;gap:6px}
+  /* 한/EN · 테마 토글: 로고 위 별도 줄, 우측 정렬 */
+  .nav-top-controls{display:flex;align-items:center;justify-content:flex-end;gap:6px;order:-1}
+  .nav-top-controls .lang-toggle{padding:5px 12px;font-size:.74rem}
+  .nav-top-controls .theme-toggle{width:30px;height:30px}
+  .nav-top-controls .theme-toggle svg{width:16px;height:16px}
+  /* 상호명 한 줄 고정 */
+  .nav-logo{padding:0;min-width:0;gap:11px}
+  .nav-logo img{height:46px;width:112px;flex:0 0 auto}
+  .nav-logo-text{font-size:.78rem;line-height:1.35;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nav-logo-text strong{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nav-links{display:flex!important;width:100%;overflow-x:auto;overflow-y:hidden;padding:6px 12px 8px;gap:2px;border-top:1px solid rgba(255,255,255,.18);scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a{white-space:nowrap;flex-shrink:0;font-size:.76rem;padding:6px 10px}
@@ -620,7 +632,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   .hero-cards{grid-template-columns:1fr}
   .phil-inner{grid-template-columns:1fr}
   .phil-col+.phil-col{border-left:none;border-top:1px solid rgba(255,255,255,.2)}
-  .about-inner{grid-template-columns:1fr}
+  #top-video{padding:14px 12px}
   .contact-inner{grid-template-columns:1fr}
   .test-grid{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr 1fr;gap:24px}
@@ -635,6 +647,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   .process-steps{grid-template-columns:1fr}
   .hero-stats{gap:18px}
   .modal-box,.case-box-body,.case-box-header{padding:22px}
+}
+/* 소형 단말: 상호명 한 줄 유지를 위해 로고·토글 추가 축소 */
+@media(max-width:400px){
+  .nav-top-row{padding:0 12px 10px}
+  .nav-logo{gap:9px}
+  .nav-logo img{height:40px;width:97px}
+  .nav-logo-text{font-size:.72rem}
+  .nav-logo-text strong{font-size:.9rem}
 }
 </style>
 </head>
@@ -694,6 +714,43 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   </div>
 </nav>
 
+<!-- TOP VIDEO -->
+<section id="top-video" aria-label="브랜드 영상">
+  <div class="top-video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/Y6DtCR0yyGU?autoplay=1&mute=1&loop=1&playlist=Y6DtCR0yyGU&controls=0&modestbranding=1&rel=0&playsinline=1"
+      title="3H 지압침대 2024 브랜드 CF"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" aria-label="제품 안내">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-center reveal">
+      <div class="section-label" data-i18n="prod-label">Products</div>
+      <h2 class="section-h2" data-i18n="prod-h">3H 제품 라인업</h2>
+      <p style="color:var(--gray);font-size:.93rem" data-i18n="prod-sub">직접 체험하고 결정하세요. 안동 구시장센터에서 모든 제품을 경험할 수 있습니다.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="beds" data-i18n="tab-beds">지압침대</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="medical" data-i18n="tab-medical">의료기기</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="health" data-i18n="tab-health">건강·미용</button>
+    </div>
+    <div class="tab-pane active" id="tab-beds">
+      <div class="products-grid" id="beds-grid"></div>
+    </div>
+    <div class="tab-pane" id="tab-medical">
+      <div class="med-grid" id="med-grid"></div>
+    </div>
+    <div class="tab-pane" id="tab-health">
+      <div class="health-grid" id="health-grid"></div>
+    </div>
+  </div>
+</section>
+
 <!-- HERO -->
 <section id="hero" aria-label="메인 히어로">
   <div id="three-hero" aria-hidden="true"></div>
@@ -752,16 +809,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <!-- ABOUT -->
 <section id="about" aria-label="센터 소개">
   <div class="about-inner">
-    <div class="about-video reveal">
-      <iframe
-        src="https://www.youtube.com/embed/Y6DtCR0yyGU?autoplay=1&mute=1&loop=1&playlist=Y6DtCR0yyGU&controls=0&modestbranding=1&rel=0&playsinline=1"
-        title="3H 지압침대 2024 브랜드 CF"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-    <div class="about-text reveal reveal-delay-1">
+    <div class="about-text reveal">
       <div class="section-label">About Us</div>
       <h2 class="section-h2">경북 안동 <em>공식 인증</em><br>3H지압침대 대리점</h2>
       <p>3H지압침대 안동 구시장센터는 &#40;주&#41;쓰리에이치(대구)의 공식 인증 대리점으로, 경북 안동 지역 고객님께 최고 품질의 지압침대와 의료기기를 제공합니다.</p>
@@ -787,31 +835,6 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   <div class="dot-nav-item" data-section="testimonials"><span class="dot-nav-dot"></span><span class="dot-nav-label" data-i18n="nav-reviews">고객후기</span></div>
   <div class="dot-nav-item" data-section="contact"><span class="dot-nav-dot"></span><span class="dot-nav-label" data-i18n="nav-cta">상담신청</span></div>
 </nav>
-
-<!-- PRODUCTS -->
-<section id="products" aria-label="제품 안내">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="section-center reveal">
-      <div class="section-label" data-i18n="prod-label">Products</div>
-      <h2 class="section-h2" data-i18n="prod-h">3H 제품 라인업</h2>
-      <p style="color:var(--gray);font-size:.93rem" data-i18n="prod-sub">직접 체험하고 결정하세요. 안동 구시장센터에서 모든 제품을 경험할 수 있습니다.</p>
-    </div>
-    <div class="tabs" role="tablist">
-      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="beds" data-i18n="tab-beds">지압침대</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="medical" data-i18n="tab-medical">의료기기</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="health" data-i18n="tab-health">건강·미용</button>
-    </div>
-    <div class="tab-pane active" id="tab-beds">
-      <div class="products-grid" id="beds-grid"></div>
-    </div>
-    <div class="tab-pane" id="tab-medical">
-      <div class="med-grid" id="med-grid"></div>
-    </div>
-    <div class="tab-pane" id="tab-health">
-      <div class="health-grid" id="health-grid"></div>
-    </div>
-  </div>
-</section>
 
 <!-- CASES -->
 <section id="cases" aria-label="시공 사례">
