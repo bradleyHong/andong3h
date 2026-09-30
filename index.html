@@ -9,6 +9,15 @@
   gtag('js', new Date());
   gtag('config', 'G-5S1SRE35N6');
 </script>
+<script>
+  // 새로고침·뒤로가기 시 이전 스크롤 위치 복원 끄기 → 홈은 항상 상단 홍보영상부터
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  (function(){
+    function toTop(){ if (!location.hash) window.scrollTo(0, 0); }
+    window.addEventListener('load', toTop);
+    window.addEventListener('pageshow', function(e){ if (e.persisted) toTop(); });
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
