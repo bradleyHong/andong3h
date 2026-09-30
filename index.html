@@ -495,16 +495,55 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .dot-nav-item.active .dot-nav-dot{background:#00a86b;border-color:#00a86b;width:12px;height:12px;box-shadow:0 0 8px rgba(0,168,107,.7)}
 .dot-nav-label{font-size:.75rem;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);white-space:nowrap;pointer-events:none;letter-spacing:.01em}
 @media(max-width:1024px){#dot-nav{display:none}}
-/* HQ IFRAME MODAL */
-#hq-iframe-modal{display:none;align-items:center;justify-content:center;padding:0}
+/* PRODUCT DETAIL MODAL (본사 상세 자체 팝업) */
+#hq-iframe-modal{display:none;align-items:center;justify-content:center;padding:20px;z-index:3001}
 #hq-iframe-modal.open{display:flex}
-@media(max-width:480px){
-  .hq-btn-consult{display:none}
-  #hq-iframe-modal>div{border-radius:0;height:100dvh;max-height:100dvh}
-}
-@media(min-width:481px){
-  #hq-iframe-modal{padding:20px}
-  #hq-iframe-modal>div{border-radius:16px;height:90vh;max-height:90vh}
+.pd-box{position:relative;width:100%;max-width:960px;height:92vh;background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.pd-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px 12px 22px;border-bottom:1px solid #e8eef4;flex-shrink:0}
+.pd-head .t{font-size:.95rem;font-weight:700;color:var(--dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pd-close{width:38px;height:38px;border-radius:50%;background:#f1f4f7;color:#333;font-size:1.05rem;flex-shrink:0}
+.pd-close:hover{background:#e3e8ee}
+.pd-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pd-top{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;padding:26px 28px}
+.pd-main{aspect-ratio:3/2;background:#f5f7f9;border-radius:12px;overflow:hidden}
+.pd-main img{width:100%;height:100%;object-fit:contain}
+.pd-thumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.pd-thumbs button{width:72px;height:52px;border-radius:8px;overflow:hidden;border:2px solid transparent;background:#f5f7f9;padding:0}
+.pd-thumbs button.on{border-color:var(--primary)}
+.pd-thumbs img{width:100%;height:100%;object-fit:cover}
+.pd-info .badges{display:flex;gap:6px;margin-bottom:10px;min-height:22px}
+.pd-info h2{font-size:1.45rem;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:6px}
+.pd-info .model{font-size:.9rem;color:var(--primary);font-weight:600}
+.pd-spec{margin:18px 0;border-top:1px solid #e8eef4}
+.pd-spec div{display:flex;padding:10px 0;border-bottom:1px solid #e8eef4;font-size:.9rem}
+.pd-spec dt{width:84px;color:var(--gray);flex-shrink:0}
+.pd-spec dd{margin:0;color:var(--dark);font-weight:500}
+.pd-price{font-size:1.7rem;font-weight:800;color:var(--dark)}
+.pd-price small{display:block;font-size:.75rem;font-weight:500;color:var(--gray);margin-top:2px}
+.pd-cta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.pd-cta a,.pd-cta button{display:flex;align-items:center;justify-content:center;height:50px;border-radius:12px;font-size:.95rem;font-weight:700;text-decoration:none}
+.pd-cta .tel{background:#00a86b;color:#fff}
+.pd-cta .web{background:var(--dark);color:#fff}
+.pd-note{font-size:.78rem;color:var(--gray);margin-top:12px;line-height:1.6}
+.pd-detail{border-top:8px solid #f1f4f7;padding:22px 0 0}
+.pd-detail h3{font-size:1rem;font-weight:700;color:var(--dark);padding:0 28px 14px}
+.pd-detail img{display:block;width:100%;max-width:860px;height:auto;margin:0 auto}
+.pd-foot{display:none}
+[data-theme="dark"] .pd-box{background:#131c2e}
+[data-theme="dark"] .pd-head{border-color:rgba(255,255,255,.1)}
+[data-theme="dark"] .pd-head .t,[data-theme="dark"] .pd-info h2,[data-theme="dark"] .pd-price,[data-theme="dark"] .pd-spec dd,[data-theme="dark"] .pd-detail h3{color:#e8edf5}
+[data-theme="dark"] .pd-spec,[data-theme="dark"] .pd-spec div{border-color:rgba(255,255,255,.1)}
+[data-theme="dark"] .pd-detail{border-color:#0d1422}
+@media(max-width:760px){
+  #hq-iframe-modal{padding:0}
+  .pd-box{height:100dvh;border-radius:0;max-width:none}
+  .pd-top{grid-template-columns:1fr;gap:18px;padding:16px}
+  .pd-info h2{font-size:1.25rem}
+  .pd-cta{display:none}
+  .pd-detail h3{padding:0 16px 12px}
+  .pd-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #e8eef4;background:inherit;flex-shrink:0}
+  .pd-foot a,.pd-foot button{display:flex;align-items:center;justify-content:center;height:48px;border-radius:12px;font-size:.92rem;font-weight:700;text-decoration:none}
+  .pd-foot .tel{background:#00a86b;color:#fff}.pd-foot .web{background:var(--dark);color:#fff}
 }
 .med-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
 .med-card{background:#fff;border:1.5px solid #e8eef6;border-radius:var(--radius);padding:28px;text-align:center;transition:transform var(--transition),box-shadow var(--transition)}
@@ -905,6 +944,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
   .nav-logo-text{height:34px;padding-left:9px;font-size:.68rem}
   .nav-logo-text strong{font-size:.92rem}
 }
+
+/* 아이콘 제거 후 텍스트 버튼 */
+.float-btn{font-size:.78rem!important;font-weight:800;letter-spacing:.02em;color:#fff}
+.theme-toggle{font-size:.72rem;font-weight:700;color:#fff;width:auto!important;padding:0 12px!important;border-radius:20px!important}
+.footer-sns-icons a{width:auto!important;height:auto!important;border-radius:20px!important;padding:8px 16px;font-size:.8rem;font-weight:600}
 </style>
 </head>
 <body>
@@ -928,8 +972,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <div class="nav-top-controls">
         <button class="lang-toggle" id="lang-toggle-mobile" aria-label="언어 전환">한/EN</button>
         <button class="theme-toggle" id="theme-toggle-mobile" aria-label="테마 전환" title="다크/라이트 모드">
-          <svg id="theme-icon-moon-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg id="theme-icon-sun-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span id="theme-icon-moon-mobile">다크</span>
+          <span id="theme-icon-sun-mobile" style="display:none">라이트</span>
         </button>
       </div>
     </div>
@@ -943,8 +987,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <!-- Desktop-only: lang + theme toggles -->
       <button class="lang-toggle" id="lang-toggle" aria-label="언어 전환">한/EN</button>
       <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환" title="다크/라이트 모드">
-        <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span id="theme-icon-moon">다크</span>
+        <span id="theme-icon-sun" style="display:none">라이트</span>
       </button>
       <a href="#contact" class="nav-cta" data-i18n="nav-cta">상담 신청</a>
     </div>
@@ -1012,17 +1056,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
     </div>
     <div class="hero-cards">
       <div class="hero-card reveal">
-        <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9V6a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v3"/><path d="M2 9h20v8H2z"/><path d="M5 9V5"/><path d="M19 9V5"/></svg></div>
         <h3 data-i18n="hero-c1h">지압침대</h3>
         <p data-i18n="hero-c1p">노블레스·임페리얼·인베스트 등 24종 프리미엄 지압침대</p>
       </div>
       <div class="hero-card reveal reveal-delay-1">
-        <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h8M8 12h8M8 18h5"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
         <h3 data-i18n="hero-c2h">의료기기</h3>
         <p data-i18n="hero-c2p">뜸질기·레이저 조사기 등 의료용 온열기기 전문</p>
       </div>
       <div class="hero-card reveal reveal-delay-2">
-        <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22V12"/><path d="M12 12C12 12 8 9 8 5a4 4 0 0 1 8 0c0 4-4 7-4 7z"/><path d="M12 12C12 12 16 9 16 5"/></svg></div>
         <h3 data-i18n="hero-c3h">건강·미용</h3>
         <p data-i18n="hero-c3p">이온수기·흑삼·세라젤 등 건강·미용 제품</p>
       </div>
@@ -1063,12 +1104,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <p>3H지압침대 안동구시장센터는 &#40;주&#41;쓰리에이치(대구)의 공식 인증 대리점으로, 경북 안동 지역 고객님께 최고 품질의 지압침대와 의료기기를 제공합니다.</p>
       <p>대표 김성덕은 3H 제품 전문 교육을 이수한 공인 상담사로, 고객 개개인의 건강 상태와 라이프스타일에 맞는 최적의 제품을 안내해 드립니다. 직접 체험 후 구매 결정하실 수 있습니다.</p>
       <div class="about-info">
-        <div class="about-info-row"><div class="aico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><strong>대표</strong><span>김성덕</span></div></div>
-        <div class="about-info-row"><div class="aico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><strong>주소</strong><span>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
-        <div class="about-info-row"><div class="aico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><strong>전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary)">054-858-8561</a></span></div></div>
-        <div class="about-info-row"><div class="aico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><strong>온라인 영업 담당</strong><span>박성실 <a href="tel:010-3446-7797" style="color:var(--primary)">010-3446-7797</a></span></div></div>
-        <div class="about-info-row"><div class="aico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><strong>운영시간</strong><span>평일 08:00 ~ 16:00</span></div></div>
-        <div class="about-info-row"><div class="aico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div><div><strong>사업자번호</strong><span>194-21-01177</span></div></div>
+        <div class="about-info-row"><div><strong>대표</strong><span>김성덕</span></div></div>
+        <div class="about-info-row"><div><strong>주소</strong><span>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
+        <div class="about-info-row"><div><strong>전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary)">054-858-8561</a></span></div></div>
+        <div class="about-info-row"><div><strong>온라인 영업 담당</strong><span>박성실 <a href="tel:010-3446-7797" style="color:var(--primary)">010-3446-7797</a></span></div></div>
+        <div class="about-info-row"><div><strong>운영시간</strong><span>평일 08:00 ~ 16:00</span></div></div>
+        <div class="about-info-row"><div><strong>사업자번호</strong><span>194-21-01177</span></div></div>
       </div>
     </div>
   </div>
@@ -1136,17 +1177,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
     </div>
     <div class="sa-grid">
       <div class="sa-card reveal">
-        <div class="sa-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <h3>안동 상설 체험 공간</h3>
         <p>경북에서 3H지압침대를 직접 누워보고 비교할 수 있는 공간입니다. 지압침대 24종과 의료기기·건강 제품을 함께 준비해 두었고, 체험 후 결정하시면 됩니다. 주소는 경북 안동시 퇴계로 84, 7층입니다.</p>
       </div>
       <div class="sa-card reveal reveal-delay-1">
-        <div class="sa-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <h3>경북 전 지역 배송·설치</h3>
         <p>예천·의성·영주·봉화·청송·영양·문경·상주 등 안동 인근 시군은 물론 경북 전역과 전국 어디든 직납이 가능합니다. 전문 설치팀이 방문해 설치와 사용법 안내까지 진행합니다.</p>
       </div>
       <div class="sa-card reveal reveal-delay-2">
-        <div class="sa-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>경북 기관 납품 전담</h3>
         <p>경북 지역 병원·한의원·노인복지시설·요양원 대상 대량 납품을 전담합니다. 법인·개인사업자 모두 전자세금계산서를 발행하며, 기관 전용 모델인 지압침대 HP 라인업을 운영합니다.</p>
       </div>
@@ -1264,14 +1302,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <h2 class="section-h2" data-i18n="feat-h">3H 지압침대만의 8가지 특장점</h2>
     </div>
     <div class="features-grid">
-      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-1h">정밀 지압 시스템</h3><p class="feat-desc" data-i18n="feat-1p">경혈·경락을 정확히 자극하는 특허 지압 돌기 설계로 전신 혈액순환을 촉진합니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-2h">원적외선 온열 기능</h3><p class="feat-desc" data-i18n="feat-2p">신체 심부까지 침투하는 원적외선으로 근육 이완과 혈액순환을 동시에 개선합니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h7"/><path d="M15 18l3 3 5-5"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-3h">척추 교정 지지</h3><p class="feat-desc" data-i18n="feat-3p">척추의 자연스러운 S자 곡선을 유지하도록 설계된 인체공학적 구조입니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-4h">수면의 질 개선</h3><p class="feat-desc" data-i18n="feat-4p">지압·온열·원적외선의 복합 작용으로 깊은 수면을 유도하고 수면의 질을 높입니다.</p></div></div>
-      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-5h">서울대학교 협력</h3><p class="feat-desc" data-i18n="feat-5p">(주)쓰리에이치와 서울대학교 간 산학협력을 통해 제품 연구를 진행하고 있습니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0h10M9 14H5a2 2 0 0 1-2-2V5m2 9v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-6h">의료기기 인증</h3><p class="feat-desc" data-i18n="feat-6p">식품의약품안전처 의료기기 인증을 획득한 안전하고 신뢰할 수 있는 제품입니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-7h">장기 AS 보장</h3><p class="feat-desc" data-i18n="feat-7p">구매 후 장기 AS를 보장하며, 전문 기술팀이 신속하게 방문 서비스를 제공합니다.</p></div></div>
-      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="feat-body"><h3 class="feat-title" data-i18n="feat-8h">전국 공식 유통망</h3><p class="feat-desc" data-i18n="feat-8p">(주)쓰리에이치 공식 대리점으로 정품 보증과 체계적인 사후 관리를 제공합니다.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-1h">정밀 지압 시스템</h3><p class="feat-desc" data-i18n="feat-1p">경혈·경락을 정확히 자극하는 특허 지압 돌기 설계로 전신 혈액순환을 촉진합니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-2h">원적외선 온열 기능</h3><p class="feat-desc" data-i18n="feat-2p">신체 심부까지 침투하는 원적외선으로 근육 이완과 혈액순환을 동시에 개선합니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-3h">척추 교정 지지</h3><p class="feat-desc" data-i18n="feat-3p">척추의 자연스러운 S자 곡선을 유지하도록 설계된 인체공학적 구조입니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-4h">수면의 질 개선</h3><p class="feat-desc" data-i18n="feat-4p">지압·온열·원적외선의 복합 작용으로 깊은 수면을 유도하고 수면의 질을 높입니다.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-5h">서울대학교 협력</h3><p class="feat-desc" data-i18n="feat-5p">(주)쓰리에이치와 서울대학교 간 산학협력을 통해 제품 연구를 진행하고 있습니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-6h">의료기기 인증</h3><p class="feat-desc" data-i18n="feat-6p">식품의약품안전처 의료기기 인증을 획득한 안전하고 신뢰할 수 있는 제품입니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-7h">장기 AS 보장</h3><p class="feat-desc" data-i18n="feat-7p">구매 후 장기 AS를 보장하며, 전문 기술팀이 신속하게 방문 서비스를 제공합니다.</p></div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-body"><h3 class="feat-title" data-i18n="feat-8h">전국 공식 유통망</h3><p class="feat-desc" data-i18n="feat-8p">(주)쓰리에이치 공식 대리점으로 정품 보증과 체계적인 사후 관리를 제공합니다.</p></div></div>
     </div>
   </div>
 </section>
@@ -1394,27 +1432,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <div>
         <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px">
           <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="width:40px;height:40px;min-width:40px;border-radius:10px;background:rgba(0,168,107,.12);display:flex;align-items:center;justify-content:center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a86b" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
             <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px" data-i18n="pasazu-f1h">건강·미용 토탈 케어 제품</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6" data-i18n="pasazu-f1p">5년간 소비자 사용으로 검증된 CIDS 피부 침투 기술 적용 프리미엄 코스메틱</div></div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="width:40px;height:40px;min-width:40px;border-radius:10px;background:rgba(0,168,107,.12);display:flex;align-items:center;justify-content:center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a86b" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
             <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px" data-i18n="pasazu-f2h">회원 가입 안내</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6" data-i18n="pasazu-f2p">빠사쥬 회원에 관심 있으신 분은 안동구시장센터로 문의 주세요.</div></div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="width:40px;height:40px;min-width:40px;border-radius:10px;background:rgba(0,168,107,.12);display:flex;align-items:center;justify-content:center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a86b" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </div>
             <div><div style="font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:3px" data-i18n="pasazu-f3h">판매공제조합 정식 등록</div><div style="font-size:.82rem;color:var(--gray);line-height:1.6" data-i18n="pasazu-f3p">공정거래위원회 등록 판매공제조합을 통해 안전하게 운영되는 공식 회원 시스템입니다.</div></div>
           </div>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a href="tel:054-858-8561" style="display:inline-flex;align-items:center;gap:8px;background:#00a86b;color:#fff;padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span data-i18n="pasazu-btn1">회원 문의 054-858-8561</span>
           </a>
           <a href="https://pasazu.mycafe24.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#00a86b;border:2px solid #00a86b;padding:11px 22px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none" data-i18n="pasazu-btn2">
@@ -1447,27 +1475,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 
     <div class="b2b-grid">
       <div class="b2b-card reveal">
-        <div class="b2b-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <h3 data-i18n="b2b-c1h">공식 대리점 안심 구매</h3>
         <p data-i18n="b2b-c1p">(주)쓰리에이치 공식 대리점으로 정품 보증, 체계적인 AS와 사후 관리를 제공합니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-1">
-        <div class="b2b-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3 data-i18n="b2b-c2h">전자세금계산서</h3>
         <p data-i18n="b2b-c2p">사업자 구매 시 전자세금계산서를 발행해드립니다. 법인·개인사업자 모두 가능합니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-2">
-        <div class="b2b-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <h3 data-i18n="b2b-c3h">전국 납품 가능</h3>
         <p data-i18n="b2b-c3p">경북 안동뿐 아니라 전국 어디든 배송·설치 서비스를 제공합니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-1">
-        <div class="b2b-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>전국 납품 · 전문 설치</h3>
         <p>경북권 중심이지만 전국 어디든 직납 가능합니다. 전문 설치팀이 방문하여 정확하게 설치하고 사용법을 안내해 드립니다.</p>
       </div>
       <div class="b2b-card reveal reveal-delay-2">
-        <div class="b2b-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
         <h3>공식 대리점 안심 구매</h3>
         <p>(주)쓰리에이치 경북 안동 공식 대리점입니다. 정품 보증, 전자세금계산서 발행, 설치 후 AS까지 본사와 동일한 절차로 진행됩니다.</p>
       </div>
@@ -1497,11 +1520,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 
     <div class="b2b-ctas reveal">
       <a href="tel:054-858-8561" class="b2b-btn b2b-btn-solid">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span data-i18n="b2b-btn">납품 문의 054-858-8561</span>
       </a>
       <a href="mailto:sungsil32@naver.com" class="b2b-btn b2b-btn-outline">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         <span data-i18n="b2b-email">이메일 견적 문의</span>
       </a>
     </div>
@@ -1571,18 +1592,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <h2 data-i18n="contact-h">상담 &amp; 오시는 길</h2>
       <p data-i18n="contact-sub">전화·방문·온라인 상담 모두 환영합니다. 언제든지 편하게 연락주세요.</p>
       <div class="contact-items">
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="ci-content"><strong>주소</strong><span data-i18n="footer-addr">경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="ci-content"><strong data-i18n="ci-phone">대표 전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary);font-weight:700">054-858-8561</a></span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="ci-content"><strong data-i18n="ci-mobile">온라인 영업 담당 박성실</strong><span><a href="sms:010-3446-7797" style="color:var(--primary);font-weight:700">010-3446-7797</a></span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="ci-content"><strong data-i18n="ci-email">이메일</strong><span><a href="mailto:sungsil32@naver.com" style="color:var(--primary);font-weight:700">sungsil32@naver.com</a></span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ci-content"><strong data-i18n="ci-hours">운영시간</strong><span data-i18n="ci-hours-val">평일 08:00 ~ 16:00 (주말·공휴일 휴무)</span></div></div>
-        <div class="contact-item"><div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div><div class="ci-content"><strong data-i18n="ci-hq">본사</strong><span data-i18n="ci-hq-val">(주)쓰리에이치 (대구) 1600-4996</span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong>주소</strong><span data-i18n="footer-addr">경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-phone">대표 전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary);font-weight:700">054-858-8561</a></span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-mobile">온라인 영업 담당 박성실</strong><span><a href="sms:010-3446-7797" style="color:var(--primary);font-weight:700">010-3446-7797</a></span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-email">이메일</strong><span><a href="mailto:sungsil32@naver.com" style="color:var(--primary);font-weight:700">sungsil32@naver.com</a></span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-hours">운영시간</strong><span data-i18n="ci-hours-val">평일 08:00 ~ 16:00 (주말·공휴일 휴무)</span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-hq">본사</strong><span data-i18n="ci-hq-val">(주)쓰리에이치 (대구) 1600-4996</span></div></div>
       </div>
       <!-- Naver Map -->
       <a href="https://map.naver.com/p/search/%EA%B2%BD%EB%B6%81%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084" target="_blank" rel="noopener noreferrer" style="text-decoration:none" aria-label="네이버 지도에서 보기">
         <div class="map-card">
           <div class="map-placeholder">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <p>네이버 지도로 보기</p>
             <small>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</small>
           </div>
@@ -1652,8 +1672,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <div class="footer-sns">
         <h4>SNS</h4>
         <div class="footer-sns-icons">
-          <a href="https://www.instagram.com/3h_andong" target="_blank" rel="noopener" aria-label="인스타그램 @3h_andong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://www.youtube.com/@3h392" target="_blank" rel="noopener" aria-label="유튜브 @3h392"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9L15.5 12l-5.7 3.1z"/></svg></a>
+          <a href="https://www.instagram.com/3h_andong" target="_blank" rel="noopener" aria-label="인스타그램 @3h_andong">Instagram</a>
+          <a href="https://www.youtube.com/@3h392" target="_blank" rel="noopener" aria-label="유튜브 @3h392">YouTube</a>
         </div>
         <p class="footer-hq">본사 (주)쓰리에이치 <a href="tel:1600-4996">1600-4996</a></p>
       </div>
@@ -1671,33 +1691,38 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 <div id="floating-cta">
   <div class="float-wrap">
     <span class="float-label">전화 상담</span>
-    <a href="tel:054-858-8561" class="float-btn float-phone" aria-label="전화 상담"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.3 19.79 19.79 0 0 1 1.62 2.63 2 2 0 0 1 3.6 2.48h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+    <a href="tel:054-858-8561" class="float-btn float-phone" aria-label="전화 상담">전화</a>
   </div>
   <div class="float-wrap">
     <span class="float-label">SMS 문자</span>
-    <a href="sms:010-3446-7797" class="float-btn float-sms" aria-label="SMS 문자"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="22" height="22"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+    <a href="sms:010-3446-7797" class="float-btn float-sms" aria-label="SMS 문자">문자</a>
   </div>
   <div class="float-wrap">
     <span class="float-label">맨 위로</span>
-    <button class="float-btn float-top" aria-label="맨 위로" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+    <button class="float-btn float-top" aria-label="맨 위로" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
   </div>
 </div>
 
-<!-- HQ DETAIL IFRAME MODAL -->
-<div class="modal-overlay" id="hq-iframe-modal" role="dialog" aria-modal="true" aria-label="제품 상세" style="z-index:3001;padding:0">
-  <div style="position:relative;width:100%;max-width:900px;height:100dvh;max-height:100dvh;background:#fff;border-radius:0;overflow:hidden;display:flex;flex-direction:column">
-    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#0d2137;flex-shrink:0;min-height:52px">
-      <div style="flex:1;min-width:0">
-        <div id="hq-modal-title" style="color:#fff;font-size:.82rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">제품 상세</div>
-        <div style="color:rgba(255,255,255,.5);font-size:.68rem;margin-top:1px">3H 공식 상세정보</div>
+<!-- PRODUCT DETAIL MODAL (본사 상세정보 자체 팝업) -->
+<div class="modal-overlay" id="hq-iframe-modal" role="dialog" aria-modal="true" aria-labelledby="pd-name">
+  <div class="pd-box">
+    <div class="pd-head"><div class="t" id="hq-modal-title">제품 상세</div><button type="button" class="pd-close" onclick="closeHqModal()" aria-label="닫기">✕</button></div>
+    <div class="pd-scroll" id="pd-scroll">
+      <div class="pd-top">
+        <div class="pd-gallery"><div class="pd-main"><img id="pd-main-img" src="" alt=""></div><div class="pd-thumbs" id="pd-thumbs"></div></div>
+        <div class="pd-info">
+          <div class="badges" id="pd-badges"></div>
+          <h2 id="pd-name"></h2>
+          <div class="model" id="pd-model"></div>
+          <dl class="pd-spec"><div><dt>구분</dt><dd id="pd-size"></dd></div><div><dt>구매 방식</dt><dd id="pd-buy"></dd></div><div><dt>설치</dt><dd>경북 전 지역 방문 배송·설치</dd></div></dl>
+          <div class="pd-price" id="pd-price"></div>
+          <div class="pd-cta"><a class="tel" href="tel:054-858-8561">전화 상담 054-858-8561</a><button type="button" class="web" onclick="pdConsult()">온라인 상담 신청</button></div>
+          <p class="pd-note">(주)쓰리에이치 공식 인증 대리점 · 본사와 동일한 정품·보증 조건<br>안동구시장센터에서 직접 체험 후 결정하실 수 있습니다.</p>
+        </div>
       </div>
-      <div style="display:flex;gap:6px;flex-shrink:0">
-        <a href="tel:054-858-8561" style="display:inline-flex;align-items:center;gap:4px;background:#00a86b;color:#fff;padding:7px 12px;border-radius:50px;font-size:.78rem;font-weight:700;text-decoration:none;white-space:nowrap"><span class="hq-btn-full">전화 상담</span></a>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});closeHqModal()" style="background:#fff;color:#0d2137;border:none;padding:7px 12px;border-radius:50px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap" class="hq-btn-consult">온라인 상담</button>
-        <button onclick="closeHqModal()" style="background:rgba(255,255,255,.18);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center">✕</button>
-      </div>
+      <div class="pd-detail"><h3>상세 정보</h3><div id="pd-detail-imgs"></div></div>
     </div>
-    <iframe id="hq-iframe" src="" style="flex:1;border:none;width:100%" loading="lazy" title="제품 상세 정보"></iframe>
+    <div class="pd-foot"><a class="tel" href="tel:054-858-8561">전화 상담</a><button type="button" class="web" onclick="pdConsult()">온라인 상담</button></div>
   </div>
 </div>
 
@@ -1860,14 +1885,14 @@ var FTAGS=['지압 시스템','온열 기능','원적외선','척추 교정','�
     tile.setAttribute('role','button');
     tile.setAttribute('tabindex','0');
     tile.setAttribute('aria-label', b.name + ' ' + b.model);
+    tile.dataset.model = b.model;
     tile.innerHTML =
       '<img src="'+b.img+'" alt="'+b.name+'" loading="lazy" onerror="this.style.background=\'#e8f0fe\'">'
       +(b.badge?'<div class="pp-tile-badge'+(b.badge==='new'?' new':'')+'">'+(b.badge==='best'?'BEST':'NEW')+'</div>':'')
       +'<div class="pp-tile-info">'
         +'<div class="pp-tile-name">'+b.name+'</div>'
         +'<div class="pp-tile-model">'+b.model+'</div>'
-      +'</div>'
-      +'<div class="pp-tile-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>';
+      +'</div>';
     tile.addEventListener('click', function(){ selectProduct(b, tile); });
     tile.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectProduct(b, tile); } });
     grid.appendChild(tile);
@@ -1892,8 +1917,7 @@ var FTAGS=['지압 시스템','온열 기능','원적외선','척추 교정','�
       +'<div class="pp-tile-info">'
         +'<div class="pp-tile-name" style="'+(b.badge==='b2b'?'color:#0056b3':'')+'">'+b.name+'</div>'
         +'<div class="pp-tile-model">'+b.model+'</div>'
-      +'</div>'
-      +'<div class="pp-tile-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>';
+      +'</div>';
     tile.addEventListener('click', function(){ selectProduct(b, tile); });
     tile.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectProduct(b, tile); } });
     grid.appendChild(tile);
@@ -1907,8 +1931,7 @@ var FTAGS=['지압 시스템','온열 기능','원적외선','척추 교정','�
   otherTile.setAttribute('aria-label','기타 (상담 후 결정)');
   otherTile.innerHTML =
     '<div style="height:70px;display:flex;align-items:center;justify-content:center;background:#f8fafc;font-size:1.4rem">?</div>'
-    +'<div class="pp-tile-info"><div class="pp-tile-name">기타</div><div class="pp-tile-model">상담 후 결정</div></div>'
-    +'<div class="pp-tile-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>';
+    +'<div class="pp-tile-info"><div class="pp-tile-name">기타</div><div class="pp-tile-model">상담 후 결정</div></div>';
   var otherB = {name:'기타',model:'상담 후 결정',img:''};
   otherTile.addEventListener('click', function(){
     if(selectedTile) selectedTile.classList.remove('selected');
@@ -2017,18 +2040,44 @@ function observeReveal(){
 })();
 
 // ── HQ IFRAME MODAL ──
+var PRODUCT_MEDIA={"68":{"g":["assets/products/68/g1.webp"],"d":[["assets/products/68/d1.webp",900,5710],["assets/products/68/d2.webp",900,314]]},"60":{"g":["assets/products/60/g1.webp","assets/products/60/g2.webp","assets/products/60/g3.webp","assets/products/60/g4.webp"],"d":[["assets/products/60/d1.webp",900,5336],["assets/products/60/d2.webp",900,4991]]},"8":{"g":["assets/products/8/g1.webp","assets/products/8/g2.webp","assets/products/8/g3.webp"],"d":[["assets/products/8/d1.webp",860,3720],["assets/products/8/d2.webp",860,4090],["assets/products/8/d3.webp",860,4963]]},"9":{"g":["assets/products/9/g1.webp","assets/products/9/g2.webp","assets/products/9/g3.webp","assets/products/9/g4.webp"],"d":[["assets/products/9/d1.webp",860,7760],["assets/products/9/d2.webp",860,5360],["assets/products/9/d3.webp",860,7700]]},"10":{"g":["assets/products/10/g1.webp","assets/products/10/g2.webp","assets/products/10/g3.webp","assets/products/10/g4.webp"],"d":[["assets/products/10/d1-1.webp",900,8000],["assets/products/10/d1-2.webp",900,8000],["assets/products/10/d1-3.webp",900,1879]]},"49":{"g":["assets/products/49/g1.webp","assets/products/49/g2.webp","assets/products/49/g3.webp"],"d":[["assets/products/49/d1.webp",900,8057],["assets/products/49/d2.webp",900,314]]},"50":{"g":["assets/products/50/g1.webp","assets/products/50/g2.webp","assets/products/50/g3.webp"],"d":[["assets/products/50/d1.webp",900,8057],["assets/products/50/d2.webp",900,314]]},"12":{"g":["assets/products/12/g1.webp","assets/products/12/g2.webp","assets/products/12/g3.webp","assets/products/12/g4.webp"],"d":[["assets/products/12/d1.webp",860,3800],["assets/products/12/d2.webp",860,2790],["assets/products/12/d3.webp",860,2420],["assets/products/12/d4.webp",860,5360],["assets/products/12/d5.webp",859,1200],["assets/products/12/d6.webp",860,7389],["assets/products/12/d7.webp",860,1270],["assets/products/12/d8.webp",900,1099],["assets/products/12/d9.webp",860,1200]]},"35":{"g":["assets/products/35/g1.webp","assets/products/35/g2.webp","assets/products/35/g3.webp","assets/products/35/g4.webp"],"d":[["assets/products/35/d1.webp",860,3700],["assets/products/35/d2.webp",860,2790],["assets/products/35/d3.webp",860,2420],["assets/products/35/d4.webp",860,5360],["assets/products/35/d5.webp",859,1200],["assets/products/35/d6.webp",860,7389],["assets/products/35/d7.webp",860,1370],["assets/products/35/d8.webp",900,1099],["assets/products/35/d9.webp",860,1200]]},"36":{"g":["assets/products/36/g1.webp","assets/products/36/g2.webp"],"d":[["assets/products/36/d1.webp",860,3800],["assets/products/36/d2.webp",860,2800],["assets/products/36/d3.webp",860,2420],["assets/products/36/d4.webp",860,5360],["assets/products/36/d5.webp",859,1200],["assets/products/36/d6.webp",860,7389],["assets/products/36/d7.webp",860,1270],["assets/products/36/d8.webp",900,1099],["assets/products/36/d9.webp",860,1200]]},"39":{"g":["assets/products/39/g1.webp","assets/products/39/g2.webp","assets/products/39/g3.webp","assets/products/39/g4.webp"],"d":[["assets/products/39/d1.webp",860,3800],["assets/products/39/d2.webp",860,2790],["assets/products/39/d3.webp",860,2420],["assets/products/39/d4.webp",860,5360],["assets/products/39/d5.webp",900,1257],["assets/products/39/d6.webp",860,7425],["assets/products/39/d7.webp",860,1370],["assets/products/39/d8.webp",900,1099],["assets/products/39/d9.webp",860,1200]]},"40":{"g":["assets/products/40/g1.webp","assets/products/40/g2.webp","assets/products/40/g3.webp","assets/products/40/g4.webp"],"d":[["assets/products/40/d2.webp",900,314],["assets/products/40/d1-1.webp",900,8000],["assets/products/40/d1-2.webp",900,8000],["assets/products/40/d1-3.webp",900,2231]]},"41":{"g":["assets/products/41/g1.webp","assets/products/41/g2.webp","assets/products/41/g3.webp","assets/products/41/g4.webp"],"d":[["assets/products/41/d1.webp",860,7904],["assets/products/41/d2.webp",860,5360],["assets/products/41/d3.webp",860,7389]]},"51":{"g":["assets/products/51/g1.webp","assets/products/51/g2.webp","assets/products/51/g3.webp","assets/products/51/g4.webp"],"d":[["assets/products/51/d2.webp",900,314],["assets/products/51/d1-1.webp",900,8000],["assets/products/51/d1-2.webp",900,8000],["assets/products/51/d1-3.webp",900,2111]]},"42":{"g":["assets/products/42/g1.webp","assets/products/42/g2.webp","assets/products/42/g3.webp","assets/products/42/g4.webp"],"d":[["assets/products/42/d1.webp",860,7914],["assets/products/42/d2.webp",860,5360],["assets/products/42/d3.webp",860,7389]]},"43":{"g":["assets/products/43/g1.webp","assets/products/43/g2.webp","assets/products/43/g3.webp","assets/products/43/g4.webp"],"d":[["assets/products/43/d1.webp",900,630],["assets/products/43/d2.webp",900,3764]]},"44":{"g":["assets/products/44/g1.webp","assets/products/44/g2.webp","assets/products/44/g3.webp","assets/products/44/g4.webp"],"d":[["assets/products/44/d1-1.webp",860,8000],["assets/products/44/d1-2.webp",860,8000],["assets/products/44/d1-3.webp",860,2961]]},"52":{"g":["assets/products/52/g1.webp","assets/products/52/g2.webp","assets/products/52/g3.webp","assets/products/52/g4.webp"],"d":[["assets/products/52/d1.webp",900,630],["assets/products/52/d2.webp",900,3808],["assets/products/52/d3.webp",900,341]]},"54":{"g":["assets/products/54/g1.webp","assets/products/54/g2.webp","assets/products/54/g3.webp","assets/products/54/g4.webp"],"d":[["assets/products/54/d2.webp",900,314],["assets/products/54/d1-1.webp",900,8000],["assets/products/54/d1-2.webp",900,8000],["assets/products/54/d1-3.webp",900,1732]]},"53":{"g":["assets/products/53/g1.webp","assets/products/53/g2.webp","assets/products/53/g3.webp","assets/products/53/g4.webp"],"d":[["assets/products/53/d1.webp",900,595],["assets/products/53/d2.webp",900,5376],["assets/products/53/d3.webp",900,341]]},"55":{"g":["assets/products/55/g1.webp","assets/products/55/g2.webp","assets/products/55/g3.webp"],"d":[["assets/products/55/d1.webp",900,630],["assets/products/55/d2.webp",900,5147],["assets/products/55/d3.webp",900,341]]},"56":{"g":["assets/products/56/g1.webp","assets/products/56/g2.webp","assets/products/56/g3.webp"],"d":[["assets/products/56/d1.webp",900,595],["assets/products/56/d2.webp",860,5251]]},"57":{"g":["assets/products/57/g1.webp","assets/products/57/g2.webp","assets/products/57/g3.webp"],"d":[["assets/products/57/d1.webp",900,630],["assets/products/57/d2.webp",860,3515]]},"58":{"g":["assets/products/58/g1.webp","assets/products/58/g2.webp","assets/products/58/g3.webp","assets/products/58/g4.webp"],"d":[["assets/products/58/d1.webp",900,630],["assets/products/58/d2.webp",860,5997]]}};
+var pdCurrent=null;
 function openHqModal(b){
-  var url='https://www.3hk.co.kr/sub/02_product/product_01_V.php?idx='+b.idx;
+  pdCurrent=b;
+  var md=PRODUCT_MEDIA[b.idx]||{g:[],d:[]};
+  var gal=md.g.length?md.g:[b.img];
+  var main=document.getElementById('pd-main-img');
+  main.src=gal[0]; main.alt=b.name;
+  var th=document.getElementById('pd-thumbs'); th.innerHTML='';
+  if(gal.length>1) gal.forEach(function(src,i){
+    var bt=document.createElement('button'); bt.type='button'; bt.className=i?'':'on'; bt.setAttribute('aria-label',b.name+' 사진 '+(i+1));
+    bt.innerHTML='<img src="'+src+'" alt="" loading="lazy">';
+    bt.addEventListener('click',function(){main.src=src;[].forEach.call(th.children,function(c){c.className='';});bt.className='on';});
+    th.appendChild(bt);
+  });
+  var labels={best:'BEST',new:'NEW',hospital:'병원·시설 전용'};
+  document.getElementById('pd-badges').innerHTML=(b.badge?'<span class="prod-badge '+b.badge+'">'+(labels[b.badge]||b.badge)+'</span>':'')+(b.rental?'<span class="prod-rental">렌탈 가능</span>':'');
   document.getElementById('hq-modal-title').textContent=b.name;
-  document.getElementById('hq-iframe').src=url;
+  document.getElementById('pd-name').textContent=b.name;
+  document.getElementById('pd-model').textContent=b.model;
+  document.getElementById('pd-size').textContent=b.size;
+  document.getElementById('pd-buy').textContent=b.rental?'구매 · 렌탈':'구매';
+  document.getElementById('pd-price').innerHTML=b.price.toLocaleString('ko-KR')+'원<small>본사 공시가 기준 · 기관 도입과 렌탈 조건은 상담 시 안내</small>';
+  document.getElementById('pd-detail-imgs').innerHTML=md.d.map(function(x){return '<img src="'+x[0]+'" width="'+x[1]+'" height="'+x[2]+'" alt="'+b.name+' 상세정보" loading="lazy" decoding="async">';}).join('');
+  document.getElementById('pd-scroll').scrollTop=0;
   document.getElementById('hq-iframe-modal').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeHqModal(){
   document.getElementById('hq-iframe-modal').classList.remove('open');
-  document.getElementById('hq-iframe').src='';
   document.body.style.overflow='';
 }
+function pdConsult(){
+  var b=pdCurrent; closeHqModal();
+  if(b){var t=document.querySelector('.pp-tile[data-model="'+b.model+'"]'); if(t&&!t.classList.contains('selected')) t.click();}
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('hq-iframe-modal').classList.contains('open'))closeHqModal();});
 document.getElementById('hq-iframe-modal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeHqModal();});
 
 // ── DOT NAV ──
