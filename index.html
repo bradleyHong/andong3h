@@ -57,6 +57,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" as="image" href="assets/brand-cf-2026-poster.jpg" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/KoPubWorldDotum-Medium.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/KoPubWorldDotum-Bold.woff2" crossorigin>
 
 <!-- ═══════════════════════════════════════════════════════
      Open Graph (카카오·페이스북·슬랙 공유 미리보기)
@@ -356,7 +358,10 @@
 [data-theme="dark"] .dot-nav-item.active .dot-nav-dot{background:#4a9eff;border-color:#4a9eff;box-shadow:0 0 8px rgba(74,158,255,.7)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;line-height:1.6}
+@font-face{font-family:'KoPubWorld Dotum';font-weight:100 350;font-display:swap;src:url(assets/fonts/KoPubWorldDotum-Light.woff2) format('woff2')}
+@font-face{font-family:'KoPubWorld Dotum';font-weight:351 599;font-display:swap;src:url(assets/fonts/KoPubWorldDotum-Medium.woff2) format('woff2')}
+@font-face{font-family:'KoPubWorld Dotum';font-weight:600 900;font-display:swap;src:url(assets/fonts/KoPubWorldDotum-Bold.woff2) format('woff2')}
+body{font-family:'KoPubWorld Dotum','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;line-height:1.6}
 img{max-width:100%;height:auto;display:block}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
