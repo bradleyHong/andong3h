@@ -836,6 +836,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 .b2b-btn-solid:hover{background:#00915b;transform:translateY(-2px)}
 .b2b-btn-outline{border:2px solid rgba(255,255,255,.35);color:#fff}
 .b2b-btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.b2b-btn-doc{background:#fff;color:var(--dark)}
+.b2b-btn-doc:hover{background:#eef3f7;transform:translateY(-2px)}
+.b2b-ctas{flex-wrap:wrap}
+.b2b-doc-note{margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.6);text-align:center}
+.pd-doc{display:flex;align-items:center;justify-content:center;height:46px;margin-top:8px;border-radius:12px;border:1.5px solid var(--primary);color:var(--primary);font-size:.9rem;font-weight:700;text-decoration:none}
+.pd-doc:hover{background:rgba(0,86,179,.06)}
 .b2b-badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .b2b-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);border-radius:50px;padding:5px 14px;font-size:.77rem;font-weight:600}
 @media(max-width:768px){.b2b-grid{grid-template-columns:1fr 1fr}}
@@ -1529,7 +1535,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <a href="mailto:sungsil32@naver.com" class="b2b-btn b2b-btn-outline">
         <span data-i18n="b2b-email">이메일 견적 문의</span>
       </a>
+      <a href="assets/docs/3H-HP-hospital-cases.pdf" download="병의원_3H지압침대HP_설치사례_안동구시장센터.pdf" class="b2b-btn b2b-btn-doc">
+        <span data-i18n="b2b-doc">HP 설치 사례 PDF 받기 (보고용)</span>
+      </a>
     </div>
+    <p class="b2b-doc-note reveal">전국 37개 의료기관·80대 설치 현황과 현장 사진을 정리한 자료입니다. 병원 내부 보고와 도입 검토에 그대로 쓰실 수 있습니다.</p>
   </div>
 </section>
 
@@ -1568,7 +1578,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 
     <details class="faq-item reveal">
       <summary><span class="faq-q">Q</span>병원·한의원·요양원에 대량 납품이 되나요?</summary>
-      <div class="faq-a">가능합니다. 의료기관·노인복지시설·기업을 대상으로 하는 <strong>B2B·B2G 대량 납품</strong>을 전문으로 하며, 법인·개인사업자 모두 전자세금계산서를 발행해 드립니다. 병원·요양원 납품에 최적화된 전용 모델인 <a href="#b2b">지압침대 HP</a> 라인업도 운영합니다.</div>
+      <div class="faq-a">가능합니다. 의료기관·노인복지시설·기업을 대상으로 하는 <strong>B2B·B2G 대량 납품</strong>을 전문으로 하며, 법인·개인사업자 모두 전자세금계산서를 발행해 드립니다. 병원·요양원 납품에 최적화된 전용 모델인 <a href="#b2b">지압침대 HP</a> 라인업도 운영합니다. 전국 의료기관 설치 사례는 <a href="assets/docs/3H-HP-hospital-cases.pdf" download="병의원_3H지압침대HP_설치사례_안동구시장센터.pdf">보고용 PDF</a>로 바로 받으실 수 있습니다.</div>
     </details>
 
     <details class="faq-item reveal">
@@ -1721,6 +1731,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
           <dl class="pd-spec"><div><dt>구분</dt><dd id="pd-size"></dd></div><div><dt>구매 방식</dt><dd id="pd-buy"></dd></div><div><dt>설치</dt><dd>경북 전 지역 방문 배송·설치</dd></div></dl>
           <div class="pd-price" id="pd-price"></div>
           <div class="pd-cta"><a class="tel" href="tel:054-858-8561">전화 상담 054-858-8561</a><button type="button" class="web" onclick="pdConsult()">온라인 상담 신청</button></div>
+          <a class="pd-doc" id="pd-doc" href="assets/docs/3H-HP-hospital-cases.pdf" download="병의원_3H지압침대HP_설치사례_안동구시장센터.pdf" style="display:none">병·의원 설치 사례 PDF 받기 (보고용)</a>
           <p class="pd-note">(주)쓰리에이치 공식 인증 대리점 · 본사와 동일한 정품·보증 조건<br>안동구시장센터에서 직접 체험 후 결정하실 수 있습니다.</p>
         </div>
       </div>
@@ -2068,6 +2079,7 @@ function openHqModal(b){
   document.getElementById('pd-buy').textContent=b.rental?'구매 · 렌탈':'구매';
   document.getElementById('pd-price').innerHTML=b.price.toLocaleString('ko-KR')+'원<small>본사 공시가 기준 · 기관 도입과 렌탈 조건은 상담 시 안내</small>';
   document.getElementById('pd-detail-imgs').innerHTML=md.d.map(function(x){return '<img src="'+x[0]+'" width="'+x[1]+'" height="'+x[2]+'" alt="'+b.name+' 상세정보" loading="lazy" decoding="async">';}).join('');
+  document.getElementById('pd-doc').style.display=(b.badge==='hospital')?'flex':'none';
   document.getElementById('pd-scroll').scrollTop=0;
   document.getElementById('hq-iframe-modal').classList.add('open');
   document.body.style.overflow='hidden';
@@ -2403,6 +2415,7 @@ var i18n = {
     'b2b-tag5': '전자세금계산서',
     'b2b-tag6': '전국 배송',
     'b2b-btn': '납품 문의 054-858-8561',
+    'b2b-doc': 'HP 설치 사례 PDF 받기 (보고용)',
     'b2b-email': '이메일 견적 문의',
     // --- SNU ---
     'snu-label': 'Research Partnership',
@@ -2574,6 +2587,7 @@ var i18n = {
     'b2b-tag5': 'Tax Invoice Issued',
     'b2b-tag6': 'Nationwide Delivery',
     'b2b-btn': 'Bulk Order Inquiry 054-858-8561',
+    'b2b-doc': 'Download Hospital Installation Cases (PDF)',
     'b2b-email': 'Email Quote Request',
     // --- SNU ---
     'snu-label': 'Research Partnership',
