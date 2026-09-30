@@ -2668,6 +2668,8 @@ var i18n = {
       if(!t[key]) return;
       if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
         el.placeholder = t[key];
+      } else if(t[key].indexOf('<')>-1){
+        el.innerHTML = t[key]; // 사전에 직접 작성한 고정 문구(태그 포함)만 해당
       } else {
         el.textContent = t[key];
       }

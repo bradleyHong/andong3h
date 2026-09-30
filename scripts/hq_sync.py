@@ -65,6 +65,10 @@ def main():
     ours = {idx: {'name': n, 'price': int(p)} for n, p, idx in
             re.findall(r"name:'([^']+)',model:'[^']+',size:'[^']+',img:'[^']+',rental:(?:true|false),price:(\d+),idx:(\d+)", index)}
     hq = hq_products()
+    if len(hq) < max(5, len(ours) // 2):
+        # 본사 접속 실패(차단·점검 등)로 목록을 못 읽은 경우. 절대 반영하지 않는다.
+        print(f'본사 제품을 {len(hq)}종만 읽음. 접속 실패로 보고 중단 (반영 없음).')
+        sys.exit(2)
 
     changes = {'price': [], 'new_products': [], 'removed_products': [], 'new_news': []}
     for idx, h in hq.items():
