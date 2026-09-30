@@ -68,6 +68,9 @@ def main():
     if len(hq) < max(5, len(ours) // 2):
         # 본사 접속 실패(차단·점검 등)로 목록을 못 읽은 경우. 절대 반영하지 않는다.
         print(f'본사 제품을 {len(hq)}종만 읽음. 접속 실패로 보고 중단 (반영 없음).')
+        diag = subprocess.run(['curl', '-sS', '-o', '/dev/null', '-w', 'http=%{http_code}', '--max-time', '20',
+                               '-A', UA, HQ + '/sub/02_product/product_01.php'], capture_output=True, text=True)
+        print('진단:', diag.stdout.strip(), diag.stderr.strip()[:200])
         sys.exit(2)
 
     changes = {'price': [], 'new_products': [], 'removed_products': [], 'new_news': []}
