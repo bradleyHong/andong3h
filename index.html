@@ -315,7 +315,7 @@
 [data-theme="dark"] .contact-card{background:#1a2540;border-color:rgba(255,255,255,.1)}
 [data-theme="dark"] .b2b-card{background:#1a2540;border-color:rgba(255,255,255,.1)}
 [data-theme="dark"] .cases-card{background:#1a2540}
-[data-theme="dark"] .map-placeholder{background:#1a2540}
+[data-theme="dark"] .map-card{background:#1a2540;border-color:rgba(255,255,255,.1)}
 [data-theme="dark"] section:not(#hero):not(#philosophy):not(#testimonials){background:#0f1623}
 [data-theme="dark"] #philosophy{filter:brightness(0.85)}
 [data-theme="dark"] #pasazu{background:linear-gradient(135deg,#0d1f17,#0a1a14)!important}
@@ -877,14 +877,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 @media(max-width:480px){.prod-picker-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* NAVER MAP CARD */
-.map-card{margin-top:28px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid #e2e8f0}
-.map-placeholder{background:#e8f0fe;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:background var(--transition)}
-.map-placeholder:hover{background:#d4e3ff}
-.map-placeholder svg{width:36px;height:36px;stroke:var(--primary);fill:none;stroke-width:1.6}
-.map-placeholder p{font-size:.88rem;font-weight:700;color:var(--primary)}
-.map-placeholder small{font-size:.76rem;color:var(--gray)}
-.map-open-btn{display:block;background:var(--primary);color:#fff;text-align:center;padding:11px;font-size:.85rem;font-weight:700;transition:background var(--transition)}
-.map-open-btn:hover{background:var(--primary-dark);color:#fff}
+.map-card{margin-top:28px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid #e2e8f0;background:#fff}
+.map-frame{position:relative;height:300px;background:#e8eef4}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-pin-label{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:10px;padding:8px 12px;box-shadow:0 4px 16px rgba(0,0,0,.18);line-height:1.35;pointer-events:none}
+.map-pin-label b{display:block;font-size:.84rem;color:var(--dark)}
+.map-pin-label span{font-size:.78rem;color:var(--accent);font-weight:700}
+.map-links{display:grid;grid-template-columns:repeat(3,1fr)}
+.map-links a{display:block;text-align:center;padding:12px 6px;font-size:.84rem;font-weight:700;color:#fff;background:var(--primary);text-decoration:none;transition:background var(--transition)}
+.map-links a+a{border-left:1px solid rgba(255,255,255,.2)}
+.map-links a:hover{background:var(--primary-dark)}
+@media(max-width:480px){.map-frame{height:240px}}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
@@ -1619,16 +1622,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
         <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-online-hours">B2B·B2G 상담시간</strong><span data-i18n="ci-online-hours-val">09:00 ~ 19:00 (병의원·기관 전화·문자 상담)</span></div></div>
         <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-hq">본사</strong><span data-i18n="ci-hq-val">(주)쓰리에이치 (대구) 1600-4996</span></div></div>
       </div>
-      <!-- Naver Map -->
-      <a href="https://map.naver.com/p/search/%EA%B2%BD%EB%B6%81%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084" target="_blank" rel="noopener noreferrer" style="text-decoration:none" aria-label="네이버 지도에서 보기">
-        <div class="map-card">
-          <div class="map-placeholder">
-            <p>네이버 지도로 보기</p>
-            <small>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</small>
-          </div>
-          <div class="map-open-btn" data-i18n="map-btn">네이버 지도에서 길찾기 열기</div>
+      <!-- 지도 (구글 지도 바로 표시) -->
+      <div class="map-card">
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084&hl=ko&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="3H지압침대 안동구시장센터 위치 지도 (장피부과 건물 7층)" allowfullscreen></iframe>
+          <div class="map-pin-label"><b>3H지압침대 안동구시장센터</b><span>퇴계로 84 · 장피부과 건물 7층</span></div>
         </div>
-      </a>
+        <div class="map-links">
+          <a href="https://map.naver.com/p/search/%EA%B2%BD%EB%B6%81%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084" target="_blank" rel="noopener noreferrer" data-i18n="map-btn">네이버 지도 길찾기</a>
+          <a href="https://map.kakao.com/?q=%EA%B2%BD%EB%B6%81%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084" target="_blank" rel="noopener noreferrer">카카오맵</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EC%95%88%EB%8F%99%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%A1%9C%2084" target="_blank" rel="noopener noreferrer">구글 지도</a>
+        </div>
+      </div>
 
       <div class="contact-social" style="margin-top:16px">
         <a href="https://www.instagram.com/3h_andong" target="_blank" rel="noopener noreferrer" class="social-btn">Instagram @3h_andong</a>
@@ -2488,7 +2493,7 @@ var i18n = {
     'ci-hours-val': '평일 08:00 ~ 16:00 (주말·공휴일 휴무)',
     'ci-hq': '본사',
     'ci-hq-val': '(주)쓰리에이치 (대구) 1600-4996',
-    'map-btn': '네이버 지도에서 길찾기 열기',
+    'map-btn': '네이버 지도 길찾기',
     // --- FOOTER ---
     'footer-desc': '경북 안동 공식 대리점 · 척추건강·수면개선·통증완화 전문',
     'footer-biz': '사업자등록번호: 194-21-01177',
@@ -2662,7 +2667,7 @@ var i18n = {
     'ci-hours-val': 'Weekdays 08:00 ~ 16:00 (Closed weekends & holidays)',
     'ci-hq': 'Headquarters',
     'ci-hq-val': '3H Co., Ltd. (Daegu) 1600-4996',
-    'map-btn': 'Open in Naver Maps for Directions',
+    'map-btn': 'Naver Map',
     // --- FOOTER ---
     'footer-desc': 'Official Dealer in Gyeongbuk Andong · Spine Health · Better Sleep · Pain Relief',
     'footer-biz': 'Business Reg. No.: 194-21-01177',
