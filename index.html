@@ -128,7 +128,7 @@
       "knowsLanguage": ["ko", "en"],
       "employee": [
         {"@type": "Person", "name": "김성덕", "jobTitle": "대표"},
-        {"@type": "Person", "name": "박성실", "jobTitle": "온라인 영업 담당", "telephone": "010-3446-7797"}
+        {"@type": "Person", "name": "박성실", "jobTitle": "센터장 (온라인 영업 담당)", "telephone": "010-3446-7797"}
       ],
       "parentOrganization": {
         "@type": "Organization",
@@ -465,7 +465,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .tab-btn:hover:not(.active){background:var(--primary-light);color:var(--primary)}
 .tab-pane{display:none}
 .tab-pane.active{display:block}
+.products-wrap{max-width:1560px;margin:0 auto}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+@media(min-width:1280px){.products-grid{grid-template-columns:repeat(5,1fr);gap:22px}.med-grid{grid-template-columns:repeat(5,1fr)}.health-grid{grid-template-columns:repeat(6,1fr)}}
+@media(min-width:1700px){.products-wrap{max-width:1680px}.products-grid{grid-template-columns:repeat(6,1fr)}}
+@media(min-width:1025px) and (max-width:1279px){.products-grid{grid-template-columns:repeat(4,1fr)}}
 .product-card{background:#fff;border:1.5px solid #e8eef6;border-radius:var(--radius);padding:24px;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);position:relative;overflow:hidden}
 .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,86,179,.15);border-color:var(--primary)}
 .prod-arrow{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--primary);opacity:0;transition:opacity var(--transition)}
@@ -1021,7 +1025,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
 
 <!-- PRODUCTS -->
 <section id="products" aria-label="제품 안내">
-  <div style="max-width:1100px;margin:0 auto">
+  <div class="products-wrap">
     <div class="section-center reveal">
       <div class="section-label" data-i18n="prod-label">Products</div>
       <h2 class="section-h2" data-i18n="prod-h">3H 제품 라인업</h2>
@@ -1107,7 +1111,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
         <div class="about-info-row"><div><strong>대표</strong><span>김성덕</span></div></div>
         <div class="about-info-row"><div><strong>주소</strong><span>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
         <div class="about-info-row"><div><strong>전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary)">054-858-8561</a></span></div></div>
-        <div class="about-info-row"><div><strong>온라인 영업 담당</strong><span>박성실 <a href="tel:010-3446-7797" style="color:var(--primary)">010-3446-7797</a></span></div></div>
+        <div class="about-info-row"><div><strong>온라인 영업 담당</strong><span>박성실 센터장 <a href="tel:010-3446-7797" style="color:var(--primary)">010-3446-7797</a></span></div></div>
         <div class="about-info-row"><div><strong>운영시간</strong><span>평일 08:00 ~ 16:00</span></div></div>
         <div class="about-info-row"><div><strong>사업자번호</strong><span>194-21-01177</span></div></div>
       </div>
@@ -1594,7 +1598,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
       <div class="contact-items">
         <div class="contact-item"><div class="ci-content"><strong>주소</strong><span data-i18n="footer-addr">경북 안동시 퇴계로 84, 7층 (장피부과 건물)</span></div></div>
         <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-phone">대표 전화</strong><span><a href="tel:054-858-8561" style="color:var(--primary);font-weight:700">054-858-8561</a></span></div></div>
-        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-mobile">온라인 영업 담당 박성실</strong><span><a href="sms:010-3446-7797" style="color:var(--primary);font-weight:700">010-3446-7797</a></span></div></div>
+        <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-mobile">온라인 영업 담당 박성실 센터장</strong><span><a href="sms:010-3446-7797" style="color:var(--primary);font-weight:700">010-3446-7797</a></span></div></div>
         <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-email">이메일</strong><span><a href="mailto:sungsil32@naver.com" style="color:var(--primary);font-weight:700">sungsil32@naver.com</a></span></div></div>
         <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-hours">운영시간</strong><span data-i18n="ci-hours-val">평일 08:00 ~ 16:00 (주말·공휴일 휴무)</span></div></div>
         <div class="contact-item"><div class="ci-content"><strong data-i18n="ci-hq">본사</strong><span data-i18n="ci-hq-val">(주)쓰리에이치 (대구) 1600-4996</span></div></div>
@@ -1653,7 +1657,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
         <p class="footer-name">3H지압침대 안동구시장센터</p>
         <dl class="footer-info">
           <div><dt>대표</dt><dd>김성덕</dd></div>
-          <div><dt>온라인 영업 담당</dt><dd>박성실</dd></div>
+          <div><dt>온라인 영업 담당</dt><dd>박성실 센터장</dd></div>
           <div><dt>사업자등록번호</dt><dd>194-21-01177</dd></div>
           <div class="full"><dt>센터</dt><dd>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</dd></div>
           <div class="full"><dt>이메일</dt><dd><a href="mailto:sungsil32@naver.com">sungsil32@naver.com</a></dd></div>
@@ -1664,7 +1668,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px
         <h4>연락처</h4>
         <a class="footer-tel" href="tel:054-858-8561">054-858-8561</a>
         <ul>
-          <li>온라인 영업 담당 박성실 : <a href="tel:010-3446-7797">010-3446-7797</a></li>
+          <li>온라인 영업 담당 박성실 센터장 : <a href="tel:010-3446-7797">010-3446-7797</a></li>
           <li>평일 : 오전 8시 ~ 오후 4시</li>
           <li>토요일, 일요일 및 공휴일은 휴무입니다.</li>
         </ul>
@@ -2433,7 +2437,7 @@ var i18n = {
     'form-privacy': '수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공하지 않습니다.',
     'contact-info-h': '오시는 길 & 연락처',
     'ci-phone': '대표 전화',
-    'ci-mobile': '온라인 영업 담당 박성실',
+    'ci-mobile': '온라인 영업 담당 박성실 센터장',
     'ci-email': '이메일',
     'ci-hours': '운영시간',
     'ci-hours-val': '평일 08:00 ~ 16:00 (주말·공휴일 휴무)',
@@ -2604,7 +2608,7 @@ var i18n = {
     'form-privacy': 'Collected information is used only for consultation purposes and is not provided to third parties.',
     'contact-info-h': 'Directions & Contact',
     'ci-phone': 'Phone',
-    'ci-mobile': 'Online Sales · Park Seong-sil',
+    'ci-mobile': 'Online Sales · Park Seong-sil, Center Manager',
     'ci-email': 'Email',
     'ci-hours': 'Hours',
     'ci-hours-val': 'Weekdays 08:00 ~ 16:00 (Closed weekends & holidays)',
