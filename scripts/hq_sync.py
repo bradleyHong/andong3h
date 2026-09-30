@@ -29,6 +29,9 @@ def text(html):
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', html)).strip()
 
 
+FAILED = set()  # 상세페이지를 받지 못한 idx (빠진 제품과 구분)
+
+
 def hq_products():
     """지압침대 카테고리 제품 {idx: {name, price, code}}"""
     lst = fetch('/sub/02_product/product_01.php?listCnt=99999&orderBy=sort')
@@ -38,8 +41,14 @@ def hq_products():
     with ThreadPoolExecutor(8) as ex:
         pages = dict(zip(idxs, ex.map(lambda i: fetch(f'/sub/02_product/product_01_V.php?idx={i}'), idxs)))
     out = {}
+    # 받지 못한 페이지는 한 번 더 천천히 시도
+    for idx in [i for i in idxs if '<div class="con_top">' not in pages[i]]:
+        pages[idx] = fetch(f'/sub/02_product/product_01_V.php?idx={idx}')
     for idx in idxs:
         h = pages[idx]
+        if '<div class="con_top">' not in h:
+            FAILED.add(idx)
+            continue
         i = h.find('<div class="con_top">')
         top = h[i:h.find('<div class="con_botm">', i)]
         if '3H지압침대' not in top:
@@ -86,14 +95,16 @@ def main():
             print('진단: 상세', i, '길이', len(h), 'con_top' in h, '3H지압침대' in h)
         sys.exit(2)
 
-    changes = {'price': [], 'new_products': [], 'removed_products': [], 'new_news': []}
+    changes = {'price': [], 'new_products': [], 'removed_products': [], 'new_news': [], 'fetch_failed': []}
     for idx, h in hq.items():
         if idx not in ours:
             changes['new_products'].append({'idx': idx, **h})
         elif h['price'] and h['price'] != ours[idx]['price']:
             changes['price'].append({'idx': idx, 'name': ours[idx]['name'], 'old': ours[idx]['price'], 'new': h['price']})
     for idx, o in ours.items():
-        if idx not in hq:
+        if idx in FAILED:
+            changes['fetch_failed'].append({'idx': idx, **o})  # 페이지 수집 실패. 빠진 제품 아님
+        elif idx not in hq:
             changes['removed_products'].append({'idx': idx, **o})
 
     known_news = set(int(x) for x in re.findall(r'media_01_V\.php\?idx=(\d+)', index))
@@ -114,7 +125,7 @@ def main():
         (ROOT / 'llms.txt').write_text(llms, encoding='utf-8')
 
     (ROOT / 'scripts' / 'hq_sync_report.json').write_text(json.dumps(changes, ensure_ascii=False, indent=2), encoding='utf-8')
-    total = sum(len(v) for v in changes.values())
+    total = sum(len(v) for k, v in changes.items() if k != 'fetch_failed')
     print(f'본사 지압침대 {len(hq)}종 / 우리 {len(ours)}종 비교')
     for k, v in changes.items():
         print(f'- {k}: {len(v)}')
