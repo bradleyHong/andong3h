@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
   const body = typeof req.body === 'string' ? safeJson(req.body) : req.body || {};
 
-  // 스팸 봇 차단용 숨김 필드 — 사람이 채울 일이 없음
+  // 스팸 봇 차단용 숨김 필드. 사람이 채울 일이 없음
   if (body.website) return res.status(200).json({ ok: true });
 
   const name = clip(body.name, 50);
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: FROM, to: [TO], subject: `[3H 안동] 상담 신청 — ${name} (${product})`, html, text }),
+      body: JSON.stringify({ from: FROM, to: [TO], subject: `[3H 안동] 상담 신청 · ${name} (${product})`, html, text }),
     });
     if (!r.ok) {
       console.error('Resend error', r.status, await r.text());
