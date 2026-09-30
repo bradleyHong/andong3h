@@ -70,8 +70,6 @@
 <meta name="twitter:description" content="경북 안동 3H지압침대 공식 대리점. 전화 상담·렌탈 가능. 경북 병원·한의원·복지시설 B2B 납품 전문. ☎ 054-858-8561">
 <meta name="twitter:image" content="https://xn--3h-qp6i098c.com/og-image.png">
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
 <!-- ═══════════════════════════════════════════════════════
      JSON-LD 구조화 데이터 (Google 지역 검색·리치 결과)
@@ -163,7 +161,7 @@
           {
             "@type": "OfferCatalog",
             "name": "지압침대",
-            "description": "노블레스·임페리얼·인베스트·슈페리어 등 프리미엄 지압침대 23종"
+            "description": "노블레스·임페리얼·인베스트·슈페리어 등 프리미엄 지압침대 24종"
           },
           {
             "@type": "OfferCatalog",
@@ -226,7 +224,7 @@
           "name": "구매 전에 직접 누워볼 수 있나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "가능합니다. 안동 구시장센터는 상설 체험 공간을 운영하며, 직접 체험한 뒤 구매를 결정하는 방식입니다. 지압침대 23종을 비롯해 의료기기와 건강·미용 제품을 함께 비교해볼 수 있습니다."
+            "text": "가능합니다. 안동 구시장센터는 상설 체험 공간을 운영하며, 직접 체험한 뒤 구매를 결정하는 방식입니다. 지압침대 24종을 비롯해 의료기기와 건강·미용 제품을 함께 비교해볼 수 있습니다."
           }
         },
         {
@@ -383,12 +381,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* TOP VIDEO */
 #top-video{background:linear-gradient(160deg,#0a0f1e 0%,#0d2340 100%);padding:28px 24px}
 .top-video-inner{max-width:1100px;margin:0 auto;position:relative;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.35)}
-.top-video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.top-video-inner iframe,.top-video-inner video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover;background:#000}
+.top-video-sound{position:absolute;right:14px;bottom:14px;z-index:2;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:50px;padding:8px 16px;font-size:.8rem;font-weight:700;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.top-video-sound:hover{background:rgba(0,0,0,.75)}
+@media(max-width:600px){.top-video-sound{right:8px;bottom:8px;padding:5px 11px;font-size:.7rem}}
 
 /* HERO */
 #hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#0a0f1e 0%,#0d2340 55%,#001a40 100%)}
-#three-hero{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
-#three-hero canvas{display:block;width:100%!important;height:100%!important}
 .hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:80px 24px 60px;width:100%;background:linear-gradient(90deg,rgba(5,10,30,0.82) 0%,rgba(5,10,30,0.55) 60%,transparent 100%);border-radius:0}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:24px;backdrop-filter:blur(8px)}
 .hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.5s infinite}
@@ -581,18 +580,33 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .form-note{font-size:.73rem;color:var(--gray);margin-top:10px;text-align:center}
 
 /* FOOTER */
-footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px}
+footer{background:var(--dark);color:rgba(255,255,255,.62);padding:64px 24px 28px}
 .footer-inner{max-width:1100px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
-.footer-brand img{height:38px;margin-bottom:14px;filter:brightness(0) invert(1)}
-.footer-brand p{font-size:.8rem;line-height:1.7;max-width:300px}
-.footer-col h4{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:14px}
-.footer-col ul li{margin-bottom:9px}
-.footer-col ul li a{font-size:.8rem;transition:color var(--transition)}
-.footer-col ul li a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;font-size:.77rem}
-.footer-bottom a{color:rgba(255,255,255,.45);transition:color var(--transition)}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr auto;gap:56px;margin-bottom:44px}
+.footer-brand img{height:38px;margin-bottom:18px;filter:brightness(0) invert(1)}
+.footer-name{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:14px}
+.footer-info{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:.8rem;line-height:1.7;margin:0}
+.footer-info div{display:flex;gap:8px}
+.footer-info div.full{flex-basis:100%}
+.footer-info dt{color:rgba(255,255,255,.4)}
+.footer-info dt::after{content:' :'}
+.footer-info dd{margin:0}
+.footer-info a:hover,.footer-contact a:hover,.footer-hq a:hover{color:#fff}
+.footer-copy{margin-top:22px;font-size:.72rem;letter-spacing:.02em;color:rgba(255,255,255,.35)}
+.footer-contact h4,.footer-sns h4{font-size:.85rem;font-weight:700;color:rgba(255,255,255,.75);margin-bottom:8px}
+.footer-tel{display:block;font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:.01em;margin-bottom:12px}
+.footer-contact ul li{font-size:.8rem;line-height:1.8}
+.footer-sns-icons{display:flex;gap:10px}
+.footer-sns-icons a{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;transition:background var(--transition)}
+.footer-sns-icons a:hover{background:rgba(255,255,255,.25)}
+.footer-sns-icons svg{width:20px;height:20px}
+.footer-hq{margin-top:16px;font-size:.75rem;color:rgba(255,255,255,.4)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:.77rem}
+.footer-links{display:flex;flex-wrap:wrap}
+.footer-links a+a::before{content:'|';margin:0 12px;color:rgba(255,255,255,.2)}
+.footer-bottom a{color:rgba(255,255,255,.5);transition:color var(--transition)}
 .footer-bottom a:hover{color:#fff}
+.footer-credit{color:rgba(255,255,255,.3);font-size:.72rem}
 
 /* FLOATING */
 #floating-cta{position:fixed;bottom:28px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:800;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
@@ -701,6 +715,16 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 .vid-label{background:#fff;padding:10px 12px;font-size:.78rem;font-weight:700;color:var(--dark)}
 .vid-label span{display:block;font-weight:400;color:var(--gray);font-size:.72rem;margin-top:2px}
 .vid-media-grid{max-width:1100px;margin:28px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.news-list{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;list-style:none;padding:0}
+.news-list a{display:flex;flex-direction:column;gap:4px;height:100%;background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 2px 12px rgba(0,40,100,.06);transition:transform .2s,box-shadow .2s}
+.news-list a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,40,100,.12)}
+.news-list time{font-size:.72rem;font-weight:700;color:var(--primary)}
+.news-list strong{font-size:.92rem;color:var(--dark);line-height:1.45}
+.news-list span{font-size:.8rem;color:var(--gray);line-height:1.5}
+.news-list em{font-style:normal;font-size:.72rem;color:var(--gray);margin-top:auto;padding-top:6px}
+.news-more{text-align:center;margin-top:20px;font-size:.85rem;font-weight:700}
+.news-more a{color:var(--primary)}
+@media(max-width:600px){.news-list{grid-template-columns:1fr}}
 @media(max-width:1024px){.vid-grid{grid-template-columns:repeat(2,1fr)}.vid-media-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.vid-grid{grid-template-columns:1fr}.vid-media-grid{grid-template-columns:1fr}}
 
@@ -794,6 +818,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 @media(max-width:1024px){
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
 }
 /* NAV TOP CONTROLS — mobile only */
 .nav-top-controls{display:none}
@@ -832,7 +857,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
   .features-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:480px){
-  .products-grid{grid-template-columns:1fr}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .product-card{padding:12px}
+  .prod-thumb{height:110px;margin:-12px -12px 10px -12px;width:calc(100% + 24px)}
+  .prod-arrow{display:none}
+  .prod-badges-row{min-height:0;margin-bottom:6px}
+  .prod-badge{margin-bottom:0;padding:2px 8px;font-size:.62rem}
+  .prod-rental{margin-left:0;font-size:.6rem;padding:2px 6px}
+  .prod-name{font-size:.84rem;line-height:1.35}
+  .prod-model{font-size:.7rem;margin-bottom:2px}
+  .prod-size{font-size:.68rem}
+  .prod-price{font-size:.86rem;margin-top:6px}
+  .prod-tel-btn{font-size:.7rem;padding:6px 10px;width:100%;justify-content:center}
+  .med-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .health-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .vid-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .vid-label{padding:8px 10px;font-size:.72rem}
   .features-grid{grid-template-columns:1fr}
   .cases-grid{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr}
@@ -908,12 +948,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 <!-- TOP VIDEO -->
 <section id="top-video" aria-label="브랜드 영상">
   <div class="top-video-inner">
-    <iframe
-      src="https://www.youtube.com/embed/Y6DtCR0yyGU?autoplay=1&mute=1&loop=1&playlist=Y6DtCR0yyGU&controls=0&modestbranding=1&rel=0&playsinline=1"
-      title="3H 지압침대 2024 브랜드 CF"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
+    <video id="top-video-el" src="assets/brand-cf-2026.mp4" poster="assets/brand-cf-2026-poster.jpg"
+      autoplay muted loop playsinline preload="auto"
+      title="3H 지압침대 2026 브랜드 CF" aria-label="3H 지압침대 2026 브랜드 CF"></video>
+    <button type="button" class="top-video-sound" id="top-video-sound" aria-label="소리 켜기" aria-pressed="false">🔇 소리 켜기</button>
   </div>
 </section>
 
@@ -944,7 +982,6 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 
 <!-- HERO -->
 <section id="hero" aria-label="메인 히어로">
-  <div id="three-hero" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-badge"><span data-i18n="hero-badge">경북 안동 공식 인증 대리점</span></div>
     <h1 class="hero-h1"><span data-i18n="hero-h1a">건강한 잠자리,</span><br><em data-i18n="hero-h1b">행복한 삶의 시작</em></h1>
@@ -957,7 +994,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       <div class="hero-card reveal">
         <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9V6a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v3"/><path d="M2 9h20v8H2z"/><path d="M5 9V5"/><path d="M19 9V5"/></svg></div>
         <h3 data-i18n="hero-c1h">지압침대</h3>
-        <p data-i18n="hero-c1p">노블레스·임페리얼·인베스트 등 23종 프리미엄 지압침대</p>
+        <p data-i18n="hero-c1p">노블레스·임페리얼·인베스트 등 24종 프리미엄 지압침대</p>
       </div>
       <div class="hero-card reveal reveal-delay-1">
         <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h8M8 12h8M8 18h5"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
@@ -1049,7 +1086,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
     <p class="sa-lead reveal">
       3H지압침대 안동 구시장센터는 <strong>경상북도 전 지역</strong>을 대상으로 방문 상담과 배송·설치를 제공하는
       (주)쓰리에이치 공식 인증 대리점입니다. 안동시 퇴계로 84, 7층(장피부과 건물)에 상설 체험 공간을 운영하며,
-      <strong>평일 08:00~16:00</strong> 사이에 방문하시면 지압침대 23종을 직접 체험한 뒤 결정하실 수 있습니다.
+      <strong>평일 08:00~16:00</strong> 사이에 방문하시면 지압침대 24종을 직접 체험한 뒤 결정하실 수 있습니다.
       예천·의성·영주·봉화·청송 등 인근 시군에서도 차량으로 방문하기 좋은 위치이며, 방문 전
       <a href="tel:054-858-8561" style="color:var(--primary);font-weight:700">054-858-8561</a>로 연락 주시면 대기 없이 안내해 드립니다.
     </p>
@@ -1081,7 +1118,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
       <div class="sa-card reveal">
         <div class="sa-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <h3>안동 상설 체험 공간</h3>
-        <p>경북에서 3H지압침대를 직접 누워보고 비교할 수 있는 공간입니다. 지압침대 23종과 의료기기·건강 제품을 함께 준비해 두었고, 체험 후 결정하시면 됩니다. 주소는 경북 안동시 퇴계로 84, 7층입니다.</p>
+        <p>경북에서 3H지압침대를 직접 누워보고 비교할 수 있는 공간입니다. 지압침대 24종과 의료기기·건강 제품을 함께 준비해 두었고, 체험 후 결정하시면 됩니다. 주소는 경북 안동시 퇴계로 84, 7층입니다.</p>
       </div>
       <div class="sa-card reveal reveal-delay-1">
         <div class="sa-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
@@ -1136,7 +1173,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
     <div class="section-center reveal">
       <div class="section-label">Brand &amp; Media</div>
       <h2 class="section-h2">3H <em>기업 영상 &amp; 언론 보도</em></h2>
-      <p style="color:var(--gray);font-size:.93rem">SBS·YTN·MBN 등 주요 방송에 소개된 3H지압침대</p>
+      <p style="color:var(--gray);font-size:.93rem">TV조선·TBC·SBS·YTN·MBN 등 주요 방송에 소개된 3H지압침대</p>
     </div>
 
     <!-- Brand CF row -->
@@ -1164,6 +1201,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
     <p class="reveal" style="font-size:.82rem;font-weight:800;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin:40px 0 16px">언론 보도</p>
     <div class="vid-media-grid reveal">
       <div class="vid-item">
+        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/eTEoFq4wblU?rel=0&modestbranding=1" title="TV조선 新 성공시대 마이웨이" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vid-label">TV조선 新 성공시대 마이웨이<span>정영재 대표 출연 (2026)</span></div>
+      </div>
+      <div class="vid-item">
+        <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/mKEmFFQ9Y1M?rel=0&modestbranding=1" title="TBC 생방송 굿데이" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vid-label">TBC 생방송 굿데이<span>정영재 대표 생방송 출연 (2025)</span></div>
+      </div>
+      <div class="vid-item">
         <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/IMkXLrGYMMQ?rel=0&modestbranding=1" title="SBS Biz Pickup" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
         <div class="vid-label">SBS Biz 픽업 195회<span>SBS 비즈니스 뉴스 보도 (2022)</span></div>
       </div>
@@ -1175,6 +1220,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
         <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/DKHXBgmpdfg?rel=0&modestbranding=1" title="MBN 성공다큐" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
         <div class="vid-label">MBN 성공다큐<span>MBN 기업 성공 다큐멘터리 (2017)</span></div>
       </div>
+
+    <!-- Latest news -->
+    <p class="reveal" style="font-size:.82rem;font-weight:800;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin:40px 0 16px">최신 소식</p>
+    <ul class="news-list reveal">
+        <li><a href="https://kr.aving.net/news/articleView.html?idxno=1814728" target="_blank" rel="noopener"><time>2026.09.28</time><strong>쓰리에이치, ‘KIMES BUSAN 2026’ 참가</strong><span>10월 23~25일 부산 벡스코에서 3H 지압침대 전시</span><em>에이빙 ↗</em></a></li>
+        <li><a href="https://www.eroun.net/news/articleView.html?idxno=90650" target="_blank" rel="noopener"><time>2026.09.22</time><strong>경북 지역 경로당에 ‘3H 지압침대 무료체험’ 시범 운영</strong><span>대한노인회 경북연합회와 경로당·산불 피해지역 보건진료소 19곳 설치</span><em>이로운넷 ↗</em></a></li>
+        <li><a href="https://n.news.naver.com/mnews/article/050/0000111093?sid=101" target="_blank" rel="noopener"><time>2026.09.21</time><strong>쓰리에이치-DGIST, 바이오 산업 AX 촉진 MOU</strong><span>헬스케어 AI 전환 공동 연구 협약</span><em>네이버 뉴스 ↗</em></a></li>
+        <li><a href="https://n.news.naver.com/mnews/article/014/0005556460?sid=102" target="_blank" rel="noopener"><time>2026.08.06</time><strong>2026 대구세계마스터즈육상경기대회 후원</strong><span>WMAC DAEGU 2026 공식 후원</span><em>네이버 뉴스 ↗</em></a></li>
+        <li><a href="https://www.forbeskorea.co.kr/news/articleView.html?idxno=401768" target="_blank" rel="noopener"><time>2026.04.03</time><strong>정영재 대표, 제53회 상공의 날 ‘산업포장’ 수상</strong><span>국가 산업 발전 공로 인정</span><em>포브스코리아 ↗</em></a></li>
+        <li><a href="https://n.news.naver.com/mnews/article/015/0005268627?sid=101" target="_blank" rel="noopener"><time>2026.03.31</time><strong>대한민국 공군에 3H 지압침대 50대 기증</strong><span>장병 건강·휴식 지원, 부대 생활관·의무시설 배치</span><em>한국경제 ↗</em></a></li>
+    </ul>
+    <p class="news-more reveal"><a href="https://www.3h.co.kr/sub/04_media/media_01.php" target="_blank" rel="noopener">본사 언론보도 전체 보기 →</a></p>
     </div>
   </div>
 </section>
@@ -1451,7 +1508,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
 
     <details class="faq-item reveal">
       <summary><span class="faq-q">Q</span>구매 전에 직접 누워볼 수 있나요?</summary>
-      <div class="faq-a">가능합니다. 안동 구시장센터는 <strong>상설 체험 공간</strong>을 운영하며, 직접 체험한 뒤 구매를 결정하는 방식입니다. 지압침대 23종을 비롯해 의료기기와 건강·미용 제품을 함께 비교해볼 수 있습니다.</div>
+      <div class="faq-a">가능합니다. 안동 구시장센터는 <strong>상설 체험 공간</strong>을 운영하며, 직접 체험한 뒤 구매를 결정하는 방식입니다. 지압침대 24종을 비롯해 의료기기와 건강·미용 제품을 함께 비교해볼 수 있습니다.</div>
     </details>
 
     <details class="faq-item reveal">
@@ -1539,6 +1596,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
           </div>
         </div>
         <div class="form-group"><label for="f-concern" data-i18n="form-concern">건강 고민</label><textarea id="f-concern" name="concern" data-i18n="form-concern-ph" placeholder="허리 통증, 수면 장애, 어깨 결림 등 편하게 적어주세요."></textarea></div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit" class="form-submit" id="submit-btn" data-i18n="form-submit">무료 상담 신청하기</button>
         <p class="form-note" data-i18n="form-privacy">수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공하지 않습니다.</p>
       </form>
@@ -1552,39 +1610,38 @@ footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 24px 28px
     <div class="footer-top">
       <div class="footer-brand">
         <img src="assets/logo.png" alt="3H지압침대 로고 (흰색)">
-        <p style="margin-top:12px">3H지압침대 안동 구시장센터<br>경북 안동시 퇴계로 84, 7층 (장피부과 건물)<br>사업자등록번호: 194-21-01177</p>
-        <p style="margin-top:10px;font-size:.77rem;color:rgba(255,255,255,.35)">Humanism · Health · Happiness</p>
+        <p class="footer-name">3H지압침대 안동 구시장센터</p>
+        <dl class="footer-info">
+          <div><dt>대표</dt><dd>김성덕</dd></div>
+          <div><dt>사업자등록번호</dt><dd>194-21-01177</dd></div>
+          <div class="full"><dt>센터</dt><dd>경북 안동시 퇴계로 84, 7층 (장피부과 건물)</dd></div>
+          <div class="full"><dt>이메일</dt><dd><a href="mailto:sungsil32@naver.com">sungsil32@naver.com</a></dd></div>
+        </dl>
+        <p class="footer-copy">COPYRIGHT &#169; 3H지압침대 안동 구시장센터. ALL RIGHTS RESERVED.</p>
       </div>
-      <div class="footer-col">
-        <h4>빠른 메뉴</h4>
-        <ul>
-          <li><a href="#about">센터 소개</a></li>
-          <li><a href="#products">제품 라인업</a></li>
-          <li><a href="#cases">시공 사례</a></li>
-          <li><a href="#service-area">경북 서비스 지역</a></li>
-          <li><a href="#features">특장점</a></li>
-          <li><a href="#b2b">B2B·납품 안내</a></li>
-          <li><a href="#faq">자주 묻는 질문</a></li>
-          <li><a href="#contact">상담 신청</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
+      <div class="footer-contact">
         <h4>연락처</h4>
+        <a class="footer-tel" href="tel:054-858-8561">054-858-8561</a>
         <ul>
-          <li><a href="tel:054-858-8561">054-858-8561</a></li>
-          <li><a href="sms:010-3446-7797">010-3446-7797</a></li>
-          <li><a href="mailto:sungsil32@naver.com">sungsil32@naver.com</a></li>
-          <li><a href="https://www.instagram.com/3h_andong" target="_blank" rel="noopener">Instagram @3h_andong</a></li>
-          <li><a href="https://www.youtube.com/@3h392" target="_blank" rel="noopener">YouTube @3h392</a></li>
+          <li>문자 상담 : <a href="sms:010-3446-7797">010-3446-7797</a></li>
+          <li>평일 : 오전 8시 ~ 오후 4시</li>
+          <li>토요일, 일요일 및 공휴일은 휴무입니다.</li>
         </ul>
+      </div>
+      <div class="footer-sns">
+        <h4>SNS</h4>
+        <div class="footer-sns-icons">
+          <a href="https://www.instagram.com/3h_andong" target="_blank" rel="noopener" aria-label="인스타그램 @3h_andong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@3h392" target="_blank" rel="noopener" aria-label="유튜브 @3h392"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9L15.5 12l-5.7 3.1z"/></svg></a>
+        </div>
+        <p class="footer-hq">본사 (주)쓰리에이치 <a href="tel:1600-4996">1600-4996</a></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&#169; 2021 3H지압침대 안동 구시장센터. All rights reserved.</span>
-      <span>본사: &#40;주&#41;쓰리에이치 (대구) <a href="tel:1600-4996">1600-4996</a></span>
-    </div>
-    <div style="border-top:1px solid rgba(255,255,255,.07);margin-top:14px;padding-top:14px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.28)">
-      Designed by <a href="https://www.visionpencil.co.kr/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.45);text-decoration:underline;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.45)'">상상연필 (VisionPencil)</a> &nbsp;·&nbsp; All Rights Reserved
+      <nav class="footer-links" aria-label="하단 메뉴">
+        <a href="#about">센터 소개</a><a href="#products">제품 라인업</a><a href="#b2b">B2B·납품 안내</a><a href="#faq">자주 묻는 질문</a><a href="#contact">상담 신청</a>
+      </nav>
+      <span class="footer-credit">Designed by <a href="https://www.visionpencil.co.kr/" target="_blank" rel="noopener">상상연필 (VisionPencil)</a></span>
     </div>
   </div>
 </footer>
@@ -1680,6 +1737,7 @@ var MEDICAL=[
 ];
 
 var HEALTH=[
+  {name:'수리모 (SURIMO)',img:'assets/health-surimo.jpg',desc:'5종 성장인자와 카페인을 담은 두피 케어 토닉.'},
   {name:'아스릭손',img:'assets/health-arthrixon-new.png',desc:'관절 건강을 위한 프리미엄 건강기능식품.'},
   {name:'빠사쥬 (Pasazu)',img:'assets/health-pasazu-new.png',desc:'CIDS 피부 침투 기술 적용 프리미엄 코스메틱. 5년 검증 회원 전용 제품.'},
   {name:'천백단',img:'assets/health-cheonbaekdan.png',desc:'천연 한방 성분으로 만든 프리미엄 건강식품.'},
@@ -1692,6 +1750,7 @@ var HEALTH=[
 ];
 
 var BEDS=[
+  {badge:'new',name:'지압침대 블루다이아몬드',model:'3H-1530BD',size:'2인용 · 실리콘원단',img:'assets/bed-blue-diamond.png',rental:false,price:75000000,idx:68},
   {badge:'new',name:'지압쇼파 COVERED',model:'COVERED',size:'1인용 · 실리콘원단',img:'assets/bed-covered.png',rental:false,price:9680000,idx:60},
   {badge:'new',name:'지압쇼파 820 SOFA',model:'3H-820 SOFA',size:'1인용 · 실리콘원단',img:'assets/bed-sofa-820.png',rental:false,price:9680000,idx:8},
   {badge:'best',name:'지압침대 노블레스',model:'3H Noblesse',size:'2인용 · 원목',img:'assets/bed-noblesse-main.png',rental:true,price:19550000,idx:9},
@@ -1923,6 +1982,19 @@ function observeReveal(){
   observeReveal();
 })();
 
+// ── TOP VIDEO SOUND ──
+(function(){
+  var v=document.getElementById('top-video-el'),b=document.getElementById('top-video-sound');
+  if(!v||!b) return;
+  b.addEventListener('click',function(){
+    v.muted=!v.muted;
+    if(!v.muted) v.play();
+    b.textContent=v.muted?'🔇 소리 켜기':'🔊 소리 끄기';
+    b.setAttribute('aria-label',v.muted?'소리 켜기':'소리 끄기');
+    b.setAttribute('aria-pressed',String(!v.muted));
+  });
+})();
+
 // ── HQ IFRAME MODAL ──
 function openHqModal(b){
   var url='https://www.3hk.co.kr/sub/02_product/product_01_V.php?idx='+b.idx;
@@ -2116,186 +2188,6 @@ animateCounters();
 // ── SCROLL REVEAL (initial observe after all content rendered) ──
 observeReveal();
 
-// ── THREE.JS 지압봉 3D 히어로 ──
-(function() {
-  if (typeof THREE === 'undefined') return;
-  var container = document.getElementById('three-hero');
-  var hero      = document.getElementById('hero');
-  if (!container) return;
-
-  var W = window.innerWidth;
-  var H = Math.max(window.innerHeight, 600);
-
-  // ── Scene ──
-  var scene = new THREE.Scene();
-
-  // ── Camera: 오른쪽 핀 그리드를 정면+살짝 위에서 — 원래 캔버스 느낌 재현 ──
-  var camera = new THREE.PerspectiveCamera(52, W / H, 0.1, 100);
-  camera.position.set(3, 6, 16);
-  camera.lookAt(3, 1, 0);
-
-  // ── Renderer ──
-  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(W, H);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping   = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.4;
-  container.appendChild(renderer.domElement);
-
-  // ── Lights ──
-  scene.add(new THREE.AmbientLight(0xfff0d0, 0.9));
-
-  var sun = new THREE.DirectionalLight(0xfff8e8, 1.8);
-  sun.position.set(3, 14, 10);
-  scene.add(sun);
-
-  var fill = new THREE.PointLight(0xe0a040, 1.4, 35);
-  fill.position.set(-6, 6, 6);
-  scene.add(fill);
-
-  var rim = new THREE.PointLight(0x3060c0, 0.6, 30);
-  rim.position.set(0, 2, -12);
-  scene.add(rim);
-
-  // ── Grid params ──
-  var COLS = 5, ROWS = 3;
-  var SX = 3.0, SZ = 2.5;
-  var RISE_DUR = 2000;
-  var IDLE_AMP = 0.06;
-  var pinData  = [];
-  var t0 = performance.now();
-
-  // 마우스 정규화 좌표: -1(좌/상) ~ +1(우/하)
-  var nmx = 0, nmy = 1;    // 기본값: 마우스 아래쪽(upright 상태)
-  var tnmx = 0, tnmy = 1;
-
-  function lerp3(a, b, t) { return a + (b - a) * t; }
-  function easeOut3(t)    { return 1 - Math.pow(1 - t, 3); }
-
-  // ── Load GLB ──
-  var loader = new THREE.GLTFLoader();
-  loader.load(
-    'assets/jiyabong.glb',
-    function(gltf) {
-      var box  = new THREE.Box3().setFromObject(gltf.scene);
-      var size = box.getSize(new THREE.Vector3());
-
-      // 핀 크기: 크게 설정 (원래 캔버스처럼 핀이 화면을 채우게)
-      var baseScale = 2.8 / Math.max(size.x, size.y, size.z);
-
-      // 모델의 top Y (scaled) — 이 값이 바닥면(y=0)에서 시작해서 위로 올라감
-      var modelTop    = box.max.y;  // 스케일 적용 전
-      var modelBottom = box.min.y;
-
-      for (var row = 0; row < ROWS; row++) {
-        for (var col = 0; col < COLS; col++) {
-          var depth = (row + 1) / ROWS;   // 앞줄(row=ROWS-1)이 depth=1
-          var scl   = baseScale * (0.65 + depth * 0.45);
-
-          // 핀 XZ 위치 (약간 랜덤 오프셋)
-          var jx = (Math.random() - 0.5) * 0.6;
-          var jz = (Math.random() - 0.5) * 0.5;
-          // 그리드를 오른쪽으로 오프셋 (+3) — 왼쪽 텍스트 영역 비움
-          var px = (col - (COLS - 1) / 2) * SX + jx + 3;
-          var pz = (row - (ROWS - 1) / 2) * SZ + jz;
-
-          var clone = gltf.scene.clone(true);
-          clone.scale.setScalar(scl);
-
-          // 초기 위치: 핀 전체가 바닥 아래 숨어 있다가 위로 솟음
-          var topOffset = modelTop * scl;
-          var botOffset = modelBottom * scl; // 보통 음수
-          clone.position.set(px, botOffset - 8, pz); // 충분히 아래에서 시작
-
-          clone.traverse(function(n) {
-            if (n.isMesh) {
-              n.castShadow = true;
-              // 바닥면에 가려지려면 renderOrder를 0으로 (ground=1보다 낮게)
-              n.renderOrder = 0;
-            }
-          });
-
-          scene.add(clone);
-
-          // 최종 정지 Y: 바닥면(y=0) 위에 핀 바닥이 닿도록
-          var restY = -botOffset; // position.y = restY → 모델 하단이 y=0에 닿음
-          // 앞줄은 더 높게 솟아오름 (원근감)
-          var extraRise = depth * 1.5;
-
-          var startY = botOffset - 8;   // 시작 (화면 아래 숨김)
-          pinData.push({
-            mesh:      clone,
-            px: px, pz: pz,
-            botOffset: botOffset,
-            restY:     restY,           // 진입 후 안정 위치
-            startY:    startY,
-            maxRise:   restY + extraRise + 2.5, // 마우스 최대 상승 위치
-            delay:  (ROWS - 1 - row) * 160 + col * 75 + Math.random() * 120,
-            phase:  Math.random() * Math.PI * 2,
-            influence: 5.5,
-            hoverY: startY              // 마우스 영향 Y (개별 lerp)
-          });
-        }
-      }
-
-      // 뒤→앞 정렬 (z 오름차순)
-      pinData.sort(function(a, b) { return a.pz - b.pz; });
-    },
-    undefined,
-    function(err) { console.warn('GLB load error:', err); }
-  );
-
-  // ── Mouse tracking ──
-  hero.addEventListener('mousemove', function(e) {
-    tnmx = (e.clientX / W) * 2 - 1;          // -1(좌) ~ +1(우)
-    tnmy = (e.clientY / H) * 2 - 1;          // -1(상) ~ +1(하)
-  });
-  hero.addEventListener('mouseleave', function() {
-    tnmx = 0;   // 중앙으로 복귀
-    tnmy = 1;   // 아래(upright) 상태로 복귀
-  });
-
-  // ── Animation loop ──
-  setInterval(function() {
-    var now     = performance.now();
-    var elapsed = now - t0;
-
-    // 마우스 정규화 좌표: 느린 lerp = 천천히 부드럽게
-    nmx = lerp3(nmx, tnmx, 0.035);
-    nmy = lerp3(nmy, tnmy, 0.035);
-
-    // 전체 핀 공통 목표 회전값
-    // Z축: 마우스 좌우 → 핀 좌우 기울기 (Z만)
-    var targetRotZ = -nmx * 0.28;            // 최대 ±16° 기울기
-    // X축: 마우스 위(nmy=-1) → 돔 보이게 뒤로 젖힘, 아래(nmy=+1) → 직립
-    //      map [-1,+1] → [-0.35, 0]
-    var targetRotX = (nmy - 1) * 0.175;     // top:-0.35rad, bottom:0rad
-
-    pinData.forEach(function(p) {
-      // ── Y: 페이지 로드 진입 애니메이션만 (마우스 Y 이동 없음) ──
-      var introProg = easeOut3(Math.min(1, Math.max(0, (elapsed - p.delay) / RISE_DUR)));
-      var bob = introProg >= 1 ? Math.sin(now * 0.0008 + p.phase) * IDLE_AMP : 0;
-      p.mesh.position.y = p.startY + introProg * (p.restY - p.startY) + bob;
-
-      // ── 회전: 전체 동일하게, 느린 lerp = 천천히 ──
-      p.mesh.rotation.z = lerp3(p.mesh.rotation.z, targetRotZ, 0.04);
-      p.mesh.rotation.x = lerp3(p.mesh.rotation.x, targetRotX, 0.04);
-    });
-
-    renderer.render(scene, camera);
-  }, 16);
-
-  // ── Resize ──
-  window.addEventListener('resize', function() {
-    W = window.innerWidth;
-    H = Math.max(window.innerHeight, 600);
-    camera.aspect = W / H;
-    camera.updateProjectionMatrix();
-    renderer.setSize(W, H);
-  });
-})();
-
 // ── THEME TOGGLE ──────────────────────────────────────────────
 (function(){
   var root       = document.documentElement;
@@ -2350,7 +2242,7 @@ var i18n = {
     'hero-btn1': '무료 상담 신청',
     'hero-btn2': '제품 보기 →',
     'hero-c1h': '지압침대',
-    'hero-c1p': '노블레스·임페리얼·인베스트 등 23종 프리미엄 지압침대',
+    'hero-c1p': '노블레스·임페리얼·인베스트 등 24종 프리미엄 지압침대',
     'hero-c2h': '의료기기',
     'hero-c2p': '뜸질기·레이저 조사기 등 의료용 온열기기 전문',
     'hero-c3h': '건강·미용',
@@ -2521,7 +2413,7 @@ var i18n = {
     'hero-btn1': 'Free Consultation',
     'hero-btn2': 'View Products →',
     'hero-c1h': 'Acupressure Beds',
-    'hero-c1p': '23 premium models including Noblesse, Imperial & Invest series',
+    'hero-c1p': '24 premium models including Noblesse, Imperial & Invest series',
     'hero-c2h': 'Medical Devices',
     'hero-c2p': 'Moxibustion & laser therapy devices for medical use',
     'hero-c3h': 'Health & Beauty',
@@ -2729,25 +2621,22 @@ function handleFormSubmit(e){
   btn.disabled    = true;
 
   var data = {
-    이름:       form.name.value,
-    연락처:     form.phone.value,
-    관심제품:   form.product.value || '미선택',
-    건강고민:   form.concern.value || '없음',
-    _subject:  '3H지압침대 안동 구시장센터 — 새 상담 신청',
-    _template: 'table',
-    _captcha:  'false'
+    name:    form.name.value,
+    phone:   form.phone.value,
+    product: form.product.value,
+    concern: form.concern.value,
+    website: form.website ? form.website.value : ''
   };
 
-  // FormSubmit.co AJAX — 무료, 가입 불필요
-  // ※ 최초 전송 시 sungsil32@naver.com 으로 인증 메일이 오면 승인 클릭하시면 됩니다
-  fetch('https://formsubmit.co/ajax/visionpencil@gmail.com', {
+  // Vercel Function(/api/consult) → Resend 로 visionpencil@gmail.com 에 발송
+  fetch('/api/consult', {
     method:  'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
     body:    JSON.stringify(data)
   })
   .then(function(res){ return res.json(); })
   .then(function(json){
-    if(json.success === 'true' || json.success === true){
+    if(json.ok === true){
       btn.textContent = '✅ 신청 완료! 곧 연락드리겠습니다';
       btn.style.background = 'var(--accent)';
       form.reset();
