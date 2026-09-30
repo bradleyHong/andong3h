@@ -21,7 +21,7 @@ UA = 'Mozilla/5.0 (3H Andong sync)'
 
 
 def fetch(path):
-    return subprocess.run(['curl', '-sL', '--max-time', '30', '-A', UA, HQ + path],
+    return subprocess.run(['curl', '-sL', '--max-time', '25', '--retry', '2', '-A', UA, HQ + path],
                           capture_output=True, text=True).stdout
 
 
@@ -33,9 +33,13 @@ def hq_products():
     """지압침대 카테고리 제품 {idx: {name, price, code}}"""
     lst = fetch('/sub/02_product/product_01.php?listCnt=99999&orderBy=sort')
     idxs = list(dict.fromkeys(re.findall(r'product_01_V\.php\?idx=(\d+)', lst)))
+    print(f'본사 목록: 상품 {len(idxs)}개, 목록 페이지 {len(lst)}바이트', flush=True)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(8) as ex:
+        pages = dict(zip(idxs, ex.map(lambda i: fetch(f'/sub/02_product/product_01_V.php?idx={i}'), idxs)))
     out = {}
     for idx in idxs:
-        h = fetch(f'/sub/02_product/product_01_V.php?idx={idx}')
+        h = pages[idx]
         i = h.find('<div class="con_top">')
         top = h[i:h.find('<div class="con_botm">', i)]
         if '3H지압침대' not in top:
