@@ -71,6 +71,15 @@ def main():
         diag = subprocess.run(['curl', '-sS', '-o', '/dev/null', '-w', 'http=%{http_code}', '--max-time', '20',
                                '-A', UA, HQ + '/sub/02_product/product_01.php'], capture_output=True, text=True)
         print('진단:', diag.stdout.strip(), diag.stderr.strip()[:200])
+        body = fetch('/sub/02_product/product_01.php?listCnt=99999&orderBy=sort')
+        title = re.search(r'<title>(.*?)</title>', body, re.S)
+        print('진단: 목록 길이', len(body), '제목', title.group(1).strip()[:60] if title else None,
+              '제품링크', len(re.findall(r'product_01_V\.php\?idx=', body)))
+        print('진단: 본문 앞부분', text(body)[:300])
+        if re.findall(r'product_01_V\.php\?idx=(\d+)', body):
+            i = re.findall(r'product_01_V\.php\?idx=(\d+)', body)[0]
+            h = fetch(f'/sub/02_product/product_01_V.php?idx={i}')
+            print('진단: 상세', i, '길이', len(h), 'con_top' in h, '3H지압침대' in h)
         sys.exit(2)
 
     changes = {'price': [], 'new_products': [], 'removed_products': [], 'new_news': []}
