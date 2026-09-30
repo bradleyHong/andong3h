@@ -2,7 +2,7 @@
 // 필요 환경변수: RESEND_API_KEY (Vercel 프로젝트 설정에 저장)
 
 const TO = 'visionpencil@gmail.com';
-const FROM = '3H 안동 구시장센터 <consult@visionpencil.co.kr>';
+const FROM = '3H 안동구시장센터 <consult@visionpencil.co.kr>';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const clip = (s, n) => String(s ?? '').trim().slice(0, n);
@@ -38,8 +38,8 @@ export default async function handler(req, res) {
       <table style="border-collapse:collapse;width:100%;font-size:15px">
         ${rows.map(([k, v]) => `<tr><th style="text-align:left;background:#f0f4ff;padding:10px 12px;border:1px solid #dde5f5;width:110px">${k}</th><td style="padding:10px 12px;border:1px solid #dde5f5;white-space:pre-wrap">${esc(v)}</td></tr>`).join('')}
       </table>
-      <p style="margin-top:18px"><a href="tel:${esc(phone.replace(/[^0-9+]/g, ''))}" style="background:#00a86b;color:#fff;padding:10px 18px;border-radius:50px;text-decoration:none;font-weight:700">📞 ${esc(phone)} 바로 전화</a></p>
-      <p style="color:#888;font-size:12px;margin-top:20px">3H지압침대 안동 구시장센터 홈페이지 상담 신청 폼에서 발송된 메일입니다.</p>
+      <p style="margin-top:18px"><a href="tel:${esc(phone.replace(/[^0-9+]/g, ''))}" style="background:#00a86b;color:#fff;padding:10px 18px;border-radius:50px;text-decoration:none;font-weight:700">${esc(phone)} 바로 전화</a></p>
+      <p style="color:#888;font-size:12px;margin-top:20px">3H지압침대 안동구시장센터 홈페이지 상담 신청 폼에서 발송된 메일입니다.</p>
     </div>`;
   const text = rows.map(([k, v]) => `${k}: ${v}`).join('\n');
 
